@@ -11,10 +11,10 @@ let app = {
         }
 
         const socket = new WebSocket("wss://stream.binance.com:9443/ws" + streams);
-
+        
         socket.onmessage = function(event) {
 
-            // console.log(event.data);
+            //console.log(event.data);
             let objectData = JSON.parse(event.data);
             let DOMquote = document.querySelector('#quote' + objectData.s);
             // let quote = Number.parseFloat(objectData.p).toFixed(2);
