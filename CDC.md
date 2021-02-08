@@ -111,8 +111,11 @@ https://www.gloomaps.com/Pd9EmFlQCE
 | order_type              | vente ou achat(buy, sell) | string   |             | Order     |
 | amount                  | prix en USD               | float    |             | Order     |
 |                         |                           |          |             |           |
-| pair_name               | nom de la crypto          | string   |             | Portfolio |
+| pair_name               | nom de la crypto          | string   |             | Crypto    |
+|                         |                           |          |             |           |
+| id_portfolio            | id du portefeuille        | integer  | table pivot | Hold      |
+| pair_name               | nom de la crypto          | string   | table pivot | Hold      |
+|                         |                           |          |             |           |
+| id_portfolio            | id du portefeuille        | string   |             | Portfolio |
 | actual_quantity         | quantité de la crypto     | float    |             | Portfolio |
 | average_price           | prix moyen                | float    |             | Portfolio |
-|                         |                           |          |             |           |
-| pair_name               | nom de la crypto          | string   |             | Crypto    |
