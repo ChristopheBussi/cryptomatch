@@ -61,6 +61,7 @@ https://www.gloomaps.com/Pd9EmFlQCE
 | `/dashboard`       | portefeuille/historique                | dashboard | `UserController`   | `dashboard` | `GET `       |
 | `/classement`      | classement des participants            | rank      | `UserController`   | `rank`      | `GET `       |
 | `/qui-sommes-nous` | description de l'équipe                |           |                    |             |              |
+| `/erreur`          | page 404                               |           |                    |             |              |
 
 ## Users Stories
 
@@ -88,3 +89,30 @@ https://www.gloomaps.com/Pd9EmFlQCE
 | Walid      | Lead dev back                 |
 | Julien     | Lead dev front                |
 | Jocelyn    | Git master                    |
+
+## BDD
+
+###  MCD
+
+### Dico des données 
+
+| Nom                     | Description               | Type     | Commentaire | Entité    |
+| ----------------------- | :------------------------ | :------- | :---------- | :-------- |
+| username                | pseudo de l'utilisateur   | string   |             | User      |
+| email                   | email de l'utilisateur    | string   |             | User      |
+| password                | mot de passe              | string   |             | User      |
+| created_at              | date de la création       | datetime |             | User      |
+| USD_amount              | valeur en USD             | float    |             | User      |
+| rank_valorisation_amout | valeur du portefeuille    | float    |             | User      |
+|                         |                           |          |             |           |
+| id                      | id de l'ordre             | integer  |             | Order     |
+| datetime                | date de passage d'ordre   | datetime |             | Order     |
+| quantity                | quantité de crypto        | float    |             | Order     |
+| order_type              | vente ou achat(buy, sell) | string   |             | Order     |
+| amount                  | prix en USD               | float    |             | Order     |
+|                         |                           |          |             |           |
+| pair_name               | nom de la crypto          | string   |             | Portfolio |
+| actual_quantity         | quantité de la crypto     | float    |             | Portfolio |
+| average_price           | prix moyen                | float    |             | Portfolio |
+|                         |                           |          |             |           |
+| pair_name               | nom de la crypto          | string   |             | Crypto    |
