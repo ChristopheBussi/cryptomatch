@@ -24,11 +24,13 @@ Chaque participant obtiendra un capital de départ de 10 000 dollars fictifs qu�
     - historique des ordres, calcul des gains et pertes
 - page de classement des participants qui se met à jour quotidiennement.
     - badges
+- mise à jour des cotations en temps réel via websocket
+  
 
 ### Evolutions possibles
 
+- page de gestion du compte
 - affichage du nombre de participants en cours d’inscription
-- mise à jour des cotations en temps réel via websocket
 - laisser libre le choix de la devise de contrepartie.
 - traduire le site en anglais
 
@@ -46,31 +48,35 @@ Google Chrome, Mozilla Firefox, Microsoft Edge
 
 ## Les Routes
 
-| URL               | Description                            | Nom       | Controlleur        | Méthode     | Requête      |
-| :---------------- | :------------------------------------- | :-------- | :----------------- | :---------- | :----------- |
-| `/`               | accueil                                | homepage  | `MainController`   | `home`      | `GET`        |
-| `/connexion/`     | connexion/insciption                   | login     | `LoginController`  | `login`     | `GET / POST` |
-| `/list/`          | liste des cryptos                      | list      | `CryptoController` | `list`      | `GET`        |
-| `/orders/[name]`  | page de la crypto et passation d’ordre | order     | `CryptoController` | `order`     | `GET / POST` |
-| `/dashboard`      | portefeuille/hostorique                | dashboard | `UserController`   | `dashboard` | `GET `       |
-| `/qui-somme-nous` | description de l'équipe                |           |                    |             |              |
+| URL                | Description                            | Nom       | Controlleur        | Méthode     | Requête      |
+| :----------------- | :------------------------------------- | :-------- | :----------------- | :---------- | :----------- |
+| `/`                | accueil                                | homepage  | `MainController`   | `home`      | `GET`        |
+| `/connexion/`      | connexion/insciption                   | login     | `LoginController`  | `login`     | `GET / POST` |
+| `/list/`           | liste des cryptos                      | list      | `CryptoController` | `list`      | `GET`        |
+| `/orders/[name]`   | page de la crypto et passation d’ordre | order     | `CryptoController` | `order`     | `GET / POST` |
+| `/dashboard`       | portefeuille/historique                | dashboard | `UserController`   | `dashboard` | `GET `       |
+| `/qui-sommes-nous` | description de l'équipe                |           |                    |             |              |
 
 ## Users Stories
 
-| ID  | Thème   | En tant que... | j'ai besoin de...               | afin de...             |
-| --- | :------ | :------------- | :------------------------------ | :--------------------- |
-| 1   | Acceuil | Utilisateur    | connaitre les régles du concour | savoir utilisé le site |
+| ID  | Page            | En tant que... | j'ai besoin de...                                  | afin de...                                                                        |
+| --- | :-------------- | :------------- | :------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| 1   | Acceuil         | Utilisateur    | connaitre les régles du concours                   | savoir utiliser le site                                                           |
+| 2   | Acceuil         | Utilisateur    | pouvoir acceder à la page de list                  | voir toutes les cryptos disponible sur le site                                    |
+| 3   | Connexion       | Utilisateur    | pouvoir s'inscrire                                 | pouvoir participer                                                                |
+| 4   | Connexion       | Utilisateur    | pouvoir me connecter                               | accéder a mon contenu                                                             |
+| 5   | List            | Utilisateur    | pouvoir acceder à la liste des cryptos disponibles | de voir les cours et faire mon choix                                              |
+| 6   | List            | Utilisateur    | pouvoir rechercher une crypto                      | la selectionner plus rapidement                                                   |
+| 7   | Ordre           | Utilisateur    | passer des ordres                                  | de constituer mon portefeuille                                                    |
+| 8   | Dashboard       | Utilisateur    | acceder à mon portefeuille                         | afin de voir l'état des plus ou moins values, voir ma position dans le classement |
+| 9   | Dashboard       | Utilisateur    | voir l'historique de mes ordres                    | retrouver les cryptos sur lesquelles j'ai misé                                    |
+| 10  | Qui-sommes-nous | Utilisateur    | voir les membres de l'équipe                       | connaitre les créateurs du site                                                   |
 
 ## Rôles
 
-Reste à attribuer : 
-- Scrum master
-- Lead dev front
-- Lead dev back
-  
-| Nom        | Rôle          |
-| ---------- | ------------- |
-| Christophe | Product Owner |
-| Walid      | ----          |
-| Julien     | ----          |
-| Jocelyn    | Git master    |
+| Nom        | Rôle                          |
+| ---------- | ----------------------------- |
+| Christophe | Product Owner et Scrum master |
+| Walid      | Lead dev back                 |
+| Julien     | Lead dev front                |
+| Jocelyn    | Git master                    |
