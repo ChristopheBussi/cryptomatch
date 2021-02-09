@@ -52,16 +52,34 @@ https://www.gloomaps.com/Pd9EmFlQCE
 
 ## Les Routes
 
-| URL                | Description                            | Nom       | Controlleur        | Méthode     | Requête      |
-| :----------------- | :------------------------------------- | :-------- | :----------------- | :---------- | :----------- |
-| `/`                | accueil                                | homepage  | `MainController`   | `home`      | `GET`        |
-| `/connexion/`      | connexion/insciption                   | login     | `LoginController`  | `login`     | `GET / POST` |
-| `/list/`           | liste des cryptos                      | list      | `CryptoController` | `list`      | `GET`        |
-| `/orders/[name]`   | page de la crypto et passation d’ordre | order     | `CryptoController` | `order`     | `GET / POST` |
-| `/dashboard`       | portefeuille/historique                | dashboard | `UserController`   | `dashboard` | `GET `       |
-| `/classement`      | classement des participants            | rank      | `UserController`   | `rank`      | `GET `       |
-| `/qui-sommes-nous` | description de l'équipe                |           |                    |             |              |
-| `/erreur`          | page 404                               |           |                    |             |              |
+### routes front
+
+| URL                | Description                            |
+| :----------------- | :------------------------------------- |
+| `/`                | accueil                                |
+| `/connexion`       | connexion/insciption                   |
+| `/list`            | liste des cryptos                      |
+| `/order`           | page de la crypto et passation d’ordre |
+| `/dashboard`       | portefeuille/historique                |
+| `/classement`      | classement des participants            |
+| `/qui-sommes-nous` | description de l'équipe                |
+| `/erreur`          | page 404                               |
+
+### routes back api
+
+| URL                                                                 | Description                                            | Nom          | Controlleur        | Méthode     | Requête |
+| :------------------------------------------------------------------ | :----------------------------------------------------- | :----------- | :----------------- | :---------- | :------ |
+| `/api/v1/login/{email, password}`                                   | Envoie info de connexion et reçoit reponses ??         | login        | `LoginController`  | `login`     | `POST`  |
+| `/api/v1/list`                                                      | Renvoie un Json : nom des cryptos et leurs images(url) | apiList      | `CryptoController` | `list`      | `GET`   |
+| `/api/v1/order/{username,cryptoName}`                               | Renvoie un Json : solde en $ du portefeuille,          | apiOrder     | `CryptoController` | `getOrder`  | `GET`   |
+|                                                                     | quantité de crypto detenue                             |              |                    |             |         |
+| `/api/v1/order/{username,cryptoName,quantity,order_type,quotation}` | on envoie le nom de la crypto, la quantité,            | apiOrder     | `CryptoController` | `postOrder` | `POST`  |
+|                                                                     | le type de l'ordre, la quotation et le username        |              |                    |             |         |
+| `/api/v1/dashboard/{username}`                                      | Renvoie un Json : de l'historique des ordres passés    | apiDashboard | `UserController`   | `dashboard` | `GET`   |
+|                                                                     | le solde en $ et le portfolio                          |              |                    |             |         |
+| `/api/v1/classement`                                                | Renvoie un Json des participants classés par           | rank         | `UserController`   | `rank`      | `GET`   |
+|                                                                     | valeur du portefeuille                                 |              |                    |             |         |
+****
 
 ## Users Stories
 
