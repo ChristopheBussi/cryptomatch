@@ -27,7 +27,14 @@ const Header = () => {
             icon={faBars}
           />
         </button>
+        <ul className="navDesktop">
+          <li>Accueil</li>
+          <li>Cryptomonnaies</li>
+          <li>Classement</li>
+          <li>Qui-sommes-nous</li>
+        </ul>
       </div>
+
       <nav className={classNav}>
         <ul>
           <li>Accueil</li>

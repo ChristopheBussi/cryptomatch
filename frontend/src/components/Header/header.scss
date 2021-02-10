@@ -25,6 +25,10 @@
     & .iconBurger{
       color: rgb(235, 168, 25);
     }
+
+    & .navDesktop{
+      display: none;
+    }
   }
 
   & nav {
@@ -71,4 +75,25 @@
 
 .login{
   margin-right: 1rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .buttonMenuBurger {
+    display: none;
+  }
+  .buttonLogin{
+    display: none;
+  }
+  .header {
+    & nav {
+      display: none;
+    }
+
+    &__title {
+      & .navDesktop{
+        display: block;
+        color: white;
+      }
+    }
+  }
 }
