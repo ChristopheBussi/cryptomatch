@@ -114,6 +114,9 @@
     "monolog/monolog": {
         "version": "2.2.0"
     },
+    "namshi/jose": {
+        "version": "7.2.3"
+    },
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
@@ -373,6 +376,9 @@
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.22.0"
+    },
+    "symfony/polyfill-php56": {
+        "version": "v1.20.0"
     },
     "symfony/polyfill-php73": {
         "version": "v1.22.0"
