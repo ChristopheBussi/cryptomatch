@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    //...
     /**
      * @Route("/api/v1/user", name="apiUser")
      */
