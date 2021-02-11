@@ -35,7 +35,7 @@ class Portfolio
     private $averagePrice;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="idPortfolio")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="portfolios")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
