@@ -1,4 +1,16 @@
-.home{
-    color: #fff;
-    padding: 1rem;
+.home {
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 100vw;
+   & h2 {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
 }

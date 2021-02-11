@@ -3,6 +3,7 @@ import React from 'react';
 
 // == Import des composants
 import Header from 'src/components/Header';
+import Home from 'src/components/Home';
 
 // == Import
 import './app.scss';
@@ -11,6 +12,7 @@ import './app.scss';
 const App = () => (
   <div className="app">
     <Header />
+    <Home />
   </div>
 );
 
