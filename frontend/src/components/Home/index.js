@@ -16,7 +16,6 @@ const Home = () => (
     <p>
       Le gagnant est celui qui aura engendré la plus grande plus-value au bout d'un mois.
     </p>
-
   </div>
 );
 
