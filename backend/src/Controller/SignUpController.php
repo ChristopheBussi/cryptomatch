@@ -42,14 +42,11 @@ class SignUpController extends AbstractController
         $Em->persist($User);
         $Em->flush();
 
-        return new JsonResponse(json_encode( ['token' => $JWTManager->create($User)]) );
-
+        $Response = new Response();
+        $Response->setStatutCode("200");
+        
+        return $Response;
     }
 
-    public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
-    {
-        // ...
-
-        return new JsonResponse(['token' => $JWTManager->create($user)]);
-    }
+  
 }
