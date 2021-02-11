@@ -3,17 +3,15 @@
 }
 
 .header {
-  background-color: rgb(5, 6, 22);
   &__title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    height: 7vh;
     
     & h1 {
       font-size: 1.5rem;
-      color: rgb(235, 168, 25);
+      color: #4fdb88;
     } 
     
     & .buttonMenuBurger {
@@ -23,7 +21,7 @@
     }
 
     & .iconBurger{
-      color: rgb(235, 168, 25);
+      color: #4fdb88;
     }
 
     & .navDesktop{
@@ -33,10 +31,10 @@
 
   & nav {
     height: 93vh; width: 100vw;
-    background-color: rgb(5, 6, 22);
+    background-image: linear-gradient(0deg, #312d39, #201d27);
     color: white;
     position: absolute;
-    right: 0;
+    right: 0; top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -64,12 +62,12 @@
   }
 }
 
-.buttonMobile{
+.buttonAuth{
   border: none;
   border-radius: 5px;
   padding: 0.3rem 1rem;
   font-size: 1.5rem;
-  background: rgb(235, 168, 25);
+  background: #4fdb88;
   color: rgb(48, 48, 48);
 }
 
@@ -81,18 +79,46 @@
   .buttonMenuBurger {
     display: none;
   }
-  .buttonLogin{
-    display: none;
-  }
+
   .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+
+    &__title{
+        width: auto;
+
+        & h1 {
+          font-weight: 700;
+          font-size: 1.7rem;
+        }
+    }
+    
     & nav {
-      display: none;
+      transform: translateX(0%);
+      transition: initial;
+      flex-direction: row;
+      background: none;
+      padding: 0; 
+      width: auto; height: auto;
+      position: initial;
+      
+      & ul {
+        display: flex;
+    
+        & li{
+          margin: 0;
+          font-size: 1.2rem;
+          margin-right: 1rem;
+        }
+      }
     }
 
-    &__title {
-      & .navDesktop{
-        display: block;
-        color: white;
+    & .buttonLogin{
+      
+      & .buttonAuth {
+        font-size: 1.2rem;
+        padding: .2rem .2rem;
       }
     }
   }
