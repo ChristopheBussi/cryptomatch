@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 // == Import Scss
 import './header.scss';
@@ -34,8 +35,22 @@ const Header = () => {
           <li>Qui-sommes-nous</li>
         </ul>
         <div className="buttonLogin">
-          <button className="buttonAuth login" type="button">Connexion</button>
-          <button className="buttonAuth signin" type="button">Inscription</button>
+          <button className="buttonAuth login" type="button">
+            <NavLink
+              to="/connexion"
+              exact
+            >
+              Connexion
+            </NavLink>
+          </button>
+          <button className="buttonAuth signin" type="button">
+            <NavLink
+              to="/inscription"
+              exact
+            >
+              Connexion
+            </NavLink>
+          </button>
         </div>
       </nav>
 
