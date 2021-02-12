@@ -3,21 +3,23 @@ import PropTypes from 'prop-types';
 
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-// import SignUp from './SignUp';
 
 const Connexion = ({
+  // le path de la page actuel
   page,
+  // page connexion
   usernameSignIn,
   passwordSignIn,
+  changeFieldSignIn,
+  // page inscription
   usernameSignUp,
   passwordSignUp,
   lastname,
   firstname,
   email,
-  changeFieldSignIn,
   changeFieldSignUp,
 }) => {
-  const isSignIn = page === 'signIn'
+  const componentToDisplayed = page === 'signIn'
     ? (
       <SignIn
         username={usernameSignIn}
@@ -36,9 +38,10 @@ const Connexion = ({
       />
     );
 
+  // On retourne le composant à afficher suivant le path
   return (
     <div className="connexion">
-      {isSignIn}
+      {componentToDisplayed}
     </div>
   );
 };
@@ -46,13 +49,13 @@ const Connexion = ({
 Connexion.propTypes = {
   page: PropTypes.string.isRequired,
   usernameSignIn: PropTypes.string.isRequired,
+  passwordSignIn: PropTypes.string.isRequired,
+  changeFieldSignIn: PropTypes.func.isRequired,
   usernameSignUp: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  passwordSignIn: PropTypes.string.isRequired,
   passwordSignUp: PropTypes.string.isRequired,
-  changeFieldSignIn: PropTypes.func.isRequired,
   changeFieldSignUp: PropTypes.func.isRequired,
 };
 export default Connexion;

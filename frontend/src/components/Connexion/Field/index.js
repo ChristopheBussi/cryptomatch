@@ -14,6 +14,7 @@ const Field = ({
   onChange,
 }) => {
   const handleChange = (evt) => {
+    // On récupére la valeur de l'input et son nom
     onChange(evt.target.value, name);
   };
 
