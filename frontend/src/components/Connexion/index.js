@@ -5,7 +5,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 
 const Connexion = ({
-  // le path de la page actuel
+  // le path de la page courante
   page,
   // page connexion
   usernameSignIn,
