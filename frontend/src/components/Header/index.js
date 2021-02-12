@@ -34,7 +34,7 @@ const Header = () => {
       <nav className={classNav}>
         <ul>
           <li>
-            <NavLink to="/" exact>
+            <NavLink to="/" exact onClick={() => setIsOpen(false)}>
               Accueil
             </NavLink>
           </li>
@@ -43,12 +43,12 @@ const Header = () => {
           <li>Qui-sommes-nous</li>
         </ul>
         <div className="buttonLogin">
-          <button className="buttonAuth login" type="button">
+          <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
             <NavLink to="/connexion" exact>
               Connexion
             </NavLink>
           </button>
-          <button className="buttonAuth signin" type="button">
+          <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
             <NavLink to="/inscription" exact>
               Inscription
             </NavLink>
