@@ -30,7 +30,7 @@ class SignUpController extends AbstractController
                     //Get request data and convert in array...
                     $Data = (array) json_decode($Request->getContent());
             
-                if(isset($Data['Email']) && isset($Data['Password']) && isset($Data['Username']) )
+                if(isset($Data['email']) && isset($Data['password']) && isset($Data['username']) )
                 {
                     $Date = new DateTime();
                     $User = new User();
@@ -40,23 +40,23 @@ class SignUpController extends AbstractController
                     //Vérification valid email...
                     $EmailConstraint = new Assert\Email();
                     $EmailConstraint->message = 'Adresse mail invalide.';
-                    $Errors = $Validator->validate($Data['Email'], $EmailConstraint);
+                    $Errors = $Validator->validate($Data['email'], $EmailConstraint);
 
                     if(count($Errors) == 0)
                     {
                         //Setter user...
-                        $User->setEmail($Data['Email']);
+                        $User->setEmail($Data['email']);
 
                         //Verification Username if exist.. 
                         $Em = $this->getDoctrine()->getManager();
 
                         $RepUser = $Em->getRepository(User::class);
-                        $UserExist = $RepUser->findOneBy(['username' => $Data['Username'] ] );
+                        $UserExist = $RepUser->findOneBy(['username' => $Data['username'] ] );
                         if(!$UserExist)
                         {
                         
-                            $User->setUsername($Data['Username']);
-                            $Pass = $Encoder->encodePassword($User, $Data['Password']);
+                            $User->setUsername($Data['username']);
+                            $Pass = $Encoder->encodePassword($User, $Data['password']);
                             $User->setPassword($Pass);
                             $User->setCreatedAt($Date);
                             $User->setUSDAmount(0);
@@ -66,22 +66,22 @@ class SignUpController extends AbstractController
                             $Em->persist($User);
                             $Em->flush();
 
-                            $Response->setStatusCode("200");
+                            $Response->setStatusCode("201");
                             $Response->setCOntent(json_encode(array(
                                 'Message' => 'Inscription réussie'
                             )));
                         }
                         else
                         {
-                            $Response->setStatusCode("500");
+                            $Response->setStatusCode("403");
                             $Response->setCOntent(json_encode(array(
-                                'Message' => 'User exist'
+                                'Message' => 'User already exist'
                             )));
                         }
                     }
                     else
                     {
-                        $Response->setStatusCode("500");
+                        $Response->setStatusCode("400");
                         $Response->setCOntent(json_encode(array(
                             'Message' => $Errors[0]->getMessage()
                         )));
