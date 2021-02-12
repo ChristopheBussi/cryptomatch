@@ -95,7 +95,6 @@ class SignUpController extends AbstractController
                         'Message' => 'Invalid Request'
                     )));
                 }
-
     
         }
         else
