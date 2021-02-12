@@ -1,5 +1,6 @@
 // import de redux et de l'enhancer
 import { createStore } from 'redux';
+
 // import du reducer combine
 import reducer from 'src/reducers';
 
