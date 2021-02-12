@@ -14,7 +14,11 @@ const Header = () => {
 
     <header className="header">
       <div className="header__title">
-        <h1>Crypto Match</h1>
+        <h1>
+          <NavLink to="/" exact>
+            Crypto Match
+          </NavLink>
+        </h1>
         <button
           className="buttonMenuBurger"
           type="button"
@@ -29,26 +33,24 @@ const Header = () => {
       </div>
       <nav className={classNav}>
         <ul>
-          <li>Accueil</li>
+          <li>
+            <NavLink to="/" exact>
+              Accueil
+            </NavLink>
+          </li>
           <li>Cryptomonnaies</li>
           <li>Classement</li>
           <li>Qui-sommes-nous</li>
         </ul>
         <div className="buttonLogin">
           <button className="buttonAuth login" type="button">
-            <NavLink
-              to="/connexion"
-              exact
-            >
+            <NavLink to="/connexion" exact>
               Connexion
             </NavLink>
           </button>
           <button className="buttonAuth signin" type="button">
-            <NavLink
-              to="/inscription"
-              exact
-            >
-              Connexion
+            <NavLink to="/inscription" exact>
+              Inscription
             </NavLink>
           </button>
         </div>
