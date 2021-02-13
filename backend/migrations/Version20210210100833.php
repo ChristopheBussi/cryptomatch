@@ -20,7 +20,7 @@ final class Version20210210100833 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE crypto (id INT AUTO_INCREMENT NOT NULL, pair_name VARCHAR(255) NOT NULL, image_url VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE crypto (id INT AUTO_INCREMENT NOT NULL, pair_name VARCHAR(300) NOT NULL, image_url VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE user CHANGE rank_valorisation_amount rank_valorisation_amount DOUBLE PRECISION NOT NULL');
     }
 
