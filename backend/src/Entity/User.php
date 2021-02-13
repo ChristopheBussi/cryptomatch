@@ -66,10 +66,16 @@ class User implements UserInterface
      */
     private $portfolios;
 
+    /**
+     * @ORM\OneToMany(targetEntity=HistoricalValorisationAccount::class, mappedBy="user")
+     */
+    private $historicalValorisationAccounts;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->portfolios = new ArrayCollection();
+        $this->historicalValorisationAccounts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -250,6 +256,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($portfolio->getUser() === $this) {
                 $portfolio->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|HistoricalValorisationAccount[]
+     */
+    public function getHistoricalValorisationAccounts(): Collection
+    {
+        return $this->historicalValorisationAccounts;
+    }
+
+    public function addHistoricalValorisationAccount(HistoricalValorisationAccount $historicalValorisationAccount): self
+    {
+        if (!$this->historicalValorisationAccounts->contains($historicalValorisationAccount)) {
+            $this->historicalValorisationAccounts[] = $historicalValorisationAccount;
+            $historicalValorisationAccount->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistoricalValorisationAccount(HistoricalValorisationAccount $historicalValorisationAccount): self
+    {
+        if ($this->historicalValorisationAccounts->removeElement($historicalValorisationAccount)) {
+            // set the owning side to null (unless already changed)
+            if ($historicalValorisationAccount->getUser() === $this) {
+                $historicalValorisationAccount->setUser(null);
             }
         }
 
