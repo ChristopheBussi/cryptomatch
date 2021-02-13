@@ -39,6 +39,26 @@ class Crypto
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $symbol;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $priceChangePercent24h;
+
     public function __construct()
     {
         $this->portfolios = new ArrayCollection();
@@ -127,6 +147,54 @@ class Crypto
                 $order->setCrypto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSymbol(): ?string
+    {
+        return $this->symbol;
+    }
+
+    public function setSymbol(string $symbol): self
+    {
+        $this->symbol = $symbol;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPriceChangePercent24h(): ?float
+    {
+        return $this->priceChangePercent24h;
+    }
+
+    public function setPriceChangePercent24h(?float $priceChangePercent24h): self
+    {
+        $this->priceChangePercent24h = $priceChangePercent24h;
 
         return $this;
     }
