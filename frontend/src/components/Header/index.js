@@ -38,7 +38,11 @@ const Header = () => {
               Accueil
             </NavLink>
           </li>
-          <li>Cryptomonnaies</li>
+          <li>
+            <NavLink to="/cryptomonnaies" exact onClick={() => setIsOpen(false)}>
+              Cryptomonnaies
+            </NavLink>
+          </li>
           <li>Classement</li>
           <li>Qui-sommes-nous</li>
         </ul>

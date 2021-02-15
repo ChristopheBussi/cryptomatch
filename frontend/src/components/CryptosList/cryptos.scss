@@ -1,0 +1,15 @@
+.logoCrypto {
+  width: 10%;
+}
+
+.cryptomonnaies {
+  color: white;
+
+  &__header {
+    display: flex;
+
+    & div {
+      padding: 1rem;
+    }
+  }
+}
