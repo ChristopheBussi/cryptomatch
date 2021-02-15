@@ -6,7 +6,9 @@ import { Route, Switch } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Connexion from 'src/containers/Connexion';
+import Order from 'src/containers/Order';
 import CryptosList from 'src/components/CryptosList';
+
 
 // == Import
 import './app.scss';
@@ -28,6 +30,8 @@ const App = () => (
       <Route path="/inscription" exact>
         <Connexion page="signUp" />
       </Route>
+      <Route path="/ordre/:slug">
+        <Order />
       <Route path="/cryptomonnaies" exact>
         <CryptosList cryptos={cryptosData} page="cryptomonnaies" />
       </Route>
