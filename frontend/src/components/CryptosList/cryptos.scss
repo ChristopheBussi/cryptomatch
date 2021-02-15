@@ -1,0 +1,25 @@
+.logoCrypto {
+  width: 10%;
+}
+
+.cryptos {
+  color: white;
+
+  &__header {
+    display: flex;
+
+    & div {
+      padding: 1rem;
+    }
+  }
+
+  &__cryptoheader {
+    display: flex;
+    align-items: center;
+
+    &__id {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
