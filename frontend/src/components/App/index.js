@@ -9,7 +9,6 @@ import Connexion from 'src/containers/Connexion';
 import Order from 'src/containers/Order';
 import CryptosList from 'src/containers/CryptoList';
 
-
 // == Import
 import './app.scss';
 

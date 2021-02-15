@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   usernameSignUp: state.auth.signUp.username,
   passwordSignUp: state.auth.signUp.password,
   email: state.auth.signUp.email,
+  message: state.auth.signUp.message,
 
 });
 

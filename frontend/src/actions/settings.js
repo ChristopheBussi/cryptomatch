@@ -20,7 +20,7 @@ export const updateSingnUpField = (newValue, fieldName) => ({
 
 export const saveUserData = (data) => ({
   type: SAVE_USER_DATA,
-  data,
+  message: data.message,
 });
 
 export const signIn = () => ({

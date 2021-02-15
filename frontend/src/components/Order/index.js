@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
+import Graphic from './Graphic';
 import Field from './Field';
 // == Import Scss
 import './order.scss';
 
-const Order = ({ quantity, handlePlaceTheOrder, changeField }) => {
+const Order = ({
+  quantity,
+  handlePlaceTheOrder,
+  changeField,
+  pairName,
+}) => {
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
   console.log(slug);
@@ -18,6 +24,7 @@ const Order = ({ quantity, handlePlaceTheOrder, changeField }) => {
   };
   return (
     <div className="order">
+      <Graphic pairName={pairName} />
       <h2>Order</h2>
       <form onSubmit={handleSubmit}>
         <Field
@@ -28,7 +35,7 @@ const Order = ({ quantity, handlePlaceTheOrder, changeField }) => {
           onChange={changeField}
         />
         <button type="submit" onClick={() => setActionType('buy')}>
-          Achetter
+          Acheter
         </button>
         <button type="submit" onClick={() => setActionType('sell')}>
           Vendre
@@ -42,5 +49,6 @@ Order.propTypes = {
   handlePlaceTheOrder: PropTypes.func.isRequired,
   quantity: PropTypes.number.isRequired,
   changeField: PropTypes.func.isRequired,
+  pairName: PropTypes.string.isRequired,
 };
 export default Order;
