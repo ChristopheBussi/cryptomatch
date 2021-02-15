@@ -13,6 +13,7 @@ const Connexion = ({
   changeFieldSignIn,
   handleSignIn,
   // page inscription
+  handleSignUp,
   usernameSignUp,
   passwordSignUp,
   email,
@@ -33,6 +34,7 @@ const Connexion = ({
         email={email}
         password={passwordSignUp}
         changeField={changeFieldSignUp}
+        handleSignUp={handleSignUp}
       />
     );
 
@@ -54,5 +56,6 @@ Connexion.propTypes = {
   email: PropTypes.string.isRequired,
   passwordSignUp: PropTypes.string.isRequired,
   changeFieldSignUp: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired,
 };
 export default Connexion;

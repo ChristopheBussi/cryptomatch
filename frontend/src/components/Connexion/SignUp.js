@@ -8,36 +8,48 @@ const SignUp = ({
   email,
   password,
   changeField,
-}) => (
-  <div className="signUp">
-    <form>
-      <Field
-        name="username"
-        placeholder="Pseudo"
-        value={username}
-        onChange={changeField}
-      />
-      <Field
-        name="email"
-        placeholder="Email"
-        value={email}
-        onChange={changeField}
-      />
-      <Field
-        name="password"
-        type="password"
-        placeholder="Mot de passe"
-        value={password}
-        onChange={changeField}
-      />
-    </form>
-  </div>
-);
+  handleSignUp,
+}) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleSignUp();
+  };
+
+  return (
+    <div className="signUp">
+      <form onSubmit={handleSubmit}>
+        <Field
+          name="username"
+          placeholder="Pseudo"
+          value={username}
+          onChange={changeField}
+        />
+        <Field
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={changeField}
+        />
+        <Field
+          name="password"
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={changeField}
+        />
+        <button type="submit">
+          Inscription
+        </button>
+      </form>
+    </div>
+  );
+};
 
 SignUp.propTypes = {
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired,
 };
 export default SignUp;
