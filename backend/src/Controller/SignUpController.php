@@ -35,8 +35,6 @@ class SignUpController extends AbstractController
                     $Date = new DateTime();
                     $User = new User();
 
-
-
                     //Vérification valid email...
                     $EmailConstraint = new Assert\Email();
                     $EmailConstraint->message = 'Adresse mail invalide.';
