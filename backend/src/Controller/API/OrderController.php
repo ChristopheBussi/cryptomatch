@@ -50,10 +50,10 @@ class OrderController extends AbstractController
             $OrderCheck = new CheckOrder($this->Em, $Data['quantity'], $Data['ordertype'],
                 $Data['quotation'], $this->Security->getUser(), $Data['pair_name']);
 
-
             $TotalPrice = $Data['quantity'] * $Data['quotation'];
 
-            if($OrderCheck->OrderIsValid()['value'])
+            $MessageOrderCheck = $OrderCheck->OrderIsValid();
+            if($MessageOrderCheck['value'])
             {
                 $NewUSDAmount = 0;
                 $NewQuantity = 0;
@@ -70,7 +70,6 @@ class OrderController extends AbstractController
                 $Order->setAmount($TotalPrice);
                 $this->Em->persist($Order);
 
-
                 //Insert Portfolio....
                 $Portfolio = new Portfolio();
 
@@ -81,26 +80,34 @@ class OrderController extends AbstractController
                 ]);
 
                 //Si le portfolio avec cette crypto et cet user n'existe pas alors on l'ajoute
+                $NewQuantity = 0;
                 if(!$CheckPortfolio)
                 {
+                    $NewQuantity = $Data['quantity'];
+
                     $Portfolio->setUser($this->Security->getUser() );
-                    $Portfolio->setActualQuantity($Data['quantity'] );
+                    $Portfolio->setActualQuantity($NewQuantity);
                     $Portfolio->setCryptoName($Data['pair_name'] );
                     $Portfolio->addPairName($CryptoByPairName);
                     $Portfolio->setAveragePrice("0");
-                    $this->Em->persist($Portfolio);
 
+                    $this->Em->persist($Portfolio);
                 }
                 //Sinon, on le modifie..uniquement la quantity et le averageprice..
-                else
+                else if($CheckPortfolio->getActualQuantity() > 0)
                 {
                     if($Data['ordertype'] == 'Buy' )
                         $NewQuantity = $Data['quantity'] + $CheckPortfolio->getActualQuantity();
                     if($Data['ordertype'] == 'Sell')
                         $NewQuantity = $CheckPortfolio->getActualQuantity() - $Data['quantity'];
 
-                    $CheckPortfolio->setActualQuantity($NewQuantity);
-                    $CheckPortfolio->setAveragePrice("0");
+
+                    if($NewQuantity > 0) {
+                        $CheckPortfolio->setActualQuantity($NewQuantity);
+                        $CheckPortfolio->setAveragePrice("0");
+                    }
+                    else
+                        $this->Em->remove($CheckPortfolio);
                 }
 
                 //Update Amount User...
@@ -115,15 +122,15 @@ class OrderController extends AbstractController
                 $User->setUSDAmount($NewUSDAmount);
                 $this->Em->flush();
 
-                $this->ResponseFormateOrderSuccess($OrderCheck->OrderIsValid()['message'], $NewUSDAmount, $NewQuantity, '200');
+
+                $this->ResponseFormateOrderSuccess($MessageOrderCheck['message'], $NewUSDAmount, $NewQuantity, '200');
             }
             else
             {
                 //Order is not valid, message possible : "Quantity insuffisantes", "Fonds insuffisants",
                 //ou "invalid order"..
-                $this->ResponseFormate($OrderCheck->OrderIsValid()['message'], 500);
+                $this->ResponseFormate($MessageOrderCheck['message'], 500);
             }
-
         }
 
 

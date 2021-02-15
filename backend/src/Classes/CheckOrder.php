@@ -72,21 +72,27 @@ class CheckOrder
             case 'Sell' :
             {
                 $RepCrypto = $this->Em->getRepository(Crypto::class);
-                $Crypto = $RepCrypto->findOneBy(['pairName' => $this->PairName] );
 
                 $RepPortfolio = $this->Em->getRepository(Portfolio::class);
-                $Port = $RepPortfolio->findOneBy(['user' => $this->User, 'cryptoname' => $Crypto->getPairName()]);
+                $Port = $RepPortfolio->findOneBy(['user' => $this->User, 'cryptoname' => $this->PairName]);
 
-                //Si la quantité qu'il achète est supérieure à la quantité qu'il possède
-                if($this->Quantity > $Port->getActualQuantity())
+                if(!$Port)//Si il souhaite vendre alors qu'il ne possède aucune quantité..
                 {
-                    dd($this->Quantity .'--'. $Port->getActualQuantity() );
+                    $Response = array(
+                        'value' => false,
+                        'message' => 'Vous ne pouvez pas vendre cette cryptomonnaie.'
+                    );
+                }
+                //Si la quantité qu'il vend est supérieure à la quantité qu'il possède
+                else if($this->Quantity > (int)$Port->getActualQuantity())
+                {
                     $Response = array(
                         'value' => false,
                         'message' => 'Quantity insuffisantes'
                     );
                 }
-            }
+
+            }break;
         }
 
         return $Response;
