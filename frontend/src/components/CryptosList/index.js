@@ -5,7 +5,7 @@ import CryptoList from './CryptoList';
 
 import './cryptos.scss';
 
-const CryptosList = ({ cryptos }) => (
+const CryptosList = ({ cryptos, changeNameCrytpo }) => (
   <div className="cryptos">
     <div className="cryptos__header">
       <div>Logo et nom</div>
@@ -15,7 +15,7 @@ const CryptosList = ({ cryptos }) => (
     <div className="cryptos__list">
       {
         cryptos.map((crypto) => (
-          <CryptoList key={crypto.symbol} {...crypto} />
+          <CryptoList key={crypto.symbol} {...crypto} changeNameCrytpo={changeNameCrytpo} />
         ))
       }
     </div>
@@ -28,6 +28,7 @@ CryptosList.propTypes = {
       symbol: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  changeNameCrytpo: PropTypes.func.isRequired,
 };
 
 export default CryptosList;

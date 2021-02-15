@@ -7,7 +7,7 @@ import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Connexion from 'src/containers/Connexion';
 import Order from 'src/containers/Order';
-import CryptosList from 'src/components/CryptosList';
+import CryptosList from 'src/containers/CryptoList';
 
 
 // == Import
@@ -32,6 +32,7 @@ const App = () => (
       </Route>
       <Route path="/ordre/:slug">
         <Order />
+      </Route>
       <Route path="/cryptomonnaies" exact>
         <CryptosList cryptos={cryptosData} page="cryptomonnaies" />
       </Route>
