@@ -40,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10rem 0 3rem 0;
-    position: fixed;
+    z-index: 1;
     & ul {
       text-align: center;
 
@@ -95,6 +95,7 @@
     }
     
     & nav {
+     
       transform: translateX(0%);
       transition: initial;
       flex-direction: row;

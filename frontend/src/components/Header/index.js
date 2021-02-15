@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 // == Import Scss
 import './header.scss';
@@ -13,7 +14,11 @@ const Header = () => {
 
     <header className="header">
       <div className="header__title">
-        <h1>Crypto Match</h1>
+        <h1>
+          <NavLink to="/" exact>
+            Crypto Match
+          </NavLink>
+        </h1>
         <button
           className="buttonMenuBurger"
           type="button"
@@ -28,14 +33,26 @@ const Header = () => {
       </div>
       <nav className={classNav}>
         <ul>
-          <li>Accueil</li>
+          <li>
+            <NavLink to="/" exact onClick={() => setIsOpen(false)}>
+              Accueil
+            </NavLink>
+          </li>
           <li>Cryptomonnaies</li>
           <li>Classement</li>
           <li>Qui-sommes-nous</li>
         </ul>
         <div className="buttonLogin">
-          <button className="buttonAuth login" type="button">Connexion</button>
-          <button className="buttonAuth signin" type="button">Inscription</button>
+          <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
+            <NavLink to="/connexion" exact>
+              Connexion
+            </NavLink>
+          </button>
+          <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
+            <NavLink to="/inscription" exact>
+              Inscription
+            </NavLink>
+          </button>
         </div>
       </nav>
 
