@@ -6,13 +6,13 @@ import CryptoList from './CryptoList';
 import './cryptos.scss';
 
 const CryptosList = ({ cryptos }) => (
-  <div className="cryptomonnaies">
-    <div className="cryptomonnaies__header">
+  <div className="cryptos">
+    <div className="cryptos__header">
       <div>Logo et nom</div>
       <div>Dernier prix</div>
       <div>Variation 24h</div>
     </div>
-    <div className="cryptomonnaies__list">
+    <div className="cryptos__list">
       {
         cryptos.map((crypto) => (
           <CryptoList key={crypto.symbol} {...crypto} />
