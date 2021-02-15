@@ -9,7 +9,7 @@ const Graphic = ({ pairName }) => (
       width={600}
       height={400}
       symbol={`BINANCE:${pairName}`}
-      interval="30"
+      interval="D"
       timezone="Europe/Paris"
       theme={Themes.Light}
       locale="fr"

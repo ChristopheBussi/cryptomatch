@@ -25,14 +25,12 @@ export default (store) => (next) => (action) => {
 
     case SIGNUP: {
       const { username, password, email } = store.getState().auth.signUp;
-
       axios.post(
-        'http://localhost:3001/signup',
-        {
+        'http://localhost:3001/signup', JSON.stringify({
           username,
-          email,
           password,
-        },
+          email,
+        }),
       ).then((response) => {
         console.log(response.data);
       }).catch((error) => {

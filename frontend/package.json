@@ -52,6 +52,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "prop-types": "*",
+    "qs": "^6.9.6",
     "react": "*",
     "react-dom": "*",
     "react-redux": "^7.2.2",
