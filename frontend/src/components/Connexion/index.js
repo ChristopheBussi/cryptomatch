@@ -11,11 +11,10 @@ const Connexion = ({
   usernameSignIn,
   passwordSignIn,
   changeFieldSignIn,
+  handleSignIn,
   // page inscription
   usernameSignUp,
   passwordSignUp,
-  lastname,
-  firstname,
   email,
   changeFieldSignUp,
 }) => {
@@ -25,13 +24,12 @@ const Connexion = ({
         username={usernameSignIn}
         password={passwordSignIn}
         changeField={changeFieldSignIn}
+        handleSignIn={handleSignIn}
       />
     )
     : (
       <SignUp
         username={usernameSignUp}
-        lastname={lastname}
-        firstname={firstname}
         email={email}
         password={passwordSignUp}
         changeField={changeFieldSignUp}
@@ -51,9 +49,8 @@ Connexion.propTypes = {
   usernameSignIn: PropTypes.string.isRequired,
   passwordSignIn: PropTypes.string.isRequired,
   changeFieldSignIn: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
   usernameSignUp: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   passwordSignUp: PropTypes.string.isRequired,
   changeFieldSignUp: PropTypes.func.isRequired,

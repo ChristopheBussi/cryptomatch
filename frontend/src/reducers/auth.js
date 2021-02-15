@@ -7,8 +7,6 @@ const initialState = {
   },
   signUp: {
     username: '',
-    lastname: '',
-    firstname: '',
     password: '',
     email: '',
   },
