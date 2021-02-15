@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 
 import Connexion from 'src/components/Connexion';
 
-import { updateSingnInField, updateSingnUpField, signIn } from '../../actions/settings';
+import {
+  updateSingnInField,
+  updateSingnUpField,
+  signIn,
+  signUp,
+} from '../../actions/settings';
 
 const mapStateToProps = (state) => ({
   // composant de connexion
@@ -24,9 +29,15 @@ const mapDispatchToProps = (dispatch) => ({
   handleSignIn: () => {
     dispatch(signIn());
   },
+
   // composant d'inscription
   changeFieldSignUp: (newValue, fieldName) => {
     dispatch(updateSingnUpField(newValue, fieldName));
+  },
+
+  handleSignUp: () => {
+    console.log('test');
+    dispatch(signUp());
   },
 });
 

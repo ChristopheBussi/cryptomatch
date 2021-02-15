@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SIGNIN, saveUserData } from 'src/actions/settings';
+import { SIGNIN, saveUserData, SIGNUP } from '../actions/settings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -16,12 +16,33 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log('error');
+        console.log(error);
       });
 
       next(action);
       break;
     }
+
+    case SIGNUP: {
+      const { username, password, email } = store.getState().auth.signUp;
+
+      axios.post(
+        'http://localhost:3001/signup',
+        {
+          username,
+          email,
+          password,
+        },
+      ).then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+
+      next(action);
+      break;
+    }
+
     default:
       // si cette action ne nous interesse pas, on la laisse passer
       next(action);

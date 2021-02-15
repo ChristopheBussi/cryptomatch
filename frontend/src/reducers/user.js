@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case SAVE_USER_DATA:
       return {
         ...state,
-        username: action.data.username,
+        username: action.data.data.username,
         token: action.data.token,
 
       };
