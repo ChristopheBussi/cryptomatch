@@ -20,12 +20,12 @@ class Crypto
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=300)
      */
     private $pairName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=300, nullable=true)
      */
     private $imageUrl;
 
