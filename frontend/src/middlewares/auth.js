@@ -17,7 +17,7 @@ export default (store) => (next) => (action) => {
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log(error);
-        console.log('erreur requete login chack');
+        console.log('erreur requete login check');
       });
       next(action);
       break;
