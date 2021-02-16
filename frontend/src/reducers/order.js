@@ -3,7 +3,7 @@ import { UPDATE_PAIR_NAME } from '../actions/crypto';
 
 const initialState = {
   quantity: 0.000,
-  pairName: '',
+  pairname: '',
   message: '',
 };
 
@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         // nom de champ(qui correspond au state): et valeur du champ
-        pairName: action.pairName,
+        pairname: action.pairname,
       };
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {

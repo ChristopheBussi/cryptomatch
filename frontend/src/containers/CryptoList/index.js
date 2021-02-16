@@ -10,12 +10,13 @@ import {
 const mapStateToProps = (state) => ({
   loading: state.crypto.loading,
   cryptos: state.crypto.cryptos,
+  pairname: state.order.pairname,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   // composant de connexion
-  changeNameCrytpo: (pairName) => {
-    dispatch(updatePairName(pairName));
+  changeNameCrytpo: (pairname) => {
+    dispatch(updatePairName(pairname));
   },
   manageLoad: () => {
     dispatch(fetchCrypto());

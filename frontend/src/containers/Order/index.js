@@ -9,7 +9,8 @@ import {
 
 const mapStateToProps = (state) => ({
   quantity: state.order.quantity,
-  pairName: state.order.pairName,
+  pairname: state.order.pairname,
+  USDAmount: state.user.USDAmount,
 });
 
 const mapDispatchToProps = (dispatch) => ({

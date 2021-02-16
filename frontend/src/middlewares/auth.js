@@ -20,6 +20,7 @@ export default (store) => (next) => (action) => {
         },
       ).then((response) => {
         console.log(response.data);
+        localStorage.setItem('token', response.data.token);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log('erreur requete login check');
