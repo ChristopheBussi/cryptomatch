@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
@@ -6,9 +7,8 @@ import { NavLink } from 'react-router-dom';
 // == Import Scss
 import './header.scss';
 
-const Header = () => {
+const Header = ({ logged }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
   return (
 
@@ -43,8 +43,23 @@ const Header = () => {
               Cryptomonnaies
             </NavLink>
           </li>
+          {
+            logged
+              ? (
+                <li>
+                  <NavLink to="/dashboard" exact onClick={() => setIsOpen(false)}>
+                    Dashboard
+                  </NavLink>
+                </li>
+              )
+              : null
+          }
           <li>Classement</li>
-          <li>Qui-sommes-nous</li>
+          <li>
+            <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
+              Qui-sommes-nous
+            </NavLink>
+          </li>
         </ul>
         <div className="buttonLogin">
           <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
@@ -62,6 +77,10 @@ const Header = () => {
 
     </header>
   );
+};
+
+Header.propTypes = {
+  logged: PropTypes.bool.isRequired,
 };
 
 export default Header;

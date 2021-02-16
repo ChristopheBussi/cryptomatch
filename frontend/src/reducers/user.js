@@ -3,6 +3,7 @@ import { SAVE_USER_DATA } from '../actions/settings';
 const initialState = {
   username: '',
   token: '',
+  logged: false,
 };
 
 export default (state = initialState, action) => {
@@ -12,7 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         username: action.data.data.username,
         token: action.data.token,
-
+        logged: true,
       };
 
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
