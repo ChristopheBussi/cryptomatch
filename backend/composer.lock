@@ -1366,6 +1366,17 @@
                 "code",
                 "laminas"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-code/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-code/issues",
+                "rss": "https://github.com/laminas/laminas-code/releases.atom",
+                "source": "https://github.com/laminas/laminas-code"
+            },
+>>>>>>> Stashed changes
             "time": "2019-12-31T16:28:24+00:00"
         },
         {
@@ -1535,6 +1546,23 @@
                 "JWS",
                 "jwt"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "issues": "https://github.com/lcobucci/jwt/issues",
+                "source": "https://github.com/lcobucci/jwt/tree/3.4.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-02-16T09:40:01+00:00"
         },
         {
@@ -4271,6 +4299,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -4341,6 +4389,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-icu/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -4411,6 +4479,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -4478,6 +4566,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -4541,6 +4649,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-22T09:19:47+00:00"
         },
         {
@@ -4654,6 +4782,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php73/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-07T16:49:33+00:00"
         },
         {
@@ -4720,6 +4868,26 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< Updated upstream
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> Stashed changes
             "time": "2021-01-07T16:49:33+00:00"
         },
         {
