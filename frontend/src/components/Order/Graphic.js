@@ -20,7 +20,7 @@ const Graphic = ({ pairName }) => (
   </div>
 );
 
-Graphic.prototype = {
+Graphic.propTypes = {
   pairName: PropTypes.string.isRequired,
 };
 
