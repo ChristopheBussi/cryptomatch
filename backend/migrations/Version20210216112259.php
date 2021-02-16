@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210216111226 extends AbstractMigration
+final class Version20210216112259 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -21,11 +21,13 @@ final class Version20210216111226 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE crypto CHANGE pair_name pair_name VARCHAR(300) NOT NULL');
+        $this->addSql('ALTER TABLE portfolio ADD cryptoname VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE crypto CHANGE pair_name pair_name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('ALTER TABLE portfolio DROP cryptoname');
     }
 }
