@@ -43,13 +43,13 @@ class CheckOrder
 
 
         //Check if Quotation is Double..
-        if(!is_double($this->Quotation) )
-        {
-            $Response = array(
-                'value' => false,
-                'message' => 'Invalid Order'
-            );
-        }
+        //if(!is_double($this->Quotation) )
+        //{
+           // $Response = array(
+                //'value' => false,
+               // 'message' => 'Invalid Order'
+            //);
+        //}
 
         switch($this->OrderType)
         {
