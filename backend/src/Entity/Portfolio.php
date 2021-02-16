@@ -40,6 +40,11 @@ class Portfolio
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cryptoname;
+
     public function __construct()
     {
         $this->pairName = new ArrayCollection();
@@ -108,5 +113,22 @@ class Portfolio
         $this->user = $user;
 
         return $this;
+    }
+
+    public function setPairname(string $pairname): self
+    {
+        $this->pairname = $pairname;
+
+        return $this;
+    }
+
+    public function getCryptoName()
+    {
+        return $this->cryptoname;
+    }
+    public function setCryptoName(string $cryptoname) : self
+    {
+        $this->cryptoname = $cryptoname;
+        return  $this;
     }
 }
