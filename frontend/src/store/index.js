@@ -4,12 +4,14 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 // Import de notre middleware
 import auth from 'src/middlewares/auth';
+import cryptos from 'src/middlewares/cryptos';
+import order from 'src/middlewares/order';
 
 // import du reducer combine
 import reducer from 'src/reducers';
 
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(auth),
+  applyMiddleware(auth, cryptos, order),
 ));
 
 // on rend dispo le store

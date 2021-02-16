@@ -1,4 +1,4 @@
-import { UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD } from '../actions/settings';
+import { SAVE_USER_DATA, UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD } from '../actions/settings';
 
 const initialState = {
   signIn: {
@@ -9,6 +9,7 @@ const initialState = {
     username: '',
     password: '',
     email: '',
+    message: '',
   },
 };
 
@@ -33,6 +34,15 @@ export default (state = initialState, action) => {
           ...state.signUp,
           // nom de champ(qui correspond au state): et valeur du champ
           [action.fieldName]: action.newValue,
+        },
+      };
+    case SAVE_USER_DATA:
+      return {
+        ...state,
+        signUp: {
+          ...state.signUp,
+          // nom de champ(qui correspond au state): et valeur du champ
+          message: action.message,
         },
       };
 

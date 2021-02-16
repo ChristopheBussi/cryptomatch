@@ -17,26 +17,25 @@ export default (store) => (next) => (action) => {
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log(error);
+        console.log('erreur requete login chack');
       });
-
       next(action);
       break;
     }
 
     case SIGNUP: {
       const { username, password, email } = store.getState().auth.signUp;
-
       axios.post(
-        'http://localhost:3001/signup',
-        {
+        'http://localhost:3001/signup', JSON.stringify({
           username,
-          email,
           password,
-        },
+          email,
+        }),
       ).then((response) => {
         console.log(response.data);
       }).catch((error) => {
         console.log(error);
+        console.log('erreur requete signup');
       });
 
       next(action);

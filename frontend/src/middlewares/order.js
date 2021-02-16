@@ -19,6 +19,7 @@ export default (store) => (next) => (action) => {
         store.dispatch(displayMessageOrder(response.data));
       }).catch((error) => {
         console.log(error);
+        console.log('erreur requete order');
       });
 
       next(action);

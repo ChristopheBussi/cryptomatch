@@ -3,10 +3,9 @@ export const UPDATE_QUANTITY_FIELD = 'UPDATE_QUANTITY_FIELD';
 export const DISPLAY_MESSAGE_ORDER = 'DISPLAY_MESSAGE_ORDER';
 
 // Modifie les champs de la page Connexion
-export const placeTheOrder = (ordertype, quantity, quotation) => ({
+export const placeTheOrder = (ordertype, quotation) => ({
   type: PLACE_THE_ORDER,
   ordertype,
-  quantity,
   quotation,
 });
 

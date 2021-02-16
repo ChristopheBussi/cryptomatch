@@ -9,12 +9,12 @@ import {
 
 const mapStateToProps = (state) => ({
   quantity: state.order.quantity,
-
+  pairName: state.order.pairName,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handlePlaceTheOrder: (ordertype, quantity, quotation) => {
-    dispatch(placeTheOrder(ordertype, quantity, quotation));
+  handlePlaceTheOrder: (ordertype, quotation) => {
+    dispatch(placeTheOrder(ordertype, quotation));
   },
   changeField: (newValue, fieldName) => {
     dispatch(updateQuantityField(parseFloat(newValue), fieldName));
