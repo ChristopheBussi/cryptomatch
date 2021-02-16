@@ -1,7 +1,8 @@
+import cryptosData from 'src/data/listCryptos';
 import { SAVE_CRYPTOS } from '../actions/crypto';
 
 const initialState = {
-  cryptos: [],
+  cryptos: cryptosData,
   loading: true,
 };
 

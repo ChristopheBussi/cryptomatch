@@ -12,9 +12,6 @@ import CryptosList from 'src/containers/CryptoList';
 // == Import
 import './app.scss';
 
-// import des data en locale
-import cryptosData from 'src/data/listCryptos';
-
 // == Composant
 const App = () => (
   <div className="app">
@@ -33,7 +30,7 @@ const App = () => (
         <Order />
       </Route>
       <Route path="/cryptomonnaies" exact>
-        <CryptosList cryptos={cryptosData} page="cryptomonnaies" />
+        <CryptosList />
       </Route>
     </Switch>
   </div>

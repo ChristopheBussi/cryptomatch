@@ -18,7 +18,7 @@ const CryptosList = ({
   );
   return (
     <div className="cryptos">
-      {loading && <div>Application en cours de chargement</div>}
+      {loading && <div>Liste des cryptos en cours de chargement</div>}
       {!loading && (
         <>
           <div className="cryptos__header">

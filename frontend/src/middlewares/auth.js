@@ -17,8 +17,8 @@ export default (store) => (next) => (action) => {
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log(error);
+        console.log('erreur requete login chack');
       });
-
       next(action);
       break;
     }
@@ -35,6 +35,7 @@ export default (store) => (next) => (action) => {
         console.log(response.data);
       }).catch((error) => {
         console.log(error);
+        console.log('erreur requete signup');
       });
 
       next(action);

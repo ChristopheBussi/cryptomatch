@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state) => ({
   loading: state.crypto.loading,
+  cryptos: state.crypto.cryptos,
 });
 
 const mapDispatchToProps = (dispatch) => ({
