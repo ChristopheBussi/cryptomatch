@@ -37,7 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleSignUp: () => {
-    console.log('test');
     dispatch(signUp());
   },
 });

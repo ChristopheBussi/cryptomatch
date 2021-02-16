@@ -59,6 +59,6 @@ Connexion.propTypes = {
   passwordSignUp: PropTypes.string.isRequired,
   changeFieldSignUp: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
 };
 export default Connexion;
