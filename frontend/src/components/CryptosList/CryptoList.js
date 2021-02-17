@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-
+import './cryptos.scss';
 const CryptoList = ({
   logo,
   symbol,
@@ -15,17 +15,16 @@ const CryptoList = ({
     changeNameCrytpo(pairName);
   };
   return (
-    <NavLink to={`/ordre/${pairName}`} onClick={handleClick}>
-      <div className="cryptos__cryptoheader">
-        <div className="cryptos__cryptoheader__id">
-          <img className="logoCrypto" src={logo} alt={`logo_${name}`} />
-          <span>{symbol}</span>
-          <span>{name}</span>
+    <div className="cryptos__crypto">
+      <NavLink className='link' to={`/ordre/${pairName}`} onClick={handleClick}>
+        <div className="cryptos__logo">
+          <img className="cryptos__img" src={logo} alt={`logo_${name}`} />
+          <div className="cryptos__name">{symbol}</div>
         </div>
-        <div className={`quote${pairName}`}>{lastPrice}</div>
-        <div>{priceChangePercent24h}</div>
-      </div>
-    </NavLink>
+        <div className={`quote${pairName} cryptos__price`}>{lastPrice}</div>
+        <div className="cryptos__price24">{priceChangePercent24h}</div>
+      </NavLink>
+    </div>
   );
 };
 

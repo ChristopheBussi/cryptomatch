@@ -6,4 +6,4 @@ const mapStateToProps = (state) => ({
   users: state.ranking.users
 });
 
-export default connect(mapStateToProps)(home);
+export default connect(mapStateToProps)(Ranking);
