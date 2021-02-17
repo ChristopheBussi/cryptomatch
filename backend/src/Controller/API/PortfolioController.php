@@ -67,8 +67,9 @@ class PortfolioController extends AbstractController
         $currentCrypto = $this->RepPortfolio->findOneBy(['cryptoname' => $crypto]);
 
         $this->Response->setContent(json_encode(array(
-            'Crypto' => $this->Serializer->normalize($currentCrypto, 'json', ['groups' => 'normal'])
+            'actualQuantity' => $currentCrypto->getActualQuantity()
         )));
+
 
         return $this->Response;
     }
