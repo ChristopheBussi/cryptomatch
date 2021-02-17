@@ -8,8 +8,8 @@ const CryptoList = ({
   name,
   pairName,
   lastPrice,
-  priceChangePercent24h,
   changeNameCrytpo,
+  priceChangePercent24h,
 }) => {
   const handleClick = () => {
     changeNameCrytpo(pairName);
@@ -22,7 +22,7 @@ const CryptoList = ({
           <span>{symbol}</span>
           <span>{name}</span>
         </div>
-        <div>{lastPrice}</div>
+        <div className={`quote${pairName}`}>{lastPrice}</div>
         <div>{priceChangePercent24h}</div>
       </div>
     </NavLink>
