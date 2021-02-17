@@ -6,6 +6,8 @@ use App\Repository\CryptoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
   
 /**
  * @ORM\Entity(repositoryClass=CryptoRepository::class)
@@ -16,16 +18,19 @@ class Crypto
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"normal"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=300)
+     * @Groups({"normal"})
      */
     private $pairName;
 
     /**
      * @ORM\Column(type="string", length=300, nullable=true)
+     * @Groups({"normal"})
      */
     private $imageUrl;
 
@@ -36,26 +41,31 @@ class Crypto
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="crypto")
+     * @Groups({"normal"})
      */
     private $orders;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"normal"})
      */
     private $symbol;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"normal"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"normal"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"normal"})
      */
     private $priceChangePercent24h;
 
