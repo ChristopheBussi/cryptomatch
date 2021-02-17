@@ -89,7 +89,7 @@ class OrderController extends AbstractController
                     $Portfolio->setActualQuantity($NewQuantity);
                     $Portfolio->setCryptoName($Data['pair_name'] );
                     $Portfolio->addPairName($CryptoByPairName);
-                    $Portfolio->setAveragePrice("0");
+                    $Portfolio->setAveragePrice($Data['quotation']);
 
                     $this->Em->persist($Portfolio);
                 }
@@ -104,7 +104,7 @@ class OrderController extends AbstractController
 
                     if($NewQuantity > 0) {
                         $CheckPortfolio->setActualQuantity($NewQuantity);
-                        $CheckPortfolio->setAveragePrice("0");
+
                     }
                     else
                         $this->Em->remove($CheckPortfolio);
