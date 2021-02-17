@@ -155,11 +155,13 @@ class OrderController extends AbstractController
             $Orders = $RepOrder->findBy(['user' => $currentUser]);
 
             $OrderList = array();
-            foreach ($Orders as $currentOrder) {
+            foreach ($Orders as $currentOrder)
+            {
                 $Order = $this->Serializer->normalize($currentOrder, 'json', ['groups' => 'normalitem']);
 
                 $OrderList [] =
                     [
+                        "pairname" => $currentOrder->getCrypto()->getPairName(),
                         "quantity" => $Order['quantity'],
                         "quotation" => $Order['quotation'],
                         "orderType" => $Order['orderType'],

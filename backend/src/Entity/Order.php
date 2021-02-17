@@ -54,12 +54,14 @@ class Order
     /**
      * @ORM\ManyToOne(targetEntity=Crypto::class, inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"normalitem"})
      */
     private $crypto;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"normalitem"})
      */
     private $user;
 
