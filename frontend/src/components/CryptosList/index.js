@@ -22,9 +22,9 @@ const CryptosList = ({
       {!loading && (
         <>
           <div className="cryptos__header">
-            <div>Logo et nom</div>
-            <div>Dernier prix</div>
-            <div>Variation 24h</div>
+            <div className="cryptos__logo">Nom</div>
+            <div className="cryptos__price">Dernier prix</div>
+            <div className="cryptos__price24">Variation</div>
           </div>
           <div className="cryptos__list">
             {
@@ -35,8 +35,9 @@ const CryptosList = ({
                   changeNameCrytpo={changeNameCrytpo}
                   cryptos={cryptos}
                 />
+
               ))
-            };
+            }
           </div>
         </>
       )}

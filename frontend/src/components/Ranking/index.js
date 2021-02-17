@@ -7,7 +7,7 @@ const Ranking = ({ users }) => (
   <div className="ranking">
     {
       users.map ((user) => (
-        <User key={} {...user} />
+        <User {...user} />
       ))
     }
   </div>
