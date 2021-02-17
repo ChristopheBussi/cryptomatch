@@ -1,9 +1,15 @@
-.buttonDesktop {
+.buttonLogin {
   display: none;
 }
 
 .header {
-  &__title {
+  &__container{
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      width: 100vw;
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,15 +68,6 @@
   }
 }
 
-.buttonAuth{
-  border: none;
-  border-radius: 5px;
-  padding: 0.3rem 1rem;
-  font-size: 1.5rem;
-  background: #4fdb88;
-  color: rgb(48, 48, 48);
-}
-
 .login{
   margin-right: 1rem;
 }
@@ -83,14 +80,15 @@
   .header {
       display: flex;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      padding: 1rem 15rem;
 
-    &__title{
+    &__container__title{
+        display: flex;
         width: auto;
-
         & h1 {
           font-weight: 700;
           font-size: 1.7rem;
+          margin-right: 5rem;
         }
     }
     
@@ -109,18 +107,30 @@
     
         & li{
           margin: 0;
-          font-size: 1.2rem;
+          font-size: 1rem;
           margin-right: 1rem;
         }
       }
     }
 
     & .buttonLogin{
+      display: flex;
+      align-items: center;
       
       & .buttonAuth {
+        border: none;
+        border-radius: 5px;
+        padding: 0.3rem 1rem;
+        background: #4fdb88;
+        color: rgb(48, 48, 48);
         font-size: 1.2rem;
-        padding: .2rem .2rem;
+
+        &.login {
+          background: none;
+          color: white;
+          margin-left: 5rem;
+        }
       }
     }
-  }
+  }  
 }

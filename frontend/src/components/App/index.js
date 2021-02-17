@@ -10,6 +10,7 @@ import Order from 'src/containers/Order';
 import CryptosList from 'src/containers/CryptoList';
 import About from 'src/components/About';
 import Dashboard from 'src/components/Dashboard';
+import Ranking from 'src/containers/Ranking';
 
 // == Import
 import './app.scss';
@@ -37,6 +38,9 @@ const App = () => (
       </Route>
       <Route path="/dashboard" exact>
         <Dashboard />
+      </Route>
+      <Route path="/classement" exact>
+        <Ranking />
       </Route>
       <Route path="/qui-sommes-nous" exact>
         <About />
