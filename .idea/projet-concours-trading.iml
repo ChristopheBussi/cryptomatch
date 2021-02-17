@@ -110,6 +110,11 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/migrations" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nelmio/cors-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/data-fixtures" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/doctrine-fixtures-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/apache-pack" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

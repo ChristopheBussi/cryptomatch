@@ -6,6 +6,8 @@ use App\Repository\PortfolioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=PortfolioRepository::class)
@@ -16,21 +18,25 @@ class Portfolio
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("normal")
      */
     private $id;
 
     /**
      * @ORM\ManyToMany(targetEntity=Crypto::class, inversedBy="portfolios")
+     * @Groups("normal")
      */
     private $pairName;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("normal")
      */
     private $actualQuantity;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("normal")
      */
     private $averagePrice;
 
@@ -42,6 +48,7 @@ class Portfolio
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("normal")
      */
     private $cryptoname;
 
