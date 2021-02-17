@@ -7,14 +7,13 @@ namespace App\Classes;
 use App\Entity\Crypto;
 use App\Entity\Portfolio;
 use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
 
 class CheckOrder
 {
     private $PairName;
     private $Quantity;
     private $OrderType;
-    private $Quatation;
+    private $Quotation;
     private $Em;
     private $TotalPrice;
     private $User;
@@ -71,8 +70,6 @@ class CheckOrder
 
             case 'Sell' :
             {
-                $RepCrypto = $this->Em->getRepository(Crypto::class);
-
                 $RepPortfolio = $this->Em->getRepository(Portfolio::class);
                 $Port = $RepPortfolio->findOneBy(['user' => $this->User, 'cryptoname' => $this->PairName]);
 
@@ -84,7 +81,8 @@ class CheckOrder
                     );
                 }
                 //Si la quantité qu'il vend est supérieure à la quantité qu'il possède
-                else if($this->Quantity > (int)$Port->getActualQuantity())
+                else if($this->Quantity > $Port->getActualQuantity())
+
                 {
                     $Response = array(
                         'value' => false,

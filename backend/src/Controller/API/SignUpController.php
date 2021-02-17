@@ -53,7 +53,7 @@ class SignUpController extends AbstractController
                         $Pass = $Encoder->encodePassword($User, $Data['password']);
                         $User->setPassword($Pass);
                         $User->setCreatedAt($Date);
-                        $User->setUSDAmount(0);
+                        $User->setUSDAmount(10000);
                         $User->setRankValorisationAmount(0);
 
                         $Em->persist($User);
