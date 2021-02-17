@@ -13,16 +13,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class OrderController extends AbstractController
 {
     private $Em;
     private $Response;
     private $Security;
+    private $Serializer;
 
-    public function __construct(EntityManagerInterface $Em, Security $Security)
+    public function __construct(EntityManagerInterface $Em, Security $Security,
+                                SerializerInterface $Serializer)
     {
         $this->Em = $Em;
+        $this->Serializer = $Serializer;
         $this->Security = $Security; //for getUser()..
         $this->Response = new Response();
 
@@ -138,11 +142,39 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/orders/{username}", name="apiOrders")
+     * @Route("/api/v1/orders/{username}", name="apiOrdersByUsername")
      */
     public function listOrders($username)
     {
+        $RepUser = $this->Em->getRepository(User::class);
+        $currentUser = $RepUser->findOneBy(['username' => $username]);
 
+        if($currentUser)
+        {
+            $RepOrder = $this->Em->getRepository(Order::class);
+            $Orders = $RepOrder->findBy(['user' => $currentUser]);
+
+            $OrderList = array();
+            foreach ($Orders as $currentOrder) {
+                $Order = $this->Serializer->normalize($currentOrder, 'json', ['groups' => 'normalitem']);
+
+                $OrderList [] =
+                    [
+                        "quantity" => $Order['quantity'],
+                        "quotation" => $Order['quotation'],
+                        "orderType" => $Order['orderType'],
+                        "amount" => $Order["amount"],
+                        "createdAt" => $Order["createdAt"]
+                    ];
+            }
+
+            $this->Response->setContent(json_encode($OrderList));
+        }
+        else
+            $this->ResponseFormate('User not found', 404);
+
+
+        return $this->Response;
     }
 
     public function ResponseFormate($Message,  $Code)

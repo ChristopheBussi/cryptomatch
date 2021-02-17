@@ -70,7 +70,6 @@ class PortfolioController extends AbstractController
             'actualQuantity' => $currentCrypto->getActualQuantity()
         )));
 
-
         return $this->Response;
     }
 }

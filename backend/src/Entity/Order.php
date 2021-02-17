@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
@@ -15,31 +17,37 @@ class Order
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"normalitem"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"normalitem"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"normalitem"})
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"normalitem"})
      */
     private $quotation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"normalitem"})
      */
     private $orderType;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"normalitem"})
      */
     private $amount;
 
