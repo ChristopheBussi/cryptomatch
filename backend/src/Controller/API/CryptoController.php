@@ -18,16 +18,14 @@ class CryptoController extends AbstractController
     {
         
         $response = new Response();
-
         $cryptos = $cryptoRepository->findAll();
+
 
         foreach ($cryptos as $currentCrypto)
         {
-
             $cryptoEntityAsArray = $serializer->normalize($currentCrypto, null, [
                 'groups' => 'normal'
             ]);
-
 
             $cryptoslist[] = [
                 "symbol" => $cryptoEntityAsArray['symbol'],

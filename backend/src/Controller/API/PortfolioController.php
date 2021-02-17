@@ -2,6 +2,7 @@
 
 namespace App\Controller\API;
 
+use App\Entity\Crypto;
 use App\Entity\Portfolio;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,42 +16,60 @@ class PortfolioController extends AbstractController
 {
     private $Em;
     private $Security;
+    private $Response;
+    private $Serializer;
+    private $RepPortfolio;
 
-    public function __construct(EntityManagerInterface $Em, Security $Security)
+
+    public function __construct(EntityManagerInterface $Em, Security $Security,
+                                SerializerInterface $Serializer)
     {
         $this->Em = $Em;
         $this->Security = $Security;
+        $this->Serializer = $Serializer;
+        $this->Response = new Response();
+        $this->Response->headers->set('Content-Type', 'application/json');
+
+        $this->RepPortfolio = $this->Em->getRepository(Portfolio::class);
 
     }
 
     /**
      * @Route("/api/v1/portfolio", name="apiPortfolio")
      */
-    public function getQuantityCrypto(SerializerInterface $serializer): Response
+    public function getPortfolio(): Response
     {
-        $Response = new Response();
-        $Response->headers->set('Content-Type', 'application/json');
+        $Portfolio = $this->RepPortfolio->findBy(['user' => $this->Security->getUser()]);
 
-        $RepPortfilio = $this->Em->getRepository(Portfolio::class);
-        $Portfolios = $RepPortfilio->findBy(['user' => $this->Security->getUser()]);
-
-        dd($Portfolios);
-
-        $PortfolioList[] = null;
-        foreach($Portfolios as $currentPortfolio)
+        foreach ($Portfolio as $currentPortfolio)
         {
-            $P = $serializer->normalize($currentPortfolio, 'json', [
-                'groups' => 'normal']
-            );
-
-            $PortfolioList[] = $P;
+            $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
+            $cryptoslist[] = [
+                "actualQuantity" => $Crypto['actualQuantity'],
+                "averagePrice" => $Crypto['averagePrice'],
+                "cryptoName" => $Crypto['cryptoname'],
+                "imageUrl" => $Crypto['pairName'][0]['imageUrl']
+            ];
         }
 
-        $Response->setStatusCode(200);
-        $Response->setContent(json_encode(array(
-            'portfolio' => $PortfolioList
+        $this->Response->setContent(json_encode(array(
+            'Portfolio' => $cryptoslist
         )));
 
-        return $Response;
+        return $this->Response;
+    }
+
+    /**
+     * @Route("/api/v1/portfolio/{crypto}", name="apiPortfolio_By_PairName")
+     */
+    public function getQuantityCrypto($crypto): Response
+    {
+        $currentCrypto = $this->RepPortfolio->findOneBy(['cryptoname' => $crypto]);
+
+        $this->Response->setContent(json_encode(array(
+            'Crypto' => $this->Serializer->normalize($currentCrypto, 'json', ['groups' => 'normal'])
+        )));
+
+        return $this->Response;
     }
 }

@@ -18,25 +18,25 @@ class Portfolio
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("normal")
+     * @Groups({"normal"})
      */
     private $id;
 
     /**
      * @ORM\ManyToMany(targetEntity=Crypto::class, inversedBy="portfolios")
-     * @Groups("normal")
+     * @Groups({"normal"})
      */
     private $pairName;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("normal")
+     * @Groups({"normal"})
      */
     private $actualQuantity;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("normal")
+     * @Groups({"normal"})
      */
     private $averagePrice;
 
@@ -48,7 +48,7 @@ class Portfolio
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("normal")
+     * @Groups({"normal"})
      */
     private $cryptoname;
 
