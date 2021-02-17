@@ -29,9 +29,14 @@ const CryptosList = ({
           <div className="cryptos__list">
             {
               cryptos.map((crypto) => (
-                <CryptoList key={crypto.symbol} {...crypto} changeNameCrytpo={changeNameCrytpo} />
+                <CryptoList
+                  key={crypto.symbol}
+                  {...crypto}
+                  changeNameCrytpo={changeNameCrytpo}
+                  cryptos={cryptos}
+                />
               ))
-            }
+            };
           </div>
         </>
       )}
