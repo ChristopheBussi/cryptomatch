@@ -1,4 +1,4 @@
-import { SAVE_USER_DATA, UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD } from '../actions/settings';
+import { USER_REGISTRATION, UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD } from '../actions/settings';
 
 const initialState = {
   signIn: {
@@ -36,7 +36,7 @@ export default (state = initialState, action) => {
           [action.fieldName]: action.newValue,
         },
       };
-    case SAVE_USER_DATA:
+    case USER_REGISTRATION:
       return {
         ...state,
         signUp: {

@@ -3,6 +3,7 @@ export const UPDATE_SIGNUP_FIELD = 'UPDATE_SIGNUP_FIELD';
 export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';
+export const USER_REGISTRATION = 'USER_REGISTRATION';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -20,7 +21,9 @@ export const updateSingnUpField = (newValue, fieldName) => ({
 
 export const saveUserData = (data) => ({
   type: SAVE_USER_DATA,
-  message: data.message,
+  token: data.token,
+  username: data.data.username,
+  USDAmount: data.data.USDAmount,
 });
 
 export const signIn = () => ({
@@ -29,4 +32,8 @@ export const signIn = () => ({
 
 export const signUp = () => ({
   type: SIGNUP,
+});
+export const userRegistration = (data) => ({
+  type: USER_REGISTRATION,
+  message: data.Message,
 });

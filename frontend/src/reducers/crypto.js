@@ -3,7 +3,7 @@ import { SAVE_CRYPTOS } from '../actions/crypto';
 
 const initialState = {
   cryptos: cryptosData,
-  loading: true,
+  loading: false,
 };
 
 export default (state = initialState, action) => {

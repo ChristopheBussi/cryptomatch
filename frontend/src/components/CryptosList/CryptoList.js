@@ -33,9 +33,9 @@ CryptoList.propTypes = {
   logo: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  pairName: PropTypes.string.isRequired,
   lastPrice: PropTypes.number.isRequired,
   priceChangePercent24h: PropTypes.number.isRequired,
+  pairName: PropTypes.string.isRequired,
   changeNameCrytpo: PropTypes.func.isRequired,
 };
 

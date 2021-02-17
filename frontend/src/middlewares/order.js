@@ -5,16 +5,19 @@ import { PLACE_THE_ORDER, displayMessageOrder } from '../actions/order';
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case PLACE_THE_ORDER: {
-      const { quantity, pairName } = store.getState().order;
+      const { quantity, pairname } = store.getState().order;
       const { quotation, ordertype } = action;
-      axios.post(
-        'http://localhost:3001/api/v1/order',
-        {
+      const instance = axios.create({
+        baseURL: 'http://localhost:3001',
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      instance.post(
+        '/api/v1/order', JSON.stringify({
           quantity,
-          pairName,
+          pair_name: pairname,
           ordertype,
           quotation,
-        },
+        }),
       ).then((response) => {
         store.dispatch(displayMessageOrder(response.data));
       }).catch((error) => {

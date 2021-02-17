@@ -11,7 +11,8 @@ const Order = ({
   quantity,
   handlePlaceTheOrder,
   changeField,
-  pairName,
+  pairname,
+  USDAmount,
 }) => {
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
@@ -24,8 +25,9 @@ const Order = ({
   };
   return (
     <div className="order">
-      <Graphic pairName={pairName} />
+      <Graphic pairName={pairname} />
       <h2>Order</h2>
+      <div>`Quantité usd disponible : {USDAmount} </div>
       <form onSubmit={handleSubmit}>
         <Field
           name="quantity"
@@ -34,10 +36,10 @@ const Order = ({
           value={quantity}
           onChange={changeField}
         />
-        <button type="submit" onClick={() => setActionType('buy')}>
+        <button type="submit" onClick={() => setActionType('Buy')}>
           Acheter
         </button>
-        <button type="submit" onClick={() => setActionType('sell')}>
+        <button type="submit" onClick={() => setActionType('Sell')}>
           Vendre
         </button>
       </form>
@@ -48,7 +50,8 @@ const Order = ({
 Order.propTypes = {
   handlePlaceTheOrder: PropTypes.func.isRequired,
   quantity: PropTypes.number.isRequired,
+  USDAmount: PropTypes.number.isRequired,
   changeField: PropTypes.func.isRequired,
-  pairName: PropTypes.string.isRequired,
+  pairname: PropTypes.string.isRequired,
 };
 export default Order;

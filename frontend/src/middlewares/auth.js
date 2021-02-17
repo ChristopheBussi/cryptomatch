@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { SIGNIN, saveUserData, SIGNUP } from '../actions/settings';
+import {
+  SIGNIN,
+  saveUserData,
+  SIGNUP,
+  userRegistration,
+} from '../actions/settings';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -14,15 +19,15 @@ export default (store) => (next) => (action) => {
           password,
         },
       ).then((response) => {
+        console.log(response.data);
+        localStorage.setItem('token', response.data.token);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log(error);
         console.log('erreur requete login check');
       });
       next(action);
       break;
     }
-
     case SIGNUP: {
       const { username, password, email } = store.getState().auth.signUp;
       axios.post(
@@ -32,7 +37,9 @@ export default (store) => (next) => (action) => {
           email,
         }),
       ).then((response) => {
+        console.log(response);
         console.log(response.data);
+        store.dispatch(userRegistration(response.data));
       }).catch((error) => {
         console.log(error);
         console.log('erreur requete signup');

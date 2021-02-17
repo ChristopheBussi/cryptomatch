@@ -3,9 +3,9 @@ export const FETCH_CRYPTO = 'FETCH_CRYPTO';
 export const SAVE_CRYPTOS = 'SAVE_CRYPTOS';
 
 // Modifie les champs de la page Connexion
-export const updatePairName = (pairName) => ({
+export const updatePairName = (pairname) => ({
   type: UPDATE_PAIR_NAME,
-  pairName,
+  pairname,
 });
 export const fetchCrypto = () => ({
   type: FETCH_CRYPTO,
