@@ -28,6 +28,7 @@ class CryptoController extends AbstractController
                 'groups' => 'normal'
             ]);
 
+
             $cryptoslist[] = [
                 "symbol" => $cryptoEntityAsArray['symbol'],
                 "name" => $cryptoEntityAsArray['name'],
