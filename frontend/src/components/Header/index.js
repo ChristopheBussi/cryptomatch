@@ -54,7 +54,11 @@ const Header = ({ logged }) => {
                   )
                   : null
               }
-              <li>Classement</li>
+              <li>
+                <NavLink to="/classement" exact onClick={() => setIsOpen(false)}>
+                  Classement
+                </NavLink>
+              </li>
               <li>
                 <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
                   Qui-sommes-nous
