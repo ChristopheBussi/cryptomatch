@@ -13,68 +13,69 @@ const Header = ({ logged }) => {
   return (
 
     <header className="header">
-      <div className="header__title">
-        <h1>
-          <NavLink to="/" exact>
-            Crypto Match
+      <div className="header__container">
+        <div className="header__container__title">
+          <h1>
+            <NavLink to="/" exact>
+              Crypto Match
+            </NavLink>
+          </h1>
+          <button
+            className="buttonMenuBurger"
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <FontAwesomeIcon
+              className="iconBurger"
+              size="2x"
+              icon={faBars}
+            />
+          </button>
+          <nav className={classNav}>
+            <ul>
+              <li>
+                <NavLink to="/" exact onClick={() => setIsOpen(false)}>
+                  Accueil
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/cryptomonnaies" exact onClick={() => setIsOpen(false)}>
+                  Cryptomonnaies
+                </NavLink>
+              </li>
+              {
+                logged
+                  ? (
+                    <li>
+                      <NavLink to="/dashboard" exact onClick={() => setIsOpen(false)}>
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  )
+                  : null
+              }
+              <li>Classement</li>
+              <li>
+                <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
+                  Qui-sommes-nous
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div className="buttonLogin">
+        <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
+          <NavLink to="/connexion" exact>
+            Connexion
           </NavLink>
-        </h1>
-        <button
-          className="buttonMenuBurger"
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <FontAwesomeIcon
-            className="iconBurger"
-            size="2x"
-            icon={faBars}
-          />
+        </button>
+        <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
+          <NavLink to="/inscription" exact>
+            Inscription
+          </NavLink>
         </button>
       </div>
-      <nav className={classNav}>
-        <ul>
-          <li>
-            <NavLink to="/" exact onClick={() => setIsOpen(false)}>
-              Accueil
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/cryptomonnaies" exact onClick={() => setIsOpen(false)}>
-              Cryptomonnaies
-            </NavLink>
-          </li>
-          {
-            logged
-              ? (
-                <li>
-                  <NavLink to="/dashboard" exact onClick={() => setIsOpen(false)}>
-                    Dashboard
-                  </NavLink>
-                </li>
-              )
-              : null
-          }
-          <li>Classement</li>
-          <li>
-            <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
-              Qui-sommes-nous
-            </NavLink>
-          </li>
-        </ul>
-        <div className="buttonLogin">
-          <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
-            <NavLink to="/connexion" exact>
-              Connexion
-            </NavLink>
-          </button>
-          <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
-            <NavLink to="/inscription" exact>
-              Inscription
-            </NavLink>
-          </button>
-        </div>
-      </nav>
-
     </header>
   );
 };
