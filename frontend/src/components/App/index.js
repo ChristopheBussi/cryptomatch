@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Import des composants
 import Header from 'src/containers/Header';
@@ -17,7 +18,7 @@ import './app.scss';
 import NotFound from '../NotFound';
 
 // == Composant
-const App = () => (
+const App = ({ logged }) => (
   <div className="app">
     <Header />
     <Switch>
@@ -31,13 +32,21 @@ const App = () => (
         <Connexion page="signUp" />
       </Route>
       <Route path="/ordre/:slug">
-        <Order />
+        {
+          logged
+            ? <Order />
+            : <Redirect to="/inscription" />
+        }
       </Route>
       <Route path="/cryptomonnaies" exact>
         <CryptosList />
       </Route>
       <Route path="/dashboard" exact>
-        <Dashboard />
+        {
+          logged
+            ? <Dashboard />
+            : <Redirect to="/inscription" />
+        }
       </Route>
       <Route path="/classement" exact>
         <Ranking />
@@ -52,5 +61,8 @@ const App = () => (
   </div>
 );
 
+App.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
 // == Export
 export default App;
