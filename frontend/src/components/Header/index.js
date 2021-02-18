@@ -61,7 +61,7 @@ const Header = ({ logged }) => {
               </li>
               <li>
                 <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
-                  Qui-sommes-nous
+                  Qui-Sommes-Nous
                 </NavLink>
               </li>
             </ul>
