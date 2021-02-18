@@ -38,6 +38,8 @@ class UserController extends AbstractController
 
         $rank = 0;
 
+        $ranking = [];
+
         foreach ($results as $currentUser) {
 
             $userEntityAsArray = $serializer->normalize($currentUser, null, ['groups' => 'normal']);
@@ -54,7 +56,7 @@ class UserController extends AbstractController
         $response = new Response();
 
         
-        if ($ranking) {
+        if (count($ranking) > 0) {
             $jsonRanking = json_encode($ranking);
             $response->setContent($jsonRanking);
             $response->setStatusCode(Response::HTTP_OK);
