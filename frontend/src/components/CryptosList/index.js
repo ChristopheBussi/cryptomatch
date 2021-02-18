@@ -8,7 +8,7 @@ import './cryptos.scss';
 
 const CryptosList = ({
   cryptos,
-  changeNameCrytpo,
+  toOrder,
   loading,
   manageLoad,
 }) => {
@@ -32,7 +32,7 @@ const CryptosList = ({
                 <CryptoList
                   key={crypto.symbol}
                   {...crypto}
-                  changeNameCrytpo={changeNameCrytpo}
+                  toOrder={toOrder}
                   cryptos={cryptos}
                 />
 
@@ -52,7 +52,7 @@ CryptosList.propTypes = {
       symbol: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
-  changeNameCrytpo: PropTypes.func.isRequired,
+  toOrder: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   manageLoad: PropTypes.func.isRequired,
 };

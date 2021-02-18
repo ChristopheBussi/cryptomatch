@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CryptoList from 'src/components/CryptosList';
 
 import {
-  updatePairName,
+  toOrder,
   fetchCrypto,
 } from 'src/actions/crypto';
 
@@ -15,8 +15,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   // composant de connexion
-  changeNameCrytpo: (pairname) => {
-    dispatch(updatePairName(pairname));
+  toOrder: (pairname) => {
+    dispatch(toOrder(pairname));
   },
   manageLoad: () => {
     dispatch(fetchCrypto());

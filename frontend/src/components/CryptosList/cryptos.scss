@@ -11,8 +11,7 @@
     padding-bottom: 0.5rem;
     position: sticky;
     top: 0.1px;
-    z-index: 1;
-    background-color: #12304C;
+    background-color: #181c27;
 
     & div {
       padding: 0.25rem 0.25rem
@@ -38,7 +37,7 @@
   &__price {
     width: 30%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0.25rem 0.25rem;
     align-items: center;
   }
@@ -49,14 +48,14 @@
     flex-direction: row;
     align-items: center;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0.25rem 0.25rem
   }
 
   &__price24 {
     width: 30%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 0.25rem 0.25rem;
   }

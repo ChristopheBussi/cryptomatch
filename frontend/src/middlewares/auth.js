@@ -19,7 +19,6 @@ export default (store) => (next) => (action) => {
           password,
         },
       ).then((response) => {
-        console.log(response.data);
         localStorage.setItem('token', response.data.token);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
@@ -37,11 +36,8 @@ export default (store) => (next) => (action) => {
           email,
         }),
       ).then((response) => {
-        console.log(response);
-        console.log(response.data);
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
-        console.log(error);
         console.log('erreur requete signup');
       });
 

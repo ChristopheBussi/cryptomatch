@@ -8,11 +8,11 @@ const CryptoList = ({
   name,
   pairName,
   lastPrice,
-  changeNameCrytpo,
+  toOrder,
   priceChangePercent24h,
 }) => {
   const handleClick = () => {
-    changeNameCrytpo(pairName);
+    toOrder(pairName);
   };
   return (
     <div className="cryptos__crypto">
@@ -35,7 +35,7 @@ CryptoList.propTypes = {
   lastPrice: PropTypes.number.isRequired,
   priceChangePercent24h: PropTypes.number.isRequired,
   pairName: PropTypes.string.isRequired,
-  changeNameCrytpo: PropTypes.func.isRequired,
+  toOrder: PropTypes.func.isRequired,
 };
 
 export default CryptoList;

@@ -8,10 +8,8 @@ export default (store) => (next) => (action) => {
       axios.get(
         'http://localhost:3001/cryptos',
       ).then((response) => {
-        console.log(response);
         store.dispatch(saveCryptos(response.data));
       }).catch((error) => {
-        console.log(error);
         console.log('erreur requete cryptos');
       });
 
