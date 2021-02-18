@@ -51,11 +51,17 @@ class UserController extends AbstractController
             ];
         }
         
-        $jsonRanking = json_encode($ranking);
-
         $response = new Response();
-        $response->setContent($jsonRanking);
-        $response->setStatusCode(Response::HTTP_OK);
+
+        
+        if ($ranking) {
+            $jsonRanking = json_encode($ranking);
+            $response->setContent($jsonRanking);
+            $response->setStatusCode(Response::HTTP_OK);
+        } else {
+            $response->setStatusCode(404);
+        }
+
         return $response;
     }
 }
