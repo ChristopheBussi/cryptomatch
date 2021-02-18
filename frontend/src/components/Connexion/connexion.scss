@@ -3,10 +3,18 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 35%;
+  top: 30%;
   margin: 0 auto;
 
-  & .signIn {
+  & h2 {
+    color: white;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  & .signIn, & .signUp {
     &__form {
       display: flex;
       flex-direction: column;
@@ -53,9 +61,8 @@
     }
   }
 
-  .signUpRedirection {
+  .signInRedirection, .signUpRedirection {
     color: white;
     text-align: center;
   }
 }
-

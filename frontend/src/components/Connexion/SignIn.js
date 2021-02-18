@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import Field from './Field';
 
-import './connexion.scss'
-
 const SignIn = ({
   username,
   password,
@@ -18,6 +16,8 @@ const SignIn = ({
   };
   return (
     <div className="signIn">
+      <h2>Ravi de vous revoir !</h2>
+
       <form onSubmit={handleSubmit} className="signIn__form">
         <div className="signIn__form__field">
           <Field
@@ -36,7 +36,7 @@ const SignIn = ({
         </div>
         <div>
           <NavLink to="/inscription" exact>
-            <div className="signUpRedirection">Pas encore de compte ?</div>
+            <div className="signInRedirection">Pas encore de compte ?</div>
           </NavLink>
           <button type="submit">
             Connexion
