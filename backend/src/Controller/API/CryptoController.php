@@ -5,7 +5,6 @@ namespace App\Controller\API;
 use App\Repository\CryptoRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -16,16 +15,12 @@ class CryptoController extends AbstractController
      */
     public function list(CryptoRepository $cryptoRepository, SerializerInterface $serializer): Response
     {
-        
         $response = new Response();
         $cryptos = $cryptoRepository->findAll();
 
-
         foreach ($cryptos as $currentCrypto)
         {
-            $cryptoEntityAsArray = $serializer->normalize($currentCrypto, null, [
-                'groups' => 'normal'
-            ]);
+            $cryptoEntityAsArray = $serializer->normalize($currentCrypto, null, ['groups' => 'normal']);
 
             $cryptoslist[] = [
                 "symbol" => $cryptoEntityAsArray['symbol'],
