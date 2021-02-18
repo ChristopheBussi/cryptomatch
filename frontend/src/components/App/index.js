@@ -12,6 +12,8 @@ import CryptosList from 'src/containers/CryptoList';
 import About from 'src/components/About';
 import Dashboard from 'src/components/Dashboard';
 import Ranking from 'src/containers/Ranking';
+import CryptoClass from 'src/containers/CryptoList';
+
 
 // == Import
 import './app.scss';
@@ -35,7 +37,7 @@ const App = ({ logged }) => (
         {
           logged
             ? <Order />
-            : <Redirect to="/inscription" />
+            : <Redirect to="/connexion" />
         }
       </Route>
       <Route path="/cryptomonnaies" exact>
@@ -45,7 +47,7 @@ const App = ({ logged }) => (
         {
           logged
             ? <Dashboard />
-            : <Redirect to="/inscription" />
+            : <Redirect to="/connexion" />
         }
       </Route>
       <Route path="/classement" exact>
@@ -53,6 +55,9 @@ const App = ({ logged }) => (
       </Route>
       <Route path="/qui-sommes-nous" exact>
         <About />
+      </Route>
+      <Route path="/test" exact>
+        <CryptoClass />
       </Route>
       <Route>
         <NotFound />

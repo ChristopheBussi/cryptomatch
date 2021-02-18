@@ -19,12 +19,12 @@ const Order = ({
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
   const quotation = 1.22;
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePlaceTheOrder(ordertype, quantity, quotation);
   };
-  const displaymMessage = message != null ?  'order__messageDisplay' : 'order__messageNone';
+  const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
   return (
     <div className="order">
       <h2 className="order__title">{slug}</h2>
@@ -58,6 +58,6 @@ Order.propTypes = {
   changeField: PropTypes.func.isRequired,
   pairname: PropTypes.string.isRequired,
   actualQuantityPair: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
 };
 export default Order;
