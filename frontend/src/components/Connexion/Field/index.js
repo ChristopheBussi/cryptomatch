@@ -22,6 +22,13 @@ const Field = ({
 
   return (
     <div>
+      <label
+        htmlFor={inputId}
+        className="field-label"
+      >
+        {placeholder}
+      </label>
+      
       <input
         value={value}
         id={inputId}
@@ -32,12 +39,6 @@ const Field = ({
         onChange={handleChange}
       />
 
-      <label
-        htmlFor={inputId}
-        className="field-label"
-      >
-        {placeholder}
-      </label>
     </div>
   );
 };
