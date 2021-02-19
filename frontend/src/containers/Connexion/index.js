@@ -10,6 +10,8 @@ import {
 } from '../../actions/settings';
 
 const mapStateToProps = (state) => ({
+  // sommes nous connecté
+  logged: state.user.logged,
   // composant de connexion
   usernameSignIn: state.auth.signIn.username,
   passwordSignIn: state.auth.signIn.password,

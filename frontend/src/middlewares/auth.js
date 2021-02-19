@@ -22,7 +22,7 @@ export default (store) => (next) => (action) => {
         localStorage.setItem('token', response.data.token);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log('erreur requete login check');
+        console.log(error);
       });
       next(action);
       break;
@@ -38,7 +38,7 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
-        console.log('erreur requete signup');
+        console.log(error);
       });
 
       next(action);

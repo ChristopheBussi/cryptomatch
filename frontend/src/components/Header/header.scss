@@ -72,6 +72,10 @@
     transform: translateX(0%);
     transition: transform 0.3s ease-in-out;
   }
+  &__selected{
+    font-weight: bold;
+    color: #4fdb88;
+  }
 }
 
 .login {
