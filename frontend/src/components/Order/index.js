@@ -13,21 +13,25 @@ const Order = ({
   changeField,
   pairname,
   USDAmount,
+  actualQuantityPair,
+  message,
 }) => {
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
-  console.log(slug);
   const quotation = 1.22;
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePlaceTheOrder(ordertype, quantity, quotation);
   };
+  const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
   return (
     <div className="order">
-      <Graphic pairName={pairname} />
-      <h2>Order</h2>
-      <div>`Quantité usd disponible : {USDAmount} </div>
+      <h2 className="order__title">{slug}</h2>
+      <Graphic pairName={slug} />
+      <div className={displaymMessage}>{message}</div>
+      <div className="order__usdAmout">Quantité usd disponible : {USDAmount} </div>
+      <div className="order__cryptoAmount">Quantité de {pairname}  disponible : {actualQuantityPair} </div>
       <form onSubmit={handleSubmit}>
         <Field
           name="quantity"
@@ -53,5 +57,7 @@ Order.propTypes = {
   USDAmount: PropTypes.number.isRequired,
   changeField: PropTypes.func.isRequired,
   pairname: PropTypes.string.isRequired,
+  actualQuantityPair: PropTypes.number.isRequired,
+  message: PropTypes.string,
 };
 export default Order;

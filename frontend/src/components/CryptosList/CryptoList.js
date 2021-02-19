@@ -8,21 +8,22 @@ const CryptoList = ({
   name,
   pairName,
   lastPrice,
-  changeNameCrytpo,
+  toOrder,
   priceChangePercent24h,
 }) => {
+  const percentAround = Math.round(priceChangePercent24h*100)/100;
   const handleClick = () => {
-    changeNameCrytpo(pairName);
+    toOrder(pairName);
   };
   return (
     <div className="cryptos__crypto">
       <NavLink className='link' to={`/ordre/${pairName}`} onClick={handleClick}>
         <div className="cryptos__logo">
           <img className="cryptos__img" src={logo} alt={`logo_${name}`} />
-          <div className="cryptos__name">{symbol}</div>
+          <div className="cryptos__name">{symbol} {name}</div>
         </div>
         <div className={`quote${pairName} cryptos__price`}>{lastPrice}</div>
-        <div className="cryptos__price24">{priceChangePercent24h}</div>
+        <div className="cryptos__price24">{percentAround} %</div>
       </NavLink>
     </div>
   );
@@ -35,7 +36,7 @@ CryptoList.propTypes = {
   lastPrice: PropTypes.number.isRequired,
   priceChangePercent24h: PropTypes.number.isRequired,
   pairName: PropTypes.string.isRequired,
-  changeNameCrytpo: PropTypes.func.isRequired,
+  toOrder: PropTypes.func.isRequired,
 };
 
 export default CryptoList;

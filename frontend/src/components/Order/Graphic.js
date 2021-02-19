@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
 const Graphic = ({ pairName }) => (
-  <div>
+  <div className="widget">
     <TradingViewWidget
-      width={1000}
-      height={600}
+      width={600}
+      height={300}
       symbol={`BINANCE:${pairName}`}
       interval="D"
       timezone="Europe/Paris"
@@ -16,6 +16,7 @@ const Graphic = ({ pairName }) => (
       toolbar_bg="#f1f3f6"
       enable_publishing={false}
       allow_symbol_change={false}
+      style={'1'}
     />
   </div>
 );

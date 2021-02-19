@@ -1,10 +1,10 @@
-export const UPDATE_PAIR_NAME = 'UPDATE_PAIR_NAME';
+export const TO_ORDER = 'TO_ORDER';
 export const FETCH_CRYPTO = 'FETCH_CRYPTO';
 export const SAVE_CRYPTOS = 'SAVE_CRYPTOS';
 
 // Modifie les champs de la page Connexion
-export const updatePairName = (pairname) => ({
-  type: UPDATE_PAIR_NAME,
+export const toOrder = (pairname) => ({
+  type: TO_ORDER,
   pairname,
 });
 export const fetchCrypto = () => ({

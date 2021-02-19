@@ -8,10 +8,8 @@ export default (store) => (next) => (action) => {
       axios.get(
         'http://ec2-34-204-76-231.compute-1.amazonaws.com/cryptos',
       ).then((response) => {
-        console.log(response);
         store.dispatch(saveCryptos(response.data));
       }).catch((error) => {
-        console.log(error);
         console.log('erreur requete cryptos');
       });
 
