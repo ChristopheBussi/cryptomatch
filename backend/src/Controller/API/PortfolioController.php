@@ -47,7 +47,9 @@ class PortfolioController extends AbstractController
         {
             $Portfolio = $this->RepPortfolio->findBy(['user' => $User]);
             $cryptoslist = null;
-            foreach ($Portfolio as $currentPortfolio) {
+
+            foreach ($Portfolio as $currentPortfolio)
+            {
                 $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
                 $cryptoslist[] = [
                     "actualQuantity" => $Crypto['actualQuantity'],
