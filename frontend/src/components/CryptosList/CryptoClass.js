@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import store from 'src/store';
 import CryptoList from './CryptoList';
 
-
+let socket;
 class CryptoClass extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class CryptoClass extends Component {
     cryptos.forEach((crypto) => {
       streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
     });
-    const socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
+    socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
     socket.onmessage = (event) => {
       const objectData = JSON.parse(event.data);
       const DOMquote = document.querySelector('.quote' + objectData.s);
@@ -28,7 +27,9 @@ class CryptoClass extends Component {
       DOMquote.textContent = quote;
     };
   }
-
+  componentWillUnmount() {
+    socket.close();
+  }
   render() {
     const { loading, cryptos, toOrder } = this.props;
     return (

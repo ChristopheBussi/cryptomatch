@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   USDAmount: state.user.USDAmount,
   actualQuantityPair: state.order.actualQuantityPair,
   message: state.order.message,
+  typeAction: state.order.typeAction,
 });
 
 const mapDispatchToProps = (dispatch) => ({

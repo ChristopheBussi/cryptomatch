@@ -1,4 +1,5 @@
 import axios from 'axios';
+import url from './url';
 
 import {
   SIGNIN,
@@ -13,7 +14,7 @@ export default (store) => (next) => (action) => {
       const { username, password } = store.getState().auth.signIn;
 
       axios.post(
-        'http://ec2-34-204-76-231.compute-1.amazonaws.com/api/login_check',
+        `${url}api/login_check`,
         {
           username,
           password,
@@ -30,7 +31,7 @@ export default (store) => (next) => (action) => {
     case SIGNUP: {
       const { username, password, email } = store.getState().auth.signUp;
       axios.post(
-        'http://ec2-34-204-76-231.compute-1.amazonaws.com/signup', JSON.stringify({
+        `${url}signup`, JSON.stringify({
           username,
           password,
           email,
