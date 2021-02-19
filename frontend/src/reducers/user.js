@@ -6,7 +6,6 @@ const initialState = {
   token: '',
   USDAmount: 0,
   logged: false,
-  typeAction: '',
 };
 
 export default (state = initialState, action) => {

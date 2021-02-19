@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
@@ -6,58 +6,74 @@ import Graphic from './Graphic';
 import Field from './Field';
 // == Import Scss
 import './order.scss';
+let socket;
 
-const Order = ({
-  quantity,
-  handlePlaceTheOrder,
-  changeField,
-  pairname,
-  USDAmount,
-  actualQuantityPair,
-  message,
-}) => {
-  const [ordertype, setActionType] = useState('');
-  const { slug } = useParams();
-  const quotation = 1;
+class Order extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { typeAction: '', quotation: null };
+  }
+  componentDidMount() {
+    const pair = '/' + this.props.pairname.toLowerCase() + '@aggTrade';
+    socket = new WebSocket(`wss://stream.binance.com:9443/ws${pair}`);
+    socket.onmessage = (event) => {
+      const objectData = JSON.parse(event.data);
+      const DOMquote = document.querySelector('.order__quotation');
+      let quote = objectData.p;
+      DOMquote.textContent = quote;
+      this.state.quotation = quote;
+    };
+  }
+  componentWillUnmount() {
+    socket.close();
+  }
+  render() {
+    const {
+      quantity,
+      USDAmount,
+      pairname,
+      actualQuantityPair,
+      message,
+      handlePlaceTheOrder,
+      changeField,
+    } = this.props;
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+    };
+    const Amount = Math.round(USDAmount * 100) / 100;
+    const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
+    return (
+      <div className="order">
+        <h2 className="order__title">{pairname}</h2>
+        <span className="order__quotation"></span>
+        <div className="order__graph">
+          <Graphic pairName={pairname} />
+          <div className="order__passed">
+            <div className={displaymMessage}>{message}</div>
+            <div className="order__usdAmout">Montant USDT disponible : {Amount.toLocaleString()} </div>
+            <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="quantity"
+                type="number"
+                placeholder="Quantité"
+                value={quantity}
+                onChange={changeField}
+              />
+              <button type="submit" onClick={() => this.state.typeAction = 'Buy'}>
+                Acheter
+             </button>
+              <button type="submit" onClick={() => this.state.typeAction = 'Sell'}>
+                Vendre
+              </button>
+            </form>
+          </div>
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    handlePlaceTheOrder(ordertype, quantity, quotation);
-  };
-  const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
-  return (
-    <div className="order">
-      <h2 className="order__title">{slug}</h2>
-      <Graphic pairName={slug} />
-      <div className={displaymMessage}>{message}</div>
-      <div className="order__usdAmout">Montant USDT disponible : {USDAmount} </div>
-      <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
-      <form onSubmit={handleSubmit}>
-        <Field
-          name="quantity"
-          type="number"
-          placeholder="Quantité"
-          value={quantity}
-          onChange={changeField}
-        />
-        <button type="submit" onClick={() => setActionType('Buy')}>
-          Acheter
-        </button>
-        <button type="submit" onClick={() => setActionType('Sell')}>
-          Vendre
-        </button>
-      </form>
-    </div>
-  );
+        </div>
+      </div>
+    );
+  }
 };
 
-Order.propTypes = {
-  handlePlaceTheOrder: PropTypes.func.isRequired,
-  quantity: PropTypes.number.isRequired,
-  USDAmount: PropTypes.number.isRequired,
-  changeField: PropTypes.func.isRequired,
-  pairname: PropTypes.string.isRequired,
-  actualQuantityPair: PropTypes.number.isRequired,
-  message: PropTypes.string,
-};
 export default Order;

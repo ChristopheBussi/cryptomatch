@@ -6,8 +6,7 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 const Graphic = ({ pairName }) => (
   <div className="widget">
     <TradingViewWidget
-      width={1000}
-      height={600}
+      autosize={true}
       symbol={`BINANCE:${pairName}`}
       interval="D"
       timezone="Europe/Paris"

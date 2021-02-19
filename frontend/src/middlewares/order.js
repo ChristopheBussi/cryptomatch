@@ -7,11 +7,11 @@ import { TO_ORDER } from '../actions/crypto';
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case PLACE_THE_ORDER: {
-      const { quantity, pairname } = store.getState().order;
       const instance = axios.create({
         baseURL: url,
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
+      const { quantity, pairname } = store.getState().order;
       const { quotation, ordertype } = action;
       instance.post(
         'api/v1/order', JSON.stringify({
@@ -38,7 +38,7 @@ export default (store) => (next) => (action) => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       instance.get(
-        `api/v1/portfolio/${pairname}`, 
+        `api/v1/portfolio/quantity_crypto/${pairname}`, 
       ).then((response) => {
         console.log(response);
         console.log(response.data);
