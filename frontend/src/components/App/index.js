@@ -41,7 +41,7 @@ const App = ({ logged }) => (
         }
       </Route>
       <Route path="/cryptomonnaies" exact>
-        <CryptosList />
+        <CryptoClass />
       </Route>
       <Route path="/dashboard" exact>
         {
@@ -55,9 +55,6 @@ const App = ({ logged }) => (
       </Route>
       <Route path="/qui-sommes-nous" exact>
         <About />
-      </Route>
-      <Route path="/test" exact>
-        <CryptoClass />
       </Route>
       <Route>
         <NotFound />
