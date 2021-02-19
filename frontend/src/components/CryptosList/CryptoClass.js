@@ -11,9 +11,8 @@ class CryptoClass extends Component {
   componentDidMount() {
     const { manageLoad } = this.props;
     manageLoad();
-
-
   }
+
   componentDidUpdate() {
     const { cryptos } = this.props;
     let streams = '';
