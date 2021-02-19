@@ -11,22 +11,25 @@ const Home = () => {
   const classDivRules = isVisible ? 'home__rules__visible' : 'home__rules__hidden';
   const classDot = isVisible ? 'dot-hidden' : 'dot-visible';
   const classChevron = isVisible ? 'iconCheveronTop' : 'iconCheveronDown';
+  const classHomeAlign = isVisible ? 'homeAlign' : 'homeNotAlign';
   return (
 
-    <div className="home">
+    <div className={`home ${classHomeAlign}`}>
       <h2>Bienvenue sur Crypto Match</h2>
       <div className="home__rules">
-        <p>
-          Le site organise un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
-        </p>
-        <div className={classDivRules}>
+        <div className="home__rules__p">
           <p>
-            Chaque participant obtiendra un capital de départ de 10 000 dollars fictifs qu’il pourra
-            investir sur les cryptomonnaies de son choix. Vous avez la possibilité d'accéder à une page de classement ou vous pourrez voir qui aura engendré la plus grande plus-value. Ce classementest est mis à jour toute les 24 heures. Pour être classé il vous faudra avoir passé un premier ordre. Pour vous inscrire au concours vous devez impéraivement vous inscrire avant le 15 février. Il est impossible de rejoindre une session déjà commencé.
+            Le site organise un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
           </p>
-          <p>
-            Le gagnant est celui qui aura engendré la plus grande plus-value au bout d'un mois.
-          </p>
+          <div className={classDivRules}>
+            <p>
+              Chaque participant obtiendra un capital de départ de 10 000 dollars fictifs qu’il pourra
+              investir sur les cryptomonnaies de son choix. Vous avez la possibilité d'accéder à une page de classement ou vous pourrez voir qui aura engendré la plus grande plus-value. Ce classementest est mis à jour toute les 24 heures. Pour être classé il vous faudra avoir passé un premier ordre. Pour vous inscrire au concours vous devez impéraivement vous inscrire avant le 15 février. Il est impossible de rejoindre une session déjà commencé.
+            </p>
+            <p>
+              Le gagnant est celui qui aura engendré la plus grande plus-value au bout d'un mois.
+            </p>
+          </div>
         </div>
         <button
           className="handleRules"

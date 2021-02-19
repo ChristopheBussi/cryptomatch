@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Field from './Field';
@@ -15,23 +16,32 @@ const SignIn = ({
   };
   return (
     <div className="signIn">
-      <form onSubmit={handleSubmit}>
-        <Field
-          name="username"
-          placeholder="Pseudo"
-          value={username}
-          onChange={changeField}
-        />
-        <Field
-          name="password"
-          type="password"
-          placeholder="Mot de passe"
-          value={password}
-          onChange={changeField}
-        />
-        <button type="submit">
-          Connexion
-        </button>
+      <h2>Ravi de vous revoir !</h2>
+
+      <form onSubmit={handleSubmit} className="signIn__form">
+        <div className="signIn__form__field">
+          <Field
+            name="username"
+            placeholder="Pseudo"
+            value={username}
+            onChange={changeField}
+          />
+          <Field
+            name="password"
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={changeField}
+          />
+        </div>
+        <div>
+          <NavLink to="/inscription" exact>
+            <div className="signInRedirection">Pas encore de compte ?</div>
+          </NavLink>
+          <button type="submit">
+            Connexion
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -47,7 +47,7 @@ class UpdateCryptoTableCommand extends Command
 
         foreach ($cryptos as $currentCrypto) {
 
-            $cryptoEntityAsArray = $this->serializer->normalize($currentCrypto, null);
+            $cryptoEntityAsArray = $this->serializer->normalize($currentCrypto, null, ['groups' => 'normal']);
             $pairs[] = $cryptoEntityAsArray['pairName'];
         }
 

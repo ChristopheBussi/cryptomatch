@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
+import './connexion.scss'
+
 const Connexion = ({
   // le path de la page courante
   page,

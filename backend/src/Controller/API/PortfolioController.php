@@ -2,15 +2,13 @@
 
 namespace App\Controller\API;
 
-use App\Entity\Crypto;
 use App\Entity\Portfolio;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PortfolioController extends AbstractController
 {
@@ -20,18 +18,14 @@ class PortfolioController extends AbstractController
     private $Serializer;
     private $RepPortfolio;
 
-
-    public function __construct(EntityManagerInterface $Em, Security $Security,
-                                SerializerInterface $Serializer)
+    public function __construct(EntityManagerInterface $Em, Security $Security, SerializerInterface $Serializer)
     {
         $this->Em = $Em;
         $this->Security = $Security;
         $this->Serializer = $Serializer;
         $this->Response = new Response();
         $this->Response->headers->set('Content-Type', 'application/json');
-
         $this->RepPortfolio = $this->Em->getRepository(Portfolio::class);
-
     }
 
     /**
@@ -41,20 +35,21 @@ class PortfolioController extends AbstractController
     {
         $Portfolio = $this->RepPortfolio->findBy(['user' => $this->Security->getUser()]);
 
-        foreach ($Portfolio as $currentPortfolio)
-        {
+        $cryptoslist = [];
+
+        foreach ($Portfolio as $currentPortfolio) {
             $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
             $cryptoslist[] = [
+                "logoUrl" => $Crypto['pairName'][0]['imageUrl'],
+                "pairName" => $Crypto['cryptoname'],
                 "actualQuantity" => $Crypto['actualQuantity'],
-                "averagePrice" => $Crypto['averagePrice'],
-                "cryptoName" => $Crypto['cryptoname'],
-                "imageUrl" => $Crypto['pairName'][0]['imageUrl']
+                "averagePrice" => $Crypto['averagePrice']
             ];
         }
 
-        $this->Response->setContent(json_encode(array(
-            'Portfolio' => $cryptoslist
-        )));
+        $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
+
+        $this->Response->setContent($jsonCryptolist);
 
         return $this->Response;
     }
