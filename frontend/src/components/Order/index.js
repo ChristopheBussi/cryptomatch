@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const Order = ({
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
   const quotation = 1;
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePlaceTheOrder(ordertype, quantity, quotation);

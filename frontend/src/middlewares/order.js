@@ -1,4 +1,5 @@
 import axios from 'axios';
+import url from './url';
 
 import { PLACE_THE_ORDER, orderPassed, actualQuantityPair } from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
@@ -8,12 +9,12 @@ export default (store) => (next) => (action) => {
     case PLACE_THE_ORDER: {
       const { quantity, pairname } = store.getState().order;
       const instance = axios.create({
-        baseURL: 'http://ec2-34-204-76-231.compute-1.amazonaws.com',
+        baseURL: url,
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const { quotation, ordertype } = action;
       instance.post(
-        '/api/v1/order', JSON.stringify({
+        'api/v1/order', JSON.stringify({
           quantity,
           pair_name: pairname,
           ordertype,
@@ -33,11 +34,11 @@ export default (store) => (next) => (action) => {
     case TO_ORDER: {
       const { pairname } = action;
       const instance = axios.create({
-        baseURL: 'http://ec2-34-204-76-231.compute-1.amazonaws.com',
+        baseURL: url,
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       instance.get(
-        `/api/v1/portfolio/${pairname}`, 
+        `api/v1/portfolio/${pairname}`, 
       ).then((response) => {
         console.log(response);
         console.log(response.data);

@@ -40,7 +40,6 @@ const App = ({ logged }) => (
             ? <Connexion page="signUp" />
             : <Redirect to="/" />
         }
-        <Connexion page="signUp" />
       </Route>
       <Route path="/ordre/:slug">
         {
