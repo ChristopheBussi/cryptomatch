@@ -68,11 +68,12 @@ class PortfolioController extends AbstractController
 
 
     /**
-     * @Route("/api/v1/portfolio/{crypto}", name="apiPortfolio_By_PairName")
+     * @Route("/api/v1/portfolio/quantity_crypto/{crypto}", name="apiPortfolio_By_PairName")
      */
     public function getQuantityCrypto($crypto): Response
     {
-        $currentCrypto = $this->RepPortfolio->findOneBy(['cryptoname' => $crypto]);
+        $currentCrypto = $this->RepPortfolio->findOneBy(['cryptoname' => $crypto, 'user' => $this->Security->getUser()]);
+
         $this->Response->setContent(json_encode(array(
             'actualQuantity' => $currentCrypto->getActualQuantity()
         )));
