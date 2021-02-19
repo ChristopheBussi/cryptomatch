@@ -30,14 +30,12 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/portfolio/{username}", name="apiPortfolio")
+     * @Route("/api/v1/portfolio", name="apiPortfolio")
      */
-    public function getPortfolio($username): Response
+    public function getPortfolio(): Response
     {
-        $RepUser = $this->Em->getRepository(User::class);
-        $User = $RepUser->findOneBy(['username' => $username]);
+        $Portfolio = $this->RepPortfolio->findBy(['user' => $this->Security->getUser()]);
 
-<<<<<<< HEAD
         $cryptoslist = [];
 
         foreach ($Portfolio as $currentPortfolio) {
@@ -53,34 +51,10 @@ class PortfolioController extends AbstractController
         $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
 
         $this->Response->setContent($jsonCryptolist);
-=======
-        if($User)
-        {
-            $Portfolio = $this->RepPortfolio->findBy(['user' => $User]);
-            $cryptoslist = null;
-            foreach ($Portfolio as $currentPortfolio) {
-                $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
-                $cryptoslist[] = [
-                    "actualQuantity" => $Crypto['actualQuantity'],
-                    "averagePrice" => $Crypto['averagePrice'],
-                    "cryptoName" => $Crypto['cryptoname'],
-                    "imageUrl" => $Crypto['pairName'][0]['imageUrl']
-                ];
-            }
-
-            $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
-            $this->Response->setContent($jsonCryptolist);
-        }
-        else
-        {
-            $this->Response->setContent(json_encode(array(
-                "Message" => "User not found"
-            )));
-        }
->>>>>>> Walid_dashBoard
 
         return $this->Response;
     }
+
 
     /**
      * @Route("/api/v1/portfolio/{crypto}", name="apiPortfolio_By_PairName")
