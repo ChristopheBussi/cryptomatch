@@ -1,4 +1,4 @@
-import React  ,{ Component } from 'react';
+import React, { Component } from 'react';
 
 import store from 'src/store';
 import CryptoList from './CryptoList';
@@ -12,14 +12,18 @@ class CryptoClass extends Component {
     const { manageLoad } = this.props;
     manageLoad();
 
-    
+
   }
-   componentDidUpdate() {
-    const socket = new WebSocket("wss://stream.binance.com:9443/ws/1INCHUSDT@aggTrade");
+  componentDidUpdate() {
+    const { cryptos } = this.props;
+    let streams = '';
+    cryptos.forEach((crypto) => {
+      streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
+    });
+    const socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
     socket.onmessage = (event) => {
       const objectData = JSON.parse(event.data);
       const DOMquote = document.querySelector('.quote' + objectData.s);
-      console.log(objectData.s);
       let quote = objectData.p;
       DOMquote.textContent = quote;
     };
