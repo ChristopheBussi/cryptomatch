@@ -18,7 +18,7 @@ const Order = ({
 }) => {
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
-  const quotation = 1.22;
+  const quotation = 1;
   
   const handleSubmit = (event) => {
     event.preventDefault();

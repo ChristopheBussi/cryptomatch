@@ -7,11 +7,11 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case PLACE_THE_ORDER: {
       const { quantity, pairname } = store.getState().order;
-      const { quotation, ordertype } = action;
       const instance = axios.create({
-        baseURL: 'http://localhost:3001',
+        baseURL: 'http://ec2-34-204-76-231.compute-1.amazonaws.com',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
+      const { quotation, ordertype } = action;
       instance.post(
         '/api/v1/order', JSON.stringify({
           quantity,
@@ -33,7 +33,7 @@ export default (store) => (next) => (action) => {
     case TO_ORDER: {
       const { pairname } = action;
       const instance = axios.create({
-        baseURL: 'http://localhost:3001',
+        baseURL: 'http://ec2-34-204-76-231.compute-1.amazonaws.com',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       instance.get(
