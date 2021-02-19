@@ -18,7 +18,7 @@ const Order = ({
 }) => {
   const [ordertype, setActionType] = useState('');
   const { slug } = useParams();
-  const quotation = 1.22;
+  const quotation = 1;
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,8 +30,8 @@ const Order = ({
       <h2 className="order__title">{slug}</h2>
       <Graphic pairName={slug} />
       <div className={displaymMessage}>{message}</div>
-      <div className="order__usdAmout">Quantité usd disponible : {USDAmount} </div>
-      <div className="order__cryptoAmount">Quantité de {pairname}  disponible : {actualQuantityPair} </div>
+      <div className="order__usdAmout">Montant USDT disponible : {USDAmount} </div>
+      <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
       <form onSubmit={handleSubmit}>
         <Field
           name="quantity"
