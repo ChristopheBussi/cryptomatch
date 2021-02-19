@@ -29,31 +29,7 @@ class PortfolioController extends AbstractController
         $this->RepPortfolio = $this->Em->getRepository(Portfolio::class);
     }
 
-    /**
-     * @Route("/api/v1/portfolio", name="apiPortfolio")
-     */
-    public function getPortfolio(): Response
-    {
-        $Portfolio = $this->RepPortfolio->findBy(['user' => $this->Security->getUser()]);
 
-        $cryptoslist = [];
-
-        foreach ($Portfolio as $currentPortfolio) {
-            $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
-            $cryptoslist[] = [
-                "logoUrl" => $Crypto['pairName'][0]['imageUrl'],
-                "pairName" => $Crypto['cryptoname'],
-                "actualQuantity" => $Crypto['actualQuantity'],
-                "averagePrice" => $Crypto['averagePrice']
-            ];
-        }
-
-        $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
-
-        $this->Response->setContent($jsonCryptolist);
-
-        return $this->Response;
-    }
 
 
     /**
