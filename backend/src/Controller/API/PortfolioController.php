@@ -3,6 +3,7 @@
 namespace App\Controller\API;
 
 use App\Entity\Portfolio;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,12 +30,14 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/portfolio", name="apiPortfolio")
+     * @Route("/api/v1/portfolio/{username}", name="apiPortfolio")
      */
-    public function getPortfolio(): Response
+    public function getPortfolio($username): Response
     {
-        $Portfolio = $this->RepPortfolio->findBy(['user' => $this->Security->getUser()]);
+        $RepUser = $this->Em->getRepository(User::class);
+        $User = $RepUser->findOneBy(['username' => $username]);
 
+<<<<<<< HEAD
         $cryptoslist = [];
 
         foreach ($Portfolio as $currentPortfolio) {
@@ -50,6 +53,31 @@ class PortfolioController extends AbstractController
         $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
 
         $this->Response->setContent($jsonCryptolist);
+=======
+        if($User)
+        {
+            $Portfolio = $this->RepPortfolio->findBy(['user' => $User]);
+            $cryptoslist = null;
+            foreach ($Portfolio as $currentPortfolio) {
+                $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
+                $cryptoslist[] = [
+                    "actualQuantity" => $Crypto['actualQuantity'],
+                    "averagePrice" => $Crypto['averagePrice'],
+                    "cryptoName" => $Crypto['cryptoname'],
+                    "imageUrl" => $Crypto['pairName'][0]['imageUrl']
+                ];
+            }
+
+            $jsonCryptolist = json_encode($cryptoslist, JSON_UNESCAPED_SLASHES);
+            $this->Response->setContent($jsonCryptolist);
+        }
+        else
+        {
+            $this->Response->setContent(json_encode(array(
+                "Message" => "User not found"
+            )));
+        }
+>>>>>>> Walid_dashBoard
 
         return $this->Response;
     }
@@ -60,7 +88,6 @@ class PortfolioController extends AbstractController
     public function getQuantityCrypto($crypto): Response
     {
         $currentCrypto = $this->RepPortfolio->findOneBy(['cryptoname' => $crypto]);
-
         $this->Response->setContent(json_encode(array(
             'actualQuantity' => $currentCrypto->getActualQuantity()
         )));
