@@ -2,8 +2,17 @@ import { connect } from 'react-redux';
 
 import Ranking from 'src/components/Ranking';
 
+import { fetchUsersRanking } from 'src/actions/Ranking';
+
 const mapStateToProps = (state) => ({
-  users: state.ranking.users
+  loading: state.ranking.loading,
+  users: state.ranking.users,
 });
 
-export default connect(mapStateToProps)(Ranking);
+const mapDispatchToProps = (dispatch) => ({
+  manageLoad: () => {
+    dispatch(fetchUsersRanking());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ranking);
