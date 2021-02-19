@@ -28,9 +28,18 @@ const App = ({ logged }) => (
         <Home />
       </Route>
       <Route path="/connexion" exact>
-        <Connexion page="signIn" />
+        {
+          !logged
+            ? <Connexion page="signIn" />
+            : <Redirect to="/cryptomonnaies" />
+        }
       </Route>
       <Route path="/inscription" exact>
+        {
+          !logged
+            ? <Connexion page="signUp" />
+            : <Redirect to="/" />
+        }
         <Connexion page="signUp" />
       </Route>
       <Route path="/ordre/:slug">

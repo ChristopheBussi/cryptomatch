@@ -34,12 +34,22 @@ const Header = ({ logged }) => {
           <nav className={classNav}>
             <ul>
               <li>
-                <NavLink to="/" exact onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to="/"
+                  exact
+                  onClick={() => setIsOpen(false)}
+                  activeClassName="header__selected"
+                >
                   Accueil
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/cryptomonnaies" exact onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to="/cryptomonnaies"
+                  exact
+                  onClick={() => setIsOpen(false)}
+                  activeClassName="header__selected"
+                >
                   Cryptomonnaies
                 </NavLink>
               </li>
@@ -47,7 +57,12 @@ const Header = ({ logged }) => {
                 logged
                   ? (
                     <li>
-                      <NavLink to="/dashboard" exact onClick={() => setIsOpen(false)}>
+                      <NavLink
+                        to="/dashboard"
+                        exact
+                        onClick={() => setIsOpen(false)}
+                        activeClassName="header__selected"
+                      >
                         Dashboard
                       </NavLink>
                     </li>
@@ -55,12 +70,22 @@ const Header = ({ logged }) => {
                   : null
               }
               <li>
-                <NavLink to="/classement" exact onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to="/classement"
+                  exact
+                  onClick={() => setIsOpen(false)}
+                  activeClassName="header__selected"
+                >
                   Classement
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/qui-sommes-nous" exact onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to="/qui-sommes-nous"
+                  exact
+                  onClick={() => setIsOpen(false)}
+                  activeClassName="header__selected"
+                >
                   Qui-Sommes-Nous
                 </NavLink>
               </li>
