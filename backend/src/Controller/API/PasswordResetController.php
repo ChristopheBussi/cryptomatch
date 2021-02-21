@@ -8,10 +8,13 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\VarDumper\Cloner\Data;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class PasswordResetController extends AbstractController
 {
@@ -33,16 +36,14 @@ class PasswordResetController extends AbstractController
     public function SendResetPasswordToken($username, MailerInterface $Mailer): Response //Est appelé quand l'user met son username pour changer de mot de passe..
     {
         //On vérifie si l'user existe, si c'est le cas on appelle la SendToken...
-        $Doc = $this->getDoctrine()->getManager();
-        $RepUser = $Doc->getRepository(User::class);
+        $RepUser = $this->Em->getRepository(User::class);
 
         $User = $RepUser->findOneBy(['username' => $username] );
 
         if($User && !empty($username))
         {
-            //On envoie le mail..
-            $Mail = new Mail("rootem21@gmail.com", "TEST...", $Mailer);
-            $Mail->sendMail();
+
+            $RouteUpdatePassword = "http://cryptomatch.surge.sh/reset-password"; //Par exemple.. le front devra la créer..
 
             //On génère un Token et on l'insert dans la table ResetPassword..
             $ResetPassword = new ResetPassword();
@@ -50,8 +51,17 @@ class PasswordResetController extends AbstractController
             $ResetPassword->setToken(uniqid() );
             $ResetPassword->setCreatedAt(new \DateTime());
 
-            $Doc->persist($ResetPassword);
-            $Doc->flush();
+            //On crée le message et on envoie le mail..
+            $Content = "Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :<br/><br/>";
+            //Le front doit
+            $UrlResetPassword = "<a href=$RouteUpdatePassword>Cliquez ici pour réinitialiser votre mot de passe</a>";
+
+
+            $Mail = new Mail($User->getEmail(), $Content.$UrlResetPassword, $Mailer);
+            $Mail->sendMail();
+
+            $this->Em->persist($ResetPassword);
+            $this->Em->flush();
 
             $this->Response->setStatusCode(201);
             $this->Response->setContent(json_encode(array('message' => 'OK') ));
@@ -66,5 +76,47 @@ class PasswordResetController extends AbstractController
        return $this->Response;
     }
 
+
+    /**
+     * @Route("/api/v1/password-reset/{token}/{userid}", name="UpdatePassword")
+     */
+    public function UpdatePassword(Request $Request, $token, $userid, UserPasswordEncoderInterface $Encoder): Response //Est appelé quand l'user change son mot de passe
+    {
+            //On vérifie let token et si les deux mots de passes sont identiques et on l'insert dans la bdd..
+            $RepResetPass = $this->Em->getRepository(ResetPassword::class);
+            $ResetPass = $RepResetPass->findOneBy(['Token' => $token, 'UserId' => $userid]);
+
+            if($ResetPass)
+            {
+                //On vérife les deux mots de passes..
+                $Data =  (array) json_decode($Request->getContent());
+                if($Data['password_first'] === $Data['password_second'] )
+                {
+                    $RepUser = $this->Em->getRepository(User::class);
+                    $User = $RepUser->find($userid);
+
+                    //On insert le nouveau password et on supprimé le Token de la table resetpassword..
+                    $User->setPassword($Encoder->encodePassword($User, $Data['password_first']));
+                    $this->Em->remove($ResetPass);
+                    $this->Em->flush();
+
+                    $this->Response->setStatusCode(201);
+                    $this->Response->setContent(json_encode('password reset'));
+                }
+                else
+                {
+                    $this->Response->setStatusCode(500);
+                    $this->Response->setContent(json_encode('Les mots de passes ne sont pas identiques'));
+                }
+            }
+            else
+            {
+                $this->Response->setStatusCode(404);
+                $this->Response->setContent(json_encode('token or userid not found'));
+            }
+
+
+        return $this->Response;
+    }
 
 }

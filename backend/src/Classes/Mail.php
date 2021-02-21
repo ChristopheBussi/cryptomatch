@@ -28,7 +28,7 @@ class Mail
             ->from($this->From)
             ->to($this->To)
             ->subject($this->Subject)
-            ->text($this->Message)
+            ->html($this->Message)
             ;
 
         $this->Mailer->send($Mail);
