@@ -30,7 +30,7 @@ class PasswordResetController extends AbstractController
     /**
      * @Route("/api/v1/password-reset/{username}", name="password_reset")
      */
-    public function CheckUsername($username, MailerInterface $Mailer): Response //Est appelé quand l'user met son username pour changer de mot de passe..
+    public function SendResetPasswordToken($username, MailerInterface $Mailer): Response //Est appelé quand l'user met son username pour changer de mot de passe..
     {
         //On vérifie si l'user existe, si c'est le cas on appelle la SendToken...
         $Doc = $this->getDoctrine()->getManager();
@@ -65,5 +65,6 @@ class PasswordResetController extends AbstractController
 
        return $this->Response;
     }
+
 
 }
