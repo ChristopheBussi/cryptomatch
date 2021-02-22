@@ -1,4 +1,4 @@
-import { UPDATE_QUANTITY_FIELD, ORDER_PASSED, ACTUAL_QUANTITY_PAIR } from '../actions/order';
+import { UPDATE_QUANTITY_FIELD, ORDER_PASSED, ACTUAL_QUANTITY_PAIR, DISPLAY_MESSAGE_ORDER } from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
 
 const initialState = {
@@ -35,6 +35,11 @@ export default (state = initialState, action) => {
         // nom de champ(qui correspond au state): et valeur du champ
         actualQuantityPair: action.actualPair.actualQuantity,
       };
+      case DISPLAY_MESSAGE_ORDER:
+      return{
+        ...state,
+        message: action.message,
+      }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
         ...state,

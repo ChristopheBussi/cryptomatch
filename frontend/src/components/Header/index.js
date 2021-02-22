@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 // == Import Scss
 import './header.scss';
 
-const Header = ({ logged }) => {
+const Header = ({ logged, handleLogOut }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
   return (
@@ -91,17 +91,25 @@ const Header = ({ logged }) => {
               </li>
             </ul>
             <div className="buttonLogin">
-              <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
-                <NavLink to="/connexion" exact>
-                  Connexion
-                </NavLink>
-              </button>
-              <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
-                <NavLink to="/inscription" exact>
-                  Inscription
-                </NavLink>
-              </button>
-            </div>
+              {
+                logged
+                  ?(
+                      <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
+                  ): 
+                      <>
+                        <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
+                          <NavLink to="/connexion" exact>
+                            Connexion
+                          </NavLink>
+                        </button>
+                        <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
+                          <NavLink to="/inscription" exact>
+                            Inscription
+                          </NavLink>
+                        </button>
+                      </>
+              }
+            </div>    
           </nav>
         </div>
       </div>
@@ -111,6 +119,7 @@ const Header = ({ logged }) => {
 
 Header.propTypes = {
   logged: PropTypes.bool.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
 };
 
 export default Header;

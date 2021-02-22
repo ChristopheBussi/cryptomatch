@@ -4,6 +4,7 @@ export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
+export const LOGOUT = 'LOGOUT';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -33,7 +34,12 @@ export const signIn = () => ({
 export const signUp = () => ({
   type: SIGNUP,
 });
+
 export const userRegistration = (data) => ({
   type: USER_REGISTRATION,
   message: data.Message,
+});
+
+export const logOut = () => ({
+  type: LOGOUT,
 });

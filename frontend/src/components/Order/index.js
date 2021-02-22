@@ -11,7 +11,7 @@ let socket;
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = { typeAction: '', quotation: null };
+    this.state = { typeAction: '', quotation: null, converter: null };
   }
   componentDidMount() {
     const pair = '/' + this.props.pairname.toLowerCase() + '@aggTrade';
@@ -35,14 +35,31 @@ class Order extends Component {
       actualQuantityPair,
       message,
       handlePlaceTheOrder,
+      handleDiplayMessage,
       changeField,
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
-      handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+      if (this.state.typeAction === 'Buy') {
+        if (USDAmount < quantity * this.state.quotation) {
+          handleDiplayMessage('Tu n\'a pas assez de Usd')
+        }
+        else {
+          handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+        }
+      }
+      if (this.state.typeAction === 'Sell') {
+        if (actualQuantityPair < quantity) {
+          handleDiplayMessage('Tu n\'a pas assez de crypto')
+        }
+        else {
+          handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+        }
+      }
     };
     const Amount = Math.round(USDAmount * 100) / 100;
     const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
+    this.state.converter = Math.round((quantity*this.state.quotation)*100/100);
     return (
       <div className="order">
         <h2 className="order__title">{pairname}</h2>
@@ -53,6 +70,7 @@ class Order extends Component {
             <div className={displaymMessage}>{message}</div>
             <div className="order__usdAmout">Montant USDT disponible : {Amount.toLocaleString()} </div>
             <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
+            <div className="order__convertion">{this.state.converter} </div>
             <form onSubmit={handleSubmit}>
               <Field
                 name="quantity"

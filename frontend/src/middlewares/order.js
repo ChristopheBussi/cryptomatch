@@ -37,6 +37,7 @@ export default (store) => (next) => (action) => {
         baseURL: url,
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
+      console.log(pairname)
       instance.get(
         `api/v1/portfolio/quantity_crypto/${pairname}`, 
       ).then((response) => {
@@ -44,7 +45,6 @@ export default (store) => (next) => (action) => {
         console.log(response.data);
         store.dispatch(actualQuantityPair(response.data));
       }).catch((error) => {
-        console.log(error);
         console.log('erreur requete order AmoutnPair');
       });
 
