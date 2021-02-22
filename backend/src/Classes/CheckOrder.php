@@ -37,7 +37,7 @@ class CheckOrder
     {
         $Response = array(
         'value' => true,
-            'message' => 'Registered order'
+            'message' => "L'ordre à bien été enregistré."
         );
 
 
@@ -86,7 +86,7 @@ class CheckOrder
                 {
                     $Response = array(
                         'value' => false,
-                        'message' => 'Quantity insuffisantes'
+                        'message' => 'Vous ne détenez pas assez de quantité de cette cryptomonnaie.'
                     );
                 }
 
