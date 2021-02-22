@@ -49,7 +49,7 @@ class UserController extends AbstractController
             $ranking[] = [
                 "rank" => $rank,
                 "username" => $userEntityAsArray['username'],
-                "accountValorization" => $userEntityAsArray['rankValorisationAmount']
+                "accountValorization" => round($userEntityAsArray['rankValorisationAmount'], 2)
             ];
         }
         
