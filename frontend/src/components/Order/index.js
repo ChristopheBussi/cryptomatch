@@ -74,17 +74,18 @@ class Order extends Component {
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
+            <h2 className="order__orderTitle">Passer un ordre</h2>
             <div className="order__pair">
               <h2 className="order__title">{pairname}</h2>
               <img className="order__logo" src={logo}></img>
               <div className="order__subtitle">{name}</div>
             </div>
-
             <div className="order__price">
               <div className="order__value">1 {name} = </div>
               <div className="order__quotation">Cotation en chargement</div>
               <div className="order__value">USDT</div>
             </div>
+
             <div className={displaymMessage}>{message}</div>
             <div className="order__usdAmout">Fonds disponibles : {Amount.toLocaleString()} USDT </div>
             <div className="order__cryptoAmount">Quantité de {symbol}  detenus : {actualQuantityPair} </div>
@@ -105,8 +106,7 @@ class Order extends Component {
                   Vendre
               </button>
               </div>
-
-            </form>
+             </form>
           </div>
 
         </div>

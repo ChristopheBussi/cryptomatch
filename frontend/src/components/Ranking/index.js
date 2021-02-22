@@ -17,13 +17,21 @@ const Ranking = ({
     <div className="ranking">
       {loading && <div>Page de classement en cours de chargement</div>}
       {!loading && (
-          /* users.map((user) => (
-            <User
-              key={user.username}
-              {...user}
-            />
-          )) */
-          console.log(users)
+        <table>
+          <tr>
+            <th>Position</th>
+            <th>Pseudo</th>
+            <th>Plus-value</th>
+          </tr>
+          {
+            users.map((user) => (
+              <User
+                key={user.username}
+                {...user}
+              />
+            ))
+          }
+        </table>
       )}
     </div>
   );

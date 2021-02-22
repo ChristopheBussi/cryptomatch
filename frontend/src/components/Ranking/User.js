@@ -6,11 +6,11 @@ const User = ({
   username,
   accountValorization,
 }) => (
-  <div className="ranking">
-    <div>{rank}</div>
-    <div>{username}</div>
-    <div>{accountValorization}</div>
-  </div>
+  <tr>
+    <td>{rank}</td>
+    <td>{username}</td>
+    <td>{accountValorization}</td>
+  </tr>
 );
 
 User.proptypes = {
