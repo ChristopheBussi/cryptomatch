@@ -1,4 +1,4 @@
-import { SAVE_USER_RANKING } from '../actions/crypto';
+import { SAVE_USERS_RANKING } from '../actions/ranking';
 
 const initialState = {
   users: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SAVE_USER_RANKING:
+    case SAVE_USERS_RANKING:
       return {
         ...state,
         users: action.users,

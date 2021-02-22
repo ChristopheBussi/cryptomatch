@@ -1,7 +1,7 @@
 import axios from 'axios';
 import url from './url';
 
-import { FETCH_USERS_RANKING, saveUsersRanking } from '../actions/crypto';
+import { FETCH_USERS_RANKING, saveUsersRanking } from '../actions/ranking';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
