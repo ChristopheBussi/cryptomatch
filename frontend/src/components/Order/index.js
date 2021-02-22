@@ -67,6 +67,7 @@ class Order extends Component {
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
+            <h2 className="order__orderTitle">Passer un ordre</h2>
             <div className={displaymMessage}>{message}</div>
             <div className="order__usdAmout">Montant USDT disponible : {Amount.toLocaleString()} </div>
             <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
@@ -79,12 +80,15 @@ class Order extends Component {
                 value={quantity}
                 onChange={changeField}
               />
-              <button type="submit" onClick={() => this.state.typeAction = 'Buy'}>
-                Acheter
-             </button>
-              <button type="submit" onClick={() => this.state.typeAction = 'Sell'}>
-                Vendre
-              </button>
+              <div className="order__button">
+                <button type="submit" onClick={() => this.state.typeAction = 'Buy'}>
+                  Acheter
+                </button>
+                
+                <button type="submit" onClick={() => this.state.typeAction = 'Sell'}>
+                  Vendre
+                </button>
+              </div>
             </form>
           </div>
 
