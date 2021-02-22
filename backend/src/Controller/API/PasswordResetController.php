@@ -42,7 +42,6 @@ class PasswordResetController extends AbstractController
 
         if($User && !empty($username))
         {
-
             $RouteUpdatePassword = "http://cryptomatch.surge.sh/reset-password"; //Par exemple.. le front devra la créer..
 
             //On génère un Token et on l'insert dans la table ResetPassword..
