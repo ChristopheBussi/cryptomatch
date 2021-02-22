@@ -1,3 +1,59 @@
 .dashboard{
   color: #fff;
+  display: flex;
+  flex-direction: column;
+ &__table{
+   display:flex;
+   flex-direction:column;
+ }
+}
+.hisCrypto{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  position: sticky;
+  top: 0.1px;
+  background-color: #181c27;
+  &__header {
+
+    & div {
+      padding: 0.25rem 0.25rem
+    }
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 4rem;
+  border-bottom: 1px #4fdb88 solid;
+  &__logo{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem 0.25rem
+  }
+  &__img{
+    max-height: 70%;
+    border-radius: 10px;
+  }
+  &__name{
+    padding-left: 0.5rem;
+  }
+  &__quantity{
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem 0.25rem;
+    align-items: center;
+  }
+  &__averagePrice{
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem 0.25rem;
+    align-items: center;
+  }
 }

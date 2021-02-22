@@ -9,15 +9,15 @@ import {
 
 const mapStateToProps = (state) => ({
   hisCryptos: state.dashboard.hisCryptos,
-  hisOrder: state.dashboard.hisOrder,
+  hisOrders: state.dashboard.hisOrders,
   loading: state.dashboard.loading,
   username: state.user.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   manageLoad: (username) => {
-    dispatch(fecthHisCryptos(username));
     dispatch(fetchHisOrders(username));
+    dispatch(fecthHisCryptos(username));
   },
 });
 
