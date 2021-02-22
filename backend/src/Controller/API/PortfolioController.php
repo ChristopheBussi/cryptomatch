@@ -30,7 +30,7 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/portfolio/{username}", name="apiPortfolio")
+     * @Route("/portfolio/{username}", name="apiPortfolio")
      */
     public function getPortfolio($username): Response
     {
