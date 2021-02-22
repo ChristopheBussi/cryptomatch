@@ -3,25 +3,21 @@ import PropTypes from 'prop-types';
 
 import User from './User'
 
-const Ranking = ({ 
+const Ranking = ({
   users,
   loading,
-  manageLoad,
+  manageLoadRank,
 }) => {
   useEffect(
-    manageLoad,
+    manageLoadRank,
     [],
   );
-
-  return(
+ 
+  return (
     <div className="ranking">
       {loading && <div>Liste du classement en cours de chargement</div>}
       {!loading && (
-          /* users.map ((user) => (
-            <User {...user} key={users.username} />
-          )) */
-
-          console.log(users)
+        <div>test</div>
       )}
     </div>
   );
@@ -34,7 +30,7 @@ Ranking.proptypes = {
     }).isRequired,
   ).isRequired,
   loading: PropTypes.bool.isRequired,
-  manageLoad: PropTypes.func.isRequired,
+  manageLoadRank: PropTypes.func.isRequired,
 }
 
 export default Ranking;

@@ -5,6 +5,7 @@ import Order from 'src/components/Order';
 import {
   placeTheOrder,
   updateQuantityField,
+  displayMessageOrder,
 } from '../../actions/order';
 
 const mapStateToProps = (state) => ({
@@ -22,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (newValue, fieldName) => {
     dispatch(updateQuantityField(parseFloat(newValue), fieldName));
   },
+  handleDiplayMessage: (message) => {
+    dispatch(displayMessageOrder(message));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Order);

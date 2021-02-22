@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Ranking from 'src/components/Ranking';
 
-import { fetchUsersRanking } from 'src/actions/Ranking';
+import { fetchUsersRanking } from 'src/actions/ranking';
 
 const mapStateToProps = (state) => ({
   loading: state.ranking.loading,
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  manageLoad: () => {
+  manageLoadRank: () => {
     dispatch(fetchUsersRanking());
   },
 });
