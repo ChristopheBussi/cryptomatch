@@ -94,7 +94,7 @@ const Header = ({ logged, handleLogOut }) => {
               {
                 logged
                   ?(
-                      <button className="buttonAuth logout" type="button" onClick={handleLogOut()}>Déconnexion</button>
+                      <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
                   ): 
                       <>
                         <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>

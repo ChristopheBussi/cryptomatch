@@ -23,14 +23,15 @@ export default (state = initialState, action) => {
         ...state,
         USDAmount: action.new_amount,
       };
-    
-      case LOGOUT:
-        return {
-          ...state,
-          username: '',
-          token: '',
-          logged: true,
-        };
+
+    case LOGOUT:
+      return {
+        ...state,
+        username: '',
+        token: '',
+        logged: false,
+        USDAmount: 0,
+      };
 
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
