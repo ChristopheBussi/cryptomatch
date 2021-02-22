@@ -2,6 +2,7 @@ export const PLACE_THE_ORDER = 'PLACE_THE_ORDER';
 export const UPDATE_QUANTITY_FIELD = 'UPDATE_QUANTITY_FIELD';
 export const ORDER_PASSED = 'ORDER_PASSED';
 export const ACTUAL_QUANTITY_PAIR = 'ACTUAL_QUANTITY_PAIR';
+export const DISPLAY_MESSAGE_ORDER = 'DISPLAY_MESSAGE_ORDER';
 
 // Modifie les champs de la page Connexion
 export const placeTheOrder = (ordertype, quotation) => ({
@@ -25,3 +26,7 @@ export const actualQuantityPair = (actualPair) => ({
   type: ACTUAL_QUANTITY_PAIR,
   actualPair,
 });
+export const displayMessageOrder = (message) => ({
+  type: DISPLAY_MESSAGE_ORDER,
+  message,
+})

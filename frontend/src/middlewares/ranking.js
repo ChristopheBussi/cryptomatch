@@ -7,7 +7,7 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_USERS_RANKING: {
       axios.get(
-        'http://ec2-34-204-76-231.compute-1.amazonaws.com/ranking',
+         `${url}ranking`,
       ).then((response) => {
         store.dispatch(saveUsersRanking(response.data));
       }).catch((error) => {
@@ -22,4 +22,3 @@ export default (store) => (next) => (action) => {
       next(action);
   }
 };
-

@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 import User from './User'
 
-const Ranking = ({ 
+const Ranking = ({
   users,
   loading,
-  manageLoad,
+  manageLoadRank,
 }) => {
   useEffect(
-    manageLoad,
+    manageLoadRank,
     [],
   );
-
-  return(
+ 
+  return (
     <div className="ranking">
       {loading && <div>Page de classement en cours de chargement</div>}
       {!loading && (
@@ -36,7 +36,7 @@ Ranking.proptypes = {
     }).isRequired,
   ).isRequired,
   loading: PropTypes.bool.isRequired,
-  manageLoad: PropTypes.func.isRequired,
+  manageLoadRank: PropTypes.func.isRequired,
 }
 
 export default Ranking;
