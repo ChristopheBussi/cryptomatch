@@ -88,10 +88,10 @@ class UserController extends AbstractController
                 ];
             }
             
-            $jsonHistoList = json_encode($histoList);
+            $jsonHistoList = json_encode($histoList, JSON_UNESCAPED_SLASHES);
 
             $response->setContent($jsonHistoList);
-            $response->setStatusCode("201");
+            $response->setStatusCode("200");
 
         } else {
             $response->setContent(json_encode(array(
