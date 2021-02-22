@@ -30,7 +30,7 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/portfolio/{username}", name="apiPortfolio")
+     * @Route("/portfolio/{username}", name="apiPortfolio")
      */
     public function getPortfolio($username): Response
     {
@@ -58,8 +58,9 @@ class PortfolioController extends AbstractController
         }
         else
         {
+            $this->Response->setStatusCode(404);
             $this->Response->setContent(json_encode(array(
-                "Message" => "User not found"
+                "Message" => "Désolé, aucun compte avec ce nom d'utilisateur n'a été trouvé"
             )));
         }
 

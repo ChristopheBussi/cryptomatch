@@ -32,17 +32,20 @@ class Order extends Component {
       quantity,
       USDAmount,
       pairname,
+      name,
       actualQuantityPair,
       message,
       handlePlaceTheOrder,
       handleDiplayMessage,
       changeField,
+      symbol,
+      logo,
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
       if (this.state.typeAction === 'Buy') {
         if (USDAmount < quantity * this.state.quotation) {
-          handleDiplayMessage('Tu n\'a pas assez de Usd')
+          handleDiplayMessage('Tu n\'as pas les fonds necessaires')
         }
         else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
@@ -50,7 +53,7 @@ class Order extends Component {
       }
       if (this.state.typeAction === 'Sell') {
         if (actualQuantityPair < quantity) {
-          handleDiplayMessage('Tu n\'a pas assez de crypto')
+          handleDiplayMessage(`Tu n\'as pas assez de ${name}`)
         }
         else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
@@ -58,38 +61,52 @@ class Order extends Component {
       }
     };
     const Amount = Math.round(USDAmount * 100) / 100;
-    const displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
-    this.state.converter = Math.round((quantity*this.state.quotation)*100/100);
+    let displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
+    if (message === 'Ordre Enregistré') {
+      displaymMessage = 'order__messageDisplay-green'
+    }
+    this.state.converter = Math.round((quantity * this.state.quotation) * 100 / 100);
+    if (isNaN(this.state.converter)) {
+      this.state.converter = 0;
+    }
     return (
       <div className="order">
-        <h2 className="order__title">{pairname}</h2>
-        <span className="order__quotation"></span>
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
             <h2 className="order__orderTitle">Passer un ordre</h2>
+            <div className="order__pair">
+              <h2 className="order__title">{pairname}</h2>
+              <img className="order__logo" src={logo}></img>
+              <div className="order__subtitle">{name}</div>
+            </div>
+            <div className="order__price">
+              <div className="order__value">1 {name} = </div>
+              <div className="order__quotation">Cotation en chargement</div>
+              <div className="order__value">USDT</div>
+            </div>
+
             <div className={displaymMessage}>{message}</div>
-            <div className="order__usdAmout">Montant USDT disponible : {Amount.toLocaleString()} </div>
-            <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
-            <div className="order__convertion">{this.state.converter} </div>
+            <div className="order__usdAmout">Fonds disponibles : {Amount.toLocaleString()} USDT </div>
+            <div className="order__cryptoAmount">Quantité de {symbol}  detenus : {actualQuantityPair} </div>
             <form onSubmit={handleSubmit}>
               <Field
                 name="quantity"
                 type="number"
-                placeholder="Quantité"
+                placeholder="Quantité de l'ordre :"
                 value={quantity}
                 onChange={changeField}
               />
-              <div className="order__button">
-                <button type="submit" onClick={() => this.state.typeAction = 'Buy'}>
+              <div className="order__convertion">Montant USDT = {this.state.converter} </div>
+              <div className="buttonPassedOrder">
+                <button className="button__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
                   Acheter
-                </button>
-                
-                <button type="submit" onClick={() => this.state.typeAction = 'Sell'}>
+              </button>
+                <button className="button__Sell button" type="submit" onClick={() => this.state.typeAction = 'Sell'}>
                   Vendre
-                </button>
+              </button>
               </div>
-            </form>
+             </form>
           </div>
 
         </div>

@@ -15,8 +15,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   // composant de connexion
-  toOrder: (pairname) => {
-    dispatch(toOrder(pairname));
+  toOrder: (pairname,name, symbol, logo) => {
+    dispatch(toOrder(pairname,name, symbol, logo));
   },
   manageLoad: () => {
     dispatch(fetchCrypto());
