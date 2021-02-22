@@ -6,18 +6,49 @@
 
   &__title {
     font-size: 1.2rem;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem 1rem 0rem 1rem;
     text-align: center;
+  }
+
+  &__subtitle {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  &__passed {
+    width: 20rem;
+  }
+
+  &__quotation {
+    padding-bottom: 0.5rem;
+  }
+
+  &__cryptoAmount {
+    padding-bottom: 0.5rem;
   }
 
   &__messageNone {
     display: none;
   }
 
+  &__messageDisplay {
+    padding-bottom: 0.5rem;
+    color: #F84960;
+
+    &-green {
+      padding-bottom: 0.5rem;
+      color: #4fdb88;
+    }
+  }
+
   &__graph {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  &__convertion {
+    padding: 0.5rem 0rem 2rem 0rem;
   }
 }
 
@@ -26,6 +57,26 @@
   height: 25rem;
   width: 25rem;
 
+}
+
+.buttonPassedOrder {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  border-radius: 19px;
+  border: none;
+  padding: 0.7rem 3rem;
+
+  &__Buy {
+    background-color: #4fdb88;
+  }
+
+  &__Sell {
+    background-color: #F84960;
+
+  }
 }
 
 article {
@@ -51,21 +102,26 @@ article {
     &__graph {
       display: flex;
       flex-direction: row;
-      width: 127rem;
-      justify-content: space-around;
+      width: 115rem;
+      height: 58rem;
+      justify-content: space-between;
+      box-shadow: 3px 3px 24px -1px #000;
     }
 
     &__passed {
       display: flex;
+      width: 42rem;
+      height: 45rem;
+      display: flex;
       flex-direction: column;
-      align-items: center;
+      padding-left: 5rem;
     }
   }
 
   .widget {
     padding: 1rem;
-    height: 48rem;
-    width: 63rem;
+    height: 56rem;
+    width: 73rem;
 
   }
 }
