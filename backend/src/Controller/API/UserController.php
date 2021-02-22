@@ -11,16 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/api/v1/user", name="apiUser")
-     */
-    public function getUser(): Response
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/API/UserController.php',
-        ]);
-    }
 
      /**
      * @Route("/ranking", name="apiRanking")
