@@ -5,6 +5,8 @@ const initialState = {
   quantity: 0.000,
   pairname: '',
   name:'',
+  logo:'',
+  symbol:'',
   message: null,
   actualQuantityPair: 0,
 };
@@ -30,6 +32,8 @@ export default (state = initialState, action) => {
         ...state,
         pairname: action.pairname,
         name: action.name,
+        symbol: action.symbol,
+        logo: action.logo,
       };
       case ACTUAL_QUANTITY_PAIR:
       return {

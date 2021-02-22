@@ -3,10 +3,12 @@ export const FETCH_CRYPTO = 'FETCH_CRYPTO';
 export const SAVE_CRYPTOS = 'SAVE_CRYPTOS';
 
 // Modifie les champs de la page Connexion
-export const toOrder = (pairname,name) => ({
+export const toOrder = (pairname,name, symbol, logo) => ({
   type: TO_ORDER,
   pairname,
   name,
+  symbol,
+  logo, 
 });
 export const fetchCrypto = () => ({
   type: FETCH_CRYPTO,

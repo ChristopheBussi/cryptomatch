@@ -13,7 +13,7 @@ const CryptoList = ({
 }) => {
   const percentAround = Math.round(priceChangePercent24h*100)/100;
   const handleClick = () => {
-    toOrder(pairName, name);
+    toOrder(pairName, name, symbol, logo);
   };
   return (
     <div className="cryptos__crypto">

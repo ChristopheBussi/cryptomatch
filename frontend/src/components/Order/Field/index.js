@@ -26,7 +26,7 @@ const Field = ({
         htmlFor={inputId}
         className="field-label"
       >
-        {placeholder} : 
+        {placeholder}
       </label>
       <input
         value={value}
@@ -37,7 +37,6 @@ const Field = ({
         name={name}
         onChange={handleChange}
       />
-
     </div>
   );
 };

@@ -31,6 +31,11 @@
     display: none;
   }
 
+  &__logo {
+    width: 2rem;
+    height: auto;
+  }
+
   &__messageDisplay {
     padding-bottom: 0.5rem;
     color: #F84960;

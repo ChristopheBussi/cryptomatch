@@ -38,6 +38,8 @@ class Order extends Component {
       handlePlaceTheOrder,
       handleDiplayMessage,
       changeField,
+      symbol,
+      logo,
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -72,17 +74,25 @@ class Order extends Component {
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
-            <h2 className="order__title">{pairname}</h2>
-            <div className="order__subtitle">{name}</div>
-            <div className="order__quotation">Cotation en chargement</div>
+            <div className="order__pair">
+              <h2 className="order__title">{pairname}</h2>
+              <img className="order__logo" src={logo}></img>
+              <div className="order__subtitle">{name}</div>
+            </div>
+
+            <div className="order__price">
+              <div className="order__value">1 {name} = </div>
+              <div className="order__quotation">Cotation en chargement</div>
+              <div className="order__value">USDT</div>
+            </div>
             <div className={displaymMessage}>{message}</div>
-            <div className="order__usdAmout">Fonds disponible : {Amount.toLocaleString()} USDT </div>
-            <div className="order__cryptoAmount">Quantité de {pairname}  detenus : {actualQuantityPair} </div>
+            <div className="order__usdAmout">Fonds disponibles : {Amount.toLocaleString()} USDT </div>
+            <div className="order__cryptoAmount">Quantité de {symbol}  detenus : {actualQuantityPair} </div>
             <form onSubmit={handleSubmit}>
               <Field
                 name="quantity"
                 type="number"
-                placeholder="Quantité"
+                placeholder="Quantité de l'ordre :"
                 value={quantity}
                 onChange={changeField}
               />
