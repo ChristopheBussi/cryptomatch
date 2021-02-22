@@ -5,7 +5,7 @@ const initialState = {
   username: '',
   token: '',
   USDAmount: 0,
-  logged: true,
+  logged: false,
 };
 
 export default (state = initialState, action) => {
