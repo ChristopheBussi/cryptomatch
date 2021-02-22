@@ -1,5 +1,6 @@
 <?php
 namespace App\EventListener;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 
@@ -23,4 +24,5 @@ class AuthenticationSuccessListener
         );
         $event->setData($data);
     }
+
 }

@@ -1,5 +1,4 @@
-import { SAVE_USERS_RANKING } from "../actions/ranking";
-
+import { SAVE_USERS_RANKING } from '../actions/ranking';
 
 const initialState = {
   users: [],

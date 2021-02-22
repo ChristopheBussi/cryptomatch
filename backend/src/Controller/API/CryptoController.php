@@ -38,6 +38,5 @@ class CryptoController extends AbstractController
         $response->setContent($jsonCryptoslist);
 
         return $response;
-
     }
 }
