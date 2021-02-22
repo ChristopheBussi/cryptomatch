@@ -10,7 +10,7 @@ import Connexion from 'src/containers/Connexion';
 import Order from 'src/containers/Order';
 import CryptosList from 'src/containers/CryptoList';
 import About from 'src/components/About';
-import Dashboard from 'src/components/Dashboard';
+import Dashboard from 'src/containers/Dashboard';
 import Ranking from 'src/containers/Ranking';
 import CryptoClass from 'src/containers/CryptoList';
 

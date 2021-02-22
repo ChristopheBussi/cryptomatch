@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
           // nom de champ(qui correspond au state): et valeur du champ
           [action.fieldName]: action.newValue,
         },
-      };SAVE_USER_DATA
+      };
     case USER_REGISTRATION:
       return {
         ...state,
