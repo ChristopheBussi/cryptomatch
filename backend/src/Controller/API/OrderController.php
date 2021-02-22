@@ -47,7 +47,7 @@ class OrderController extends AbstractController
         $CryptoByPairName = $RepCrypto->findOneBy(['pairName' => $Data['pair_name']]);
 
         if(!$CryptoByPairName)
-            $this->ResponseFormate('Crypto not exists', '404');
+            $this->ResponseFormate("Cette Cryptomonnaie n'existe pas", '404');
         else
         {
             //Vérifie si l'ordre est conforme.. avec OrderIsValid()..
@@ -173,7 +173,7 @@ class OrderController extends AbstractController
             $this->Response->setContent(json_encode($OrderList));
         }
         else
-            $this->ResponseFormate('User not found', 404);
+            $this->ResponseFormate("Désolé, aucun compte avec ce nom d'utilisateur n'a été trouvé", 401);
 
 
         return $this->Response;
