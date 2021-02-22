@@ -4,6 +4,7 @@ import { TO_ORDER } from '../actions/crypto';
 const initialState = {
   quantity: 0.000,
   pairname: '',
+  name:'',
   message: null,
   actualQuantityPair: 0,
 };
@@ -20,7 +21,7 @@ export default (state = initialState, action) => {
     case ORDER_PASSED:
       return {
         ...state,
-        message: action.message,
+        message: "Ordre Enregistré",
         actualQuantityPair: action.new_quantity,
         quantity: 0,
       };
@@ -28,6 +29,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         pairname: action.pairname,
+        name: action.name,
       };
       case ACTUAL_QUANTITY_PAIR:
       return {

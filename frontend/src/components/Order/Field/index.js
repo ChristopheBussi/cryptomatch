@@ -22,22 +22,22 @@ const Field = ({
 
   return (
     <div>
+      <label
+        htmlFor={inputId}
+        className="field-label"
+      >
+        {placeholder} : 
+      </label>
       <input
         value={value}
         id={inputId}
         type={type}
-        className="field-input"
+        className="field-input-order"
         placeholder={placeholder}
         name={name}
         onChange={handleChange}
       />
 
-      <label
-        htmlFor={inputId}
-        className="field-label"
-      >
-        {placeholder}
-      </label>
     </div>
   );
 };
