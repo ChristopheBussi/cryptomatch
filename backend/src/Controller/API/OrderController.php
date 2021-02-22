@@ -142,7 +142,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/orders/{username}", name="apiOrdersByUsername")
+     * @Route("/orders/{username}", name="apiOrdersByUsername")
      */
     public function listOrders($username)
     {
