@@ -102,21 +102,26 @@ article {
     &__graph {
       display: flex;
       flex-direction: row;
-      width: 127rem;
-      justify-content: space-around;
+      width: 115rem;
+      height: 58rem;
+      justify-content: space-between;
+      box-shadow: 3px 3px 24px -1px #000;
     }
 
     &__passed {
       display: flex;
+      width: 42rem;
+      height: 45rem;
+      display: flex;
       flex-direction: column;
-      align-items: center;
+      padding-left: 5rem;
     }
   }
 
   .widget {
     padding: 1rem;
-    height: 48rem;
-    width: 63rem;
+    height: 56rem;
+    width: 73rem;
 
   }
 }
