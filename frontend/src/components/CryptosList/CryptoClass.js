@@ -7,24 +7,12 @@ let socket;
 class CryptoClass extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      search: '',
-    }
-
   }
-
-  setSearch(newSearchValue){
-    this.setState({
-      search: newSearchValue,
-    })
-  }
-
   componentDidMount() {
     const { manageLoad } = this.props;
     manageLoad();
   }
-
+  
   componentDidUpdate() {
     const { cryptos } = this.props;
     let streams = '';
@@ -42,23 +30,45 @@ class CryptoClass extends Component {
   componentWillUnmount() {
     socket.close();
   }
-
+  
   getFilteredCrypto() {
-    const { search } = this.state;
-  }
+    // plan d'attaque :
+    // - récupérer la propriété search du state
+    const { search, cryptos } = this.props;
 
+    // on passe notre chaine de caractère search en minuscule
+    const loweredSearch = search.toLowerCase();
+
+    // - filtrer notre tableau de devises grâce à cette information
+    const filteredCryptoList = cryptos.filter((crypto) => {
+      // on passe le nom de la devise que l'on étudie en minuscule
+      const loweredCryptoName = crypto.name.toLowerCase();
+      // on teste si la devise étudiée (en minuscule) contient
+      // notre chaine de recherche (en mlinuscule elle aussi).
+      // Et on renvoit le résultat...
+      return loweredCryptoName.includes(loweredSearch);
+    });
+
+    // - retourner le tableau filtré
+    return filteredCryptoList;
+  }
+  
   render() {
-    const { loading, cryptos, toOrder } = this.props;
-    const { search } = this.state;
+    const { loading, cryptos, toOrder, manageChangeSearch, search } = this.props;
+    const cryptosList = this.getFilteredCrypto();
     return (
       <div className="cryptos">
         {loading && <div>Liste des cryptos en cours de chargement</div>}
         {!loading && (
           <>
             <div className="cryptos__searchBar">
-              <input onChange={(event) => {
-                this.setSearch(event.target.value)
-              }} value={search} type="text" placeholder="Rechercher"></input>
+              <input 
+              className="cryptos_search"
+              onChange={(event) => manageChangeSearch(event.target.value)} 
+              value={search} 
+              type="text" 
+              placeholder="Rechercher"
+              />
             </div>
 
             <div className="cryptos__header">
@@ -68,7 +78,7 @@ class CryptoClass extends Component {
             </div>
             <div className="cryptos__list">
               {
-                cryptos.map((crypto) => (
+                cryptosList.map((crypto) => (
                   <CryptoList
                     key={crypto.symbol}
                     {...crypto}
