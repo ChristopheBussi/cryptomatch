@@ -3,10 +3,23 @@ import React, { Component } from 'react';
 import CryptoList from './CryptoList';
 
 let socket;
+
 class CryptoClass extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      search: '',
+    }
+
   }
+
+  setSearch(newSearchValue){
+    this.setState({
+      search: newSearchValue,
+    })
+  }
+
   componentDidMount() {
     const { manageLoad } = this.props;
     manageLoad();
@@ -29,13 +42,25 @@ class CryptoClass extends Component {
   componentWillUnmount() {
     socket.close();
   }
+
+  getFilteredCrypto() {
+    const { search } = this.state;
+  }
+
   render() {
     const { loading, cryptos, toOrder } = this.props;
+    const { search } = this.state;
     return (
       <div className="cryptos">
         {loading && <div>Liste des cryptos en cours de chargement</div>}
         {!loading && (
           <>
+            <div className="cryptos__searchBar">
+              <input onChange={(event) => {
+                this.setSearch(event.target.value)
+              }} value={search} type="text" placeholder="Rechercher"></input>
+            </div>
+
             <div className="cryptos__header">
               <div className="cryptos__logo">Nom</div>
               <div className="cryptos__price">Dernier prix USDT</div>
