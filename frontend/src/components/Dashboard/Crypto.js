@@ -4,7 +4,11 @@ import './dashboard.scss';
 
 import { NavLink } from 'react-router-dom';
 const Crypto = ({
-  actualQuantity, averagePrice, cryptoName, imageUrl
+  toOrder,
+  actualQuantity,
+  averagePrice,
+  cryptoName,
+  imageUrl
 }) => {
   return (
     <NavLink className='link' to={`/ordre/${cryptoName}`} >

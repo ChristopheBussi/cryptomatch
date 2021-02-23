@@ -23,7 +23,7 @@ const Ranking = ({
               {...user}
             />
           )) */
-          console.log(users)
+          <p>test</p>
       )}
     </div>
   );

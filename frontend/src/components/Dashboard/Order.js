@@ -7,13 +7,13 @@ const Order = ({
   pairname,quantity,quotation,orderType,amount,createdAt
 }) => {
   return (
-  <div className="hisOrder">
+    <div className="hisOrder">
+          <div className="hisOrder__createdAt">{createdAt}</div>
           <div className="hisOrder__name">{pairname}</div>
           <div className="hisOrder__orderType">{orderType}</div>
           <div className="hisOrder__quantity">{quantity}</div>
-          <div className="hisOrder__amount">{amount}</div>
           <div className="hisOrder__quotation">{quotation}</div>
-          <div className="hisOrder__createdAt">{createdAt}</div>
+          <div className="hisOrder__amount">{amount}</div>
   </div>
   );
 };

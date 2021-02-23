@@ -18,7 +18,6 @@ export default (store) => (next) => (action) => {
       }).catch((error) => {
         console.log('erreur requete cryptos');
       });
-
       next(action);
       break;
     }
@@ -30,7 +29,6 @@ export default (store) => (next) => (action) => {
       }).catch((error) => {
         console.log('erreur requete cryptos');
       });
-
       next(action);
       break;
     }
