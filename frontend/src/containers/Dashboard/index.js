@@ -4,7 +4,8 @@ import Dashboard from 'src/components/Dashboard';
 
 import {
   fetchHisOrders,
-  fecthHisCryptos
+  fecthHisCryptos,
+  displayTab
 } from 'src/actions/dashboard';
 
 const mapStateToProps = (state) => ({
@@ -12,6 +13,8 @@ const mapStateToProps = (state) => ({
   hisOrders: state.dashboard.hisOrders,
   loading: state.dashboard.loading,
   username: state.user.username,
+  displayCryptos: state.dashboard.displayCryptos,
+  displayOrders: state.dashboard.displayOrders,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchHisOrders(username));
     dispatch(fecthHisCryptos(username));
   },
+  handleClickTab: (type) => {
+    dispatch(displayTab(type));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
