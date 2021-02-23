@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Classes;
 
-
-use App\Entity\Crypto;
-use App\Entity\Portfolio;
 use App\Entity\User;
+use App\Entity\Portfolio;
+use App\Service\CallApiService;
 
 class CheckOrder
 {
@@ -32,23 +30,28 @@ class CheckOrder
 
     }
 
-    //Return false if order is not valid.. true if order is valid..
-    public function OrderIsValid()
+    public function incoherentQuote(CallApiService $callApi)
+    {
+        $binanceQuotation = $callApi->getBinanceQuotation($this->PairName);
+        return ($this->Quotation > (1.05 * $binanceQuotation) || $this->Quotation < (0.95 * $binanceQuotation));
+    }
+
+
+    public function OrderIsValid(CallApiService $callApi)
     {
         $Response = array(
         'value' => true,
-            'message' => "L'ordre à bien été enregistré."
+            'message' => "L'ordre a bien été enregistré."
         );
 
-
-        //Check if Quotation is Double..
-        //if(!is_double($this->Quotation) )
-        //{
-           // $Response = array(
-                //'value' => false,
-               // 'message' => 'Invalid Order'
-            //);
-        //}
+        if($this->incoherentQuote($callApi))
+        {
+           $Response = array(
+               'value' => false,
+               'message' => "Le prix de l'ordre est incohérent"
+            );
+            return $Response;
+        }
 
         switch($this->OrderType)
         {
