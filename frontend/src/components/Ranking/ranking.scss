@@ -1,12 +1,135 @@
 .ranking {
   display: flex;
   justify-content: center;
+  
+  margin-top: 2rem;
   & table {
     color: white;
-    & td {
-      border: 1px solid white;
-      padding: 0.5rem;
+    box-shadow: 3px 3px 20px -1px black;
 
+    & thead {
+      background: #4fdb88;
+      color: #181c27;
+      & tr {
+        text-align: center;
+        font-weight: 600;
+        
+        & th {
+          padding: .8rem;
+        }
+        
+        & th:nth-of-type(1) {
+          border-radius: 10px 0 0 0;
+        }
+        & th:nth-of-type(3) {
+          border-radius:  0 10px 0 0;
+        }
+      }
+    }
+    
+    & tbody {
+      
+      & tr {
+        border-bottom: 1px solid #30374b;
+
+        & td {
+          padding:  1.5rem .5rem;
+          font-size: 1.1rem;
+          text-align: center;
+        }
+      }
+      
+      & tr:nth-of-type(even) {
+        background-color: #11141b;
+        color: #4fdb88;
+      }
+      
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .ranking {
+    margin-top: 2rem;
+
+    & table {
+      & thead {
+        & tr {
+          text-align: left;
+
+          & th {
+            padding-left: 0;
+          }
+          & th:nth-of-type(1) {
+            padding-left: 2rem;
+          }
+        }
+      }
+
+      & tbody {
+        & tr {
+          & td {
+            text-align: left;
+            padding-left: 0;
+          }
+
+          & td:nth-of-type(1) {
+            padding-right: 7rem;
+            padding-left: 2rem;
+          }
+
+          & td:nth-of-type(2) {
+            padding-right: 15rem;
+          }
+
+          & td:nth-of-type(3) {
+            padding-right: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .ranking {
+    margin-top: 2rem;
+
+    & table {
+      & thead {
+        & tr {
+          text-align: left;
+
+          & th {
+            padding-left: 0;
+          }
+          & th:nth-of-type(1) {
+            padding-left: 2rem;
+          }
+        }
+      }
+
+      & tbody {
+        & tr {
+          & td {
+            text-align: left;
+            padding-left: 0;
+          }
+
+          & td:nth-of-type(1) {
+            padding-right: 10rem;
+            padding-left: 2rem;
+          }
+
+          & td:nth-of-type(2) {
+            padding-right: 30rem;
+          }
+
+          & td:nth-of-type(3) {
+            padding-right: 2rem;
+          }
+        }
+      }
     }
   }
 }
