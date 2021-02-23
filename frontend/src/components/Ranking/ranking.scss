@@ -1,0 +1,12 @@
+.ranking {
+  display: flex;
+  justify-content: center;
+  & table {
+    color: white;
+    & td {
+      border: 1px solid white;
+      padding: 0.5rem;
+
+    }
+  }
+}

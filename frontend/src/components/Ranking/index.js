@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import User from './User'
 
+import './ranking.scss'
+
 const Ranking = ({
   users,
   loading,
