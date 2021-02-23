@@ -8,15 +8,16 @@ class CryptoClass extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     const { manageLoad } = this.props;
     manageLoad();
   }
   
   componentDidUpdate() {
-    const { cryptos } = this.props;
+    const cryptosList = this.getFilteredCrypto();
     let streams = '';
-    cryptos.forEach((crypto) => {
+    cryptosList.forEach((crypto) => {
       streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
     });
     socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
@@ -27,6 +28,7 @@ class CryptoClass extends Component {
       DOMquote.textContent = quote;
     };
   }
+
   componentWillUnmount() {
     socket.close();
   }
@@ -63,7 +65,7 @@ class CryptoClass extends Component {
           <>
             <div className="cryptos__searchBar">
               <input 
-              className="cryptos_search"
+              className="cryptos__searchBar__input"
               onChange={(event) => manageChangeSearch(event.target.value)} 
               value={search} 
               type="text" 
