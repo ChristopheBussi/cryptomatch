@@ -112,7 +112,7 @@ class Dashboard extends Component {
                 <div className="hisCrypto headerTable">
                   <div className="hisCrypto__logo">Nom</div>
                   <div className="hisCrypto__quantity">Quantité</div>
-                  <div className="hisCrypto__averagePrice">PrixMoyen</div>
+                  <div className="hisCrypto__averagePrice">Valorisation</div>
                 </div>
                 {
                   hisCryptos.map((crypto) => (
