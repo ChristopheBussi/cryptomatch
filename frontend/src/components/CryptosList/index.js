@@ -16,6 +16,7 @@ const CryptosList = ({
     manageLoad,
     [],
   );
+  
   return (
     <div className="cryptos">
       {loading && <div>Liste des cryptos en cours de chargement</div>}
