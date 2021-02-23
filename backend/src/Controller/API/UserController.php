@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-
      /**
      * @Route("/ranking", name="apiRanking")
      */
@@ -44,7 +43,6 @@ class UserController extends AbstractController
         }
         
         $response = new Response();
-
         
         if (count($ranking) > 0) {
             $jsonRanking = json_encode($ranking);
@@ -76,22 +74,29 @@ class UserController extends AbstractController
     
             $results = $query->getResult();
 
-            foreach ($results as $currentItem) {
+            if ($results) {
+                foreach ($results as $currentItem) {
 
-                $date = $currentItem['date'];
-                $mydate = $date->format('d/m/Y');
-                $amount = round($currentItem['USDAmount'], 2);
+                    $date = $currentItem['date'];
+                    $mydate = $date->format('d/m/Y');
+                    $amount = round($currentItem['USDAmount'], 2);
+                    
+                    $histoList[] = [
+                        "date" => $mydate,
+                        "valorisation" => $amount
+                    ];
+                }
                 
-                $histoList[] = [
-                    "date" => $mydate,
-                    "valorisation" => $amount
-                ];
+                $jsonHistoList = json_encode($histoList, JSON_UNESCAPED_SLASHES);
+    
+                $response->setContent($jsonHistoList);
+                $response->setStatusCode("200");
+            } else {
+                $response->setContent(json_encode(array(
+                    "Message" => "Cet utilisateur n'est pas encore classé"
+                )));
+                $response->setStatusCode("404");
             }
-            
-            $jsonHistoList = json_encode($histoList, JSON_UNESCAPED_SLASHES);
-
-            $response->setContent($jsonHistoList);
-            $response->setStatusCode("200");
 
         } else {
             $response->setContent(json_encode(array(
