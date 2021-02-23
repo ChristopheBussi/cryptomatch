@@ -14,7 +14,7 @@ const Ranking = ({
     manageLoadRank,
     [],
   );
- 
+
   return (
     <div className="ranking">
       {loading && <div>Page de classement en cours de chargement</div>}
@@ -31,9 +31,9 @@ const Ranking = ({
             {
               users.map((user) => (
                 <User
-                  key={user.username}
-                  {...user}
-                />
+              key={user.username}
+              {...user}
+            />
               ))
             }
           </tbody>
