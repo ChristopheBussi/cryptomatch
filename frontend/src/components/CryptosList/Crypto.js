@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './cryptos.scss';
-const CryptoList = ({
+const Crypto = ({
   logo,
   symbol,
   name,
@@ -29,7 +29,7 @@ const CryptoList = ({
   );
 };
 
-CryptoList.propTypes = {
+Crypto.propTypes = {
   logo: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -39,4 +39,4 @@ CryptoList.propTypes = {
   toOrder: PropTypes.func.isRequired,
 };
 
-export default CryptoList;
+export default Crypto;

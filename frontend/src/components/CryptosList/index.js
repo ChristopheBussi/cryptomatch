@@ -1,61 +1,99 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 
-import PropTypes from 'prop-types';
+import Crypto from './Crypto';
 
-import CryptoList from './CryptoList';
+let socket;
 
-import './cryptos.scss';
-
-const CryptosList = ({
-  cryptos,
-  toOrder,
-  loading,
-  manageLoad,
-}) => {
-  useEffect(
-    manageLoad,
-    [],
-  );
+class Cryptos extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    const { manageLoad } = this.props;
+    manageLoad();
+  }
   
-  return (
-    <div className="cryptos">
-      {loading && <div>Liste des cryptos en cours de chargement</div>}
-      {!loading && (
-        <>
-          <div className="cryptos__header">
-            <div className="cryptos__logo">Nom</div>
-            <div className="cryptos__price">Dernier prix</div>
-            <div className="cryptos__price24">Variation</div>
-          </div>
-          <div className="cryptos__list">
-            {
-              cryptos.map((crypto) => (
-                <CryptoList
-                  key={crypto.symbol}
-                  {...crypto}
-                  toOrder={toOrder}
-                  cryptos={cryptos}
-                />
+  componentDidUpdate() {
+    const cryptosList = this.getFilteredCrypto();
 
-              ))
-            }
-          </div>
-        </>
-      )}
+    let streams = '';
+    cryptosList.forEach((crypto) => {
+      streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
+    });
+    socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
+    socket.onmessage = (event) => {
+      const objectData = JSON.parse(event.data);
+      const DOMquote = document.querySelector('.quote' + objectData.s);
+      let quote = objectData.p;
+      DOMquote.textContent = quote;
+    };
+  }
+  componentWillUnmount() {
+    socket.close();
+  }
+  
+  getFilteredCrypto() {
+    // plan d'attaque :
+    // - récupérer la propriété search du state
+    const { search, cryptos } = this.props;
 
-    </div>
-  );
-};
+    // on passe notre chaine de caractère search en minuscule
+    const loweredSearch = search.toLowerCase();
 
-CryptosList.propTypes = {
-  cryptos: PropTypes.arrayOf(
-    PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-  toOrder: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  manageLoad: PropTypes.func.isRequired,
-};
+    // - filtrer notre tableau de devises grâce à cette information
+    const filteredCryptoList = cryptos.filter((crypto) => {
+      // on passe le nom de la devise que l'on étudie en minuscule
+      const loweredCryptoName = crypto.name.toLowerCase();
+      // on teste si la devise étudiée (en minuscule) contient
+      // notre chaine de recherche (en mlinuscule elle aussi).
+      // Et on renvoit le résultat...
+      return loweredCryptoName.includes(loweredSearch);
+    });
 
-export default CryptosList;
+    // - retourner le tableau filtré
+    return filteredCryptoList;
+  }
+  
+  render() {
+    const { loading, cryptos, toOrder, manageChangeSearch, search } = this.props;
+    const cryptosList = this.getFilteredCrypto();
+    return (
+      <div className="cryptos">
+        {loading && <div>Liste des cryptos en cours de chargement</div>}
+        {!loading && (
+          <>
+            <div className="cryptos__searchBar">
+              <input 
+              className="cryptos_search"
+              onChange={(event) => manageChangeSearch(event.target.value)} 
+              value={search} 
+              type="text" 
+              placeholder="Rechercher"
+              />
+            </div>
+
+            <div className="cryptos__header">
+              <div className="cryptos__logo">Nom</div>
+              <div className="cryptos__price">Dernier prix USDT</div>
+              <div className="cryptos__price24">Variation 24h</div>
+            </div>
+            <div className="cryptos__list">
+              {
+                cryptosList.map((crypto) => (
+                  <Crypto
+                    key={crypto.symbol}
+                    {...crypto}
+                    toOrder={toOrder}
+                    cryptos={cryptos}
+                  />
+                ))
+              }
+            </div>
+          </>
+        )}
+
+      </div>
+    );
+  }
+}
+export default Cryptos;
