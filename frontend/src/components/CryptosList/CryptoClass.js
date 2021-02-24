@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CryptoList from './CryptoList';
 
 let socket;
+
 class CryptoClass extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,7 @@ class CryptoClass extends Component {
     const { manageLoad } = this.props;
     manageLoad();
   }
-
+  
   componentDidUpdate() {
     const { cryptos } = this.props;
     let streams = '';
@@ -29,13 +30,47 @@ class CryptoClass extends Component {
   componentWillUnmount() {
     socket.close();
   }
+  
+  getFilteredCrypto() {
+    // plan d'attaque :
+    // - récupérer la propriété search du state
+    const { search, cryptos } = this.props;
+
+    // on passe notre chaine de caractère search en minuscule
+    const loweredSearch = search.toLowerCase();
+
+    // - filtrer notre tableau de devises grâce à cette information
+    const filteredCryptoList = cryptos.filter((crypto) => {
+      // on passe le nom de la devise que l'on étudie en minuscule
+      const loweredCryptoName = crypto.name.toLowerCase();
+      // on teste si la devise étudiée (en minuscule) contient
+      // notre chaine de recherche (en mlinuscule elle aussi).
+      // Et on renvoit le résultat...
+      return loweredCryptoName.includes(loweredSearch);
+    });
+
+    // - retourner le tableau filtré
+    return filteredCryptoList;
+  }
+  
   render() {
-    const { loading, cryptos, toOrder } = this.props;
+    const { loading, cryptos, toOrder, manageChangeSearch, search } = this.props;
+    const cryptosList = this.getFilteredCrypto();
     return (
       <div className="cryptos">
         {loading && <div>Liste des cryptos en cours de chargement</div>}
         {!loading && (
           <>
+            <div className="cryptos__searchBar">
+              <input 
+              className="cryptos_search"
+              onChange={(event) => manageChangeSearch(event.target.value)} 
+              value={search} 
+              type="text" 
+              placeholder="Rechercher"
+              />
+            </div>
+
             <div className="cryptos__header">
               <div className="cryptos__logo">Nom</div>
               <div className="cryptos__price">Dernier prix USDT</div>
@@ -43,7 +78,7 @@ class CryptoClass extends Component {
             </div>
             <div className="cryptos__list">
               {
-                cryptos.map((crypto) => (
+                cryptosList.map((crypto) => (
                   <CryptoList
                     key={crypto.symbol}
                     {...crypto}

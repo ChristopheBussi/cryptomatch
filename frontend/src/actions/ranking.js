@@ -1,4 +1,4 @@
-export const FETCH_USERS_RANKING = 'SAVE_USERS_RANKING';
+export const FETCH_USERS_RANKING = 'FETCH_USERS_RANKING';
 export const SAVE_USERS_RANKING = 'SAVE_USERS_RANKING';
 
 export const fetchUsersRanking = () => ({

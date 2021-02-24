@@ -7,6 +7,7 @@ use App\Entity\Crypto;
 use App\Entity\Order;
 use App\Entity\Portfolio;
 use App\Entity\User;
+use App\Service\CallApiService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +37,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/api/v1/order", name="apiOrder")
      */
-    public function postOrder(Request $Request): Response
+    public function postOrder(Request $Request,CallApiService $callApiService): Response
     {
 
        //check the conformity of the request sent by the Front
@@ -56,7 +57,7 @@ class OrderController extends AbstractController
 
             $TotalPrice = $Data['quantity'] * $Data['quotation'];
 
-            $MessageOrderCheck = $OrderCheck->OrderIsValid();
+            $MessageOrderCheck = $OrderCheck->OrderIsValid($callApiService);
             if($MessageOrderCheck['value'])
             {
                 $NewUSDAmount = 0;
@@ -133,7 +134,7 @@ class OrderController extends AbstractController
             {
                 //Order is not valid, message possible : "Quantity insuffisantes", "Fonds insuffisants",
                 //ou "invalid order"..
-                $this->ResponseFormate($MessageOrderCheck['message'], 500);
+                $this->ResponseFormate($MessageOrderCheck['message'], 403);
             }
         }
 

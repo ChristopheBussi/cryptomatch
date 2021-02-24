@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import User from './User'
 
+import './ranking.scss'
+
 const Ranking = ({
   users,
   loading,
@@ -12,18 +14,30 @@ const Ranking = ({
     manageLoadRank,
     [],
   );
- 
+
   return (
     <div className="ranking">
       {loading && <div>Page de classement en cours de chargement</div>}
       {!loading && (
-          /* users.map((user) => (
-            <User
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Pseudo</th>
+              <th>Plus-value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              users.map((user) => (
+                <User
               key={user.username}
               {...user}
             />
-          )) */
-          <p>test</p>
+              ))
+            }
+          </tbody>
+        </table>
       )}
     </div>
   );
