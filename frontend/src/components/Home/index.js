@@ -9,6 +9,8 @@ import './home.scss';
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const classDivRules = isVisible ? 'home__rules__visible' : 'home__rules__hidden';
+  const classRules = isVisible ? 'home__rules visible' : 'home__rules hidden';
+  const classButton = isVisible ? 'handleRules visible' : 'handleRules hidden';
   const classDot = isVisible ? 'dot-hidden' : 'dot-visible';
   const classChevron = isVisible ? 'iconCheveronTop' : 'iconCheveronDown';
   const classHomeAlign = isVisible ? 'homeAlign' : 'homeNotAlign';
@@ -16,9 +18,19 @@ const Home = () => {
 
     <div className={`home ${classHomeAlign}`}>
       <h2>Bienvenue sur Crypto Match</h2>
-      <div className="home__rules">
+      <div className={classRules}>
         <div className="home__rules__p">
           <p>
+            rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing.<span className={classDot}>..</span>
+          </p>
+          <div className={classDivRules}>
+            <p>
+            Lo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.vLo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.vLo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.Lo rem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <p>
+              Lo rem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          {/* <p>
             Le site organise un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
           </p>
           <div className={classDivRules}>
@@ -28,11 +40,11 @@ const Home = () => {
             </p>
             <p>
               Le gagnant est celui qui aura engendré la plus grande plus-value au bout d'un mois.
-            </p>
+            </p> */}
           </div>
         </div>
         <button
-          className="handleRules"
+          className={classButton}
           type="button"
           onClick={() => setIsVisible(!isVisible)}
         >
