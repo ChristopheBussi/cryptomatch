@@ -6,11 +6,14 @@ import { NavLink } from 'react-router-dom';
 const Order = ({
   pairname,quantity,quotation,orderType,amount,createdAt
 }) => {
+  const date = new Date(createdAt);
+  const years = date.toLocaleDateString();
+  const hours = date.toLocaleTimeString('fr');
   return (
     <div className="hisOrder">
-          <div className="hisOrder__createdAt">{createdAt}</div>
+          <div className="hisOrder__createdAt">{years} {hours}</div>
           <div className="hisOrder__name">{pairname}</div>
-          <div className="hisOrder__orderType">{orderType}</div>
+          <div className="hisOrder__type">{orderType}</div>
           <div className="hisOrder__quantity">{quantity}</div>
           <div className="hisOrder__quotation">{quotation}</div>
           <div className="hisOrder__amount">{amount}</div>

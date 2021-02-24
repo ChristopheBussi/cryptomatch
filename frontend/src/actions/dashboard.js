@@ -24,8 +24,10 @@ export const saveHisCryptos = (hisCryptos) => ({
 export const displayTab = (type) => {
   const cryptos = type === 'cryptos' ? '__actived' :'';
   const orders = type === 'orders' ? '__actived' :'';
+  const portfolio = type === 'portfolio' ? '__actived' :'';
   return({
   type: DISPLAY_TAB,
   cryptos: cryptos,
+  portfolio: portfolio,
   orders: orders,
 })}
