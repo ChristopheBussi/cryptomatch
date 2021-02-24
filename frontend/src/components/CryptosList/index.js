@@ -15,7 +15,6 @@ class Cryptos extends Component {
   
   componentDidUpdate() {
     const cryptosList = this.getFilteredCrypto();
-
     let streams = '';
     cryptosList.forEach((crypto) => {
       streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
@@ -24,8 +23,10 @@ class Cryptos extends Component {
     socket.onmessage = (event) => {
       const objectData = JSON.parse(event.data);
       const DOMquote = document.querySelector('.quote' + objectData.s);
-      let quote = objectData.p;
-      DOMquote.textContent = quote;
+      if (DOMquote != null) {
+        let quote = objectData.p;
+        DOMquote.textContent = quote;
+      }
     };
   }
   componentWillUnmount() {
