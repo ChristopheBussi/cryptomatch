@@ -4,6 +4,21 @@
   overflow-y: scroll;
   height: 88vh;
 
+  &__searchBar {
+    margin-bottom: 1.5rem;
+
+    &__input {
+      background: none;
+      border: 2px solid #4fdb88;
+      border-radius: 5px;
+      padding: .5rem 0 .5rem .5rem;
+      font-size: 1.2rem;
+      text-align: left;
+      color: #fff;
+      width: 60%;
+    }
+  }
+
   &__header {
     display: flex;
     flex-direction: row;
@@ -77,9 +92,14 @@
 }
 
 @media screen and (min-width: 1080px) {
+  
   .cryptos {
     padding: 0rem 14rem 0rem 16rem;
     font-size: 1.2rem;
+    &__searchBar {
+      margin-top: 2rem;
+    }
+
     &__header {
       padding: 1rem 0rem;
     }
