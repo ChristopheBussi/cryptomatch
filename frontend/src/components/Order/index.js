@@ -18,7 +18,7 @@ class Order extends Component {
     socket = new WebSocket(`wss://stream.binance.com:9443/ws${pair}`);
     socket.onmessage = (event) => {
       const objectData = JSON.parse(event.data);
-      const DOMquote = document.querySelector('.order__quotation');
+      const DOMquote = document.querySelector('.order__price-quotation');
       let quote = objectData.p;
       DOMquote.textContent = quote;
       this.state.quotation = quote;
@@ -71,19 +71,19 @@ class Order extends Component {
     }
     return (
       <div className="order">
+            <h2 className="order__orderTitle">Passer un ordre</h2>
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
-            <h2 className="order__orderTitle">Passer un ordre</h2>
             <div className="order__pair">
-              <h2 className="order__title">{pairname}</h2>
-              <img className="order__logo" src={logo}></img>
-              <div className="order__subtitle">{name}</div>
+              <img className="order__pair-logo" src={logo} alt={pairname}></img>
+              <div className="order__pair-pairname">{pairname}</div>
+              <div className="order__pair-subtitle">{name}</div>
             </div>
             <div className="order__price">
-              <div className="order__value">1 {name} = </div>
-              <div className="order__quotation">Cotation en chargement</div>
-              <div className="order__value">USDT</div>
+              <div className="order__price-name">1 {name} = </div>
+              <div className="order__price-quotation">Cotation en chargement</div>
+              <div className="order__price-value">USDT</div>
             </div>
 
             <div className={displaymMessage}>{message}</div>

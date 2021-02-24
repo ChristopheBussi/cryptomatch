@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import CryptoClass from 'src/components/CryptosList/CryptoClass';
+import Cryptos from 'src/components/CryptosList';
 
 import {
   toOrder,
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CryptoClass);
+export default connect(mapStateToProps, mapDispatchToProps)(Cryptos);

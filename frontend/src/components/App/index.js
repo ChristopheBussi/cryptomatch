@@ -7,12 +7,11 @@ import PropTypes from 'prop-types';
 import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 import Connexion from 'src/containers/Connexion';
+import Cryptos from 'src/containers/Cryptos';
 import Order from 'src/containers/Order';
-import CryptosList from 'src/containers/CryptoList';
 import About from 'src/components/About';
 import Dashboard from 'src/containers/Dashboard';
 import Ranking from 'src/containers/Ranking';
-import CryptoClass from 'src/containers/CryptoList';
 
 
 // == Import
@@ -49,7 +48,7 @@ const App = ({ logged }) => (
         }
       </Route>
       <Route path="/cryptomonnaies" exact>
-        <CryptoClass />
+        <Cryptos />
       </Route>
       <Route path="/dashboard" exact>
         {

@@ -45,7 +45,7 @@ export default (store) => (next) => (action) => {
         console.log(response.data);
         store.dispatch(actualQuantityPair(response.data));
       }).catch((error) => {
-        console.log('erreur requete order AmoutnPair');
+        console.log('erreur requete order quntity');
       });
 
       next(action);
