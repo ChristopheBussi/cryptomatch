@@ -84,7 +84,7 @@ class PortfolioController extends AbstractController
         }
         else
         {
-            $this->Response->setStatusCode(404);
+            $this->Response->setStatusCode(200);
             $this->Response->setContent(json_encode(array(
                 'actualQuantity' => 0
             )));
