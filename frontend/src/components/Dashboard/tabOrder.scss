@@ -1,6 +1,12 @@
 .hisOrders {
   display: none;
 
+  &__title {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
   &__actived {
     display: flex;
     flex-direction: column;
@@ -11,10 +17,10 @@
     padding: 0 1rem;
     overflow-y: auto;
     height: 87%;
-
   }
 
 }
+
 .headerTableOrders {
   border-bottom: none;
   background-color: #181c27;
@@ -79,55 +85,68 @@
     padding: 0.25 0.4 0.25 0.25rem;
     align-items: center;
   }
+}
 
+.dataGraph {
+  color: #fff;
+  font-size: 2rem;
+}
+.apexcharts-tooltip {
+  color: #000;
 }
 @media screen and (min-width: 600px) {
 
   .hisOrder {
     height: 5rem;
     font-size: 1.2rem;
+
     &__createdAt {
       width: 20%;
       display: flex;
-    justify-content: flex-start;
+      justify-content: flex-start;
     }
-    &__name{
+
+    &__name {
       width: 16%;
     }
-    &__type{
-      width:16%
+
+    &__type {
+      width: 16%
     }
-    &__quantity{
-      width:16%
+
+    &__quantity {
+      width: 16%
     }
-    &__quotation{
-      width:16%
+
+    &__quotation {
+      width: 16%
     }
+
     &__amount {
-      width:16%;
+      width: 16%;
       display: flex;
     }
-}
-@media screen and (min-width: 1280px) {
-  .hisOrders {
-    &__actived {
-      display: flex;
-      flex-direction: row;
-      align-self: center;
-      align-items: center;
-      width: 90%;
-      height: 80%;
-      padding-left: 5rem;
-      box-shadow: 3px 3px 24px -1px #000;
-      align-items: center;
-      justify-content:center;
-    }
-
-    &__table {
-      width: 70%;
-    }
-
   }
+
+  @media screen and (min-width: 1280px) {
+    .hisOrders {
+      &__actived {
+        display: flex;
+        align-self: center;
+        align-items: center;
+        width: 90%;
+        height: 80%;
+        padding-left: 5rem;
+        box-shadow: 3px 3px 24px -1px #000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__table {
+        width: 70%;
+      }
+
+    }
 
   }
 

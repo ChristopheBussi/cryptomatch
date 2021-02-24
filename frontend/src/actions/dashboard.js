@@ -3,6 +3,8 @@ export const SAVE_HIS_ORDERS = 'SAVE_HIS_ORDERS';
 export const FECTH_HIS_CRYPTOS = 'FECTH_HIS_CRYPTOS';
 export const SAVE_HIS_CRYPTOS = 'SAVE_HIS_CRYPTOS';
 export const DISPLAY_TAB = 'DISPLAY_TAB';
+export const FETCH_HIS_PORTFOLIO = 'FETCH_HIS_PORTFOLIO';
+export const SAVE_HIS_PORTFOLIO = 'SAVE_HIS_PORTFOLIO';
 
 
 export const fetchHisOrders = (username) => ({
@@ -20,6 +22,14 @@ export const fecthHisCryptos = (username) => ({
 export const saveHisCryptos = (hisCryptos) => ({
   type: SAVE_HIS_CRYPTOS,
   hisCryptos,
+})
+export const fecthHisPortfolio = (username) => ({
+  type: FETCH_HIS_PORTFOLIO,
+  username,
+})
+export const saveHisPortfolio = (hisPortfolio) => ({
+  type: SAVE_HIS_PORTFOLIO,
+  hisPortfolio,
 })
 export const displayTab = (type) => {
   const cryptos = type === 'cryptos' ? '__actived' :'';

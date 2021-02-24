@@ -9,12 +9,12 @@ const Crypto = ({
   pairName,
   name,
   buyingPrice,
+  realTimeUSDTAmount,
   realTimePrice,
   logoUrl
 }) => {
   const percent = ((realTimePrice/buyingPrice)*100)-100
   const percentAround = Math.round(percent*100)/100;
-  const realTimeUSDTAmount = buyingPrice*actualQuantity;
   const realTimeUSDTAmountAround = Math.round(realTimeUSDTAmount*10000)/10000;
   let perncentClass = ''
   if (realTimePrice > buyingPrice ) {
@@ -30,7 +30,7 @@ const Crypto = ({
           <div className="hisCrypto__name">{name}</div>
         </div>
         <div className="hisCrypto__quantity">{actualQuantity}</div>
-        <div className="hisCrypto__buyingPrice">{buyingPrice}</div>
+        <div className="hisCrypto__buyingPrice">{realTimePrice}</div>
         <div className="hisCrypto__valuation">{realTimeUSDTAmountAround}</div>
         <div className={`hisCrypto__percent ${perncentClass}`}>{percentAround}%</div>
       </div>
@@ -45,6 +45,7 @@ Crypto.propTypes = {
   name: PropTypes.string.isRequired,
   logoUrl: PropTypes.string.isRequired,
   realTimePrice: PropTypes.number.isRequired,
+  realTimeUSDTAmount: PropTypes.number.isRequired,
 };
 
 export default Crypto;

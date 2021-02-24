@@ -1,9 +1,16 @@
-import { SAVE_HIS_ORDERS, SAVE_HIS_CRYPTOS, DISPLAY_TAB } from "../actions/dashboard";
+import {
+  SAVE_HIS_ORDERS,
+  SAVE_HIS_CRYPTOS,
+  DISPLAY_TAB,
+  SAVE_HIS_PORTFOLIO,
+} from "../actions/dashboard";
 
 const initialState = {
   hisCryptos: [],
   hisOrders: [],
-  loading: true,
+  loadingHisCryptos: true,
+  loadingHisOrders: true,
+  loadingHisPortfolio: true,
   displayCryptos: '__actived',
   displayOrders: '',
   displayPortfolio: '',
@@ -14,14 +21,21 @@ export default (state = initialState, action) => {
     case SAVE_HIS_ORDERS:
       return {
         ...state,
+        loadingHisOrders: false,
         hisOrders: action.hisOrders,
       };
     case SAVE_HIS_CRYPTOS:
       return {
         ...state,
+        loadingHisCryptos: false,
         hisCryptos: action.hisCryptos,
-        loading: false,
       }
+      case SAVE_HIS_PORTFOLIO:
+        return{
+          ...state,
+        hisPortfolio: action.hisPortfolio,
+        loadingHisPortfolio: false,
+        }
     case DISPLAY_TAB:
       return {
         ...state,

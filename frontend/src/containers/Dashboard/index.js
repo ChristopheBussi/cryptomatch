@@ -5,14 +5,18 @@ import Dashboard from 'src/components/Dashboard';
 import {
   fetchHisOrders,
   fecthHisCryptos,
-  displayTab
+  displayTab,
+  fecthHisPortfolio
 } from 'src/actions/dashboard';
 
 const mapStateToProps = (state) => ({
   hisCryptos: state.dashboard.hisCryptos,
   hisOrders: state.dashboard.hisOrders,
-  loading: state.dashboard.loading,
+  hisPortfolio: state.dashboard.hisPortfolio,
   username: state.user.username,
+  loadingHisCryptos: state.dashboard.loadingHisCryptos,
+  loadingHisOrders: state.dashboard.loadingHisOrders,
+  loadingHisPortfolio: state.dashboard.loadingHisPortfolio,
   displayCryptos: state.dashboard.displayCryptos,
   displayOrders: state.dashboard.displayOrders,
   displayPortfolio: state.dashboard.displayPortfolio,
@@ -20,6 +24,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   manageLoad: (username) => {
+    dispatch(fecthHisPortfolio(username));
     dispatch(fetchHisOrders(username));
     dispatch(fecthHisCryptos(username));
   },

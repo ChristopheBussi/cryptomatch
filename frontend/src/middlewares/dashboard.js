@@ -5,7 +5,9 @@ import {
   FETCH_HIS_ORDERS,
   saveHisOrders,
   FECTH_HIS_CRYPTOS,
-  saveHisCryptos
+  saveHisCryptos,
+  FETCH_HIS_PORTFOLIO,
+  saveHisPortfolio,
 }from '../actions/dashboard';
 
 export default (store) => (next) => (action) => {
@@ -16,7 +18,7 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(saveHisOrders(response.data));
       }).catch((error) => {
-        console.log('erreur requete cryptos');
+        console.log('erreur requete hisOrder');
       });
       next(action);
       break;
@@ -25,10 +27,20 @@ export default (store) => (next) => (action) => {
       axios.get(
         `${url}portfolio/${action.username}`,
       ).then((response) => {
-        console.log(response);
         store.dispatch(saveHisCryptos(response.data));
       }).catch((error) => {
-        console.log('erreur requete cryptos');
+        console.log('erreur requete hisCryptos');
+      });
+      next(action);
+      break;
+    }
+    case FETCH_HIS_PORTFOLIO: {
+      axios.get(
+        `${url}histoval/${action.username}`,
+      ).then((response) => {
+        store.dispatch(saveHisPortfolio(response.data));
+      }).catch((error) => {
+        console.log('erreur requete hisPortfolio');
       });
       next(action);
       break;
