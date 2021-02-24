@@ -40,6 +40,8 @@ const Home = () => {
           type="button"
           onClick={ function()
           {
+            console.log(!isVisible);
+
             setIsVisible(!isVisible)
 
             let DivRules = document.querySelector(".home__rules");
@@ -60,6 +62,8 @@ const Home = () => {
               HomeRules.style.maxHeight = '0px';
               HomeRules.style.visibility = 'hidden';
             }
+
+
           }}
         >
           <FontAwesomeIcon
@@ -69,6 +73,9 @@ const Home = () => {
           />
         </button>
       </div>
+
+
+
     </div>
   );
 };
