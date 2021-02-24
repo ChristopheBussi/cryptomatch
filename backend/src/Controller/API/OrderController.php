@@ -153,7 +153,7 @@ class OrderController extends AbstractController
         if($currentUser)
         {
             $RepOrder = $this->Em->getRepository(Order::class);
-            $Orders = $RepOrder->findBy(['user' => $currentUser]);
+            $Orders = $RepOrder->findBy(['user' => $currentUser], ['id' => 'DESC'] );
 
             $OrderList = array();
             foreach ($Orders as $currentOrder)
