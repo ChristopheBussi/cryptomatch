@@ -58,7 +58,7 @@ class PortfolioController extends AbstractController
                     "actualQuantity" => $Crypto['actualQuantity'],
                     "buyingPrice" => $Crypto['averagePrice'],
                     "realTimePrice" => $realTimePrice,
-                    "realTimeUSDTAmount = " => $realTimeUSDTAmount
+                    "realTimeUSDTAmount" => $realTimeUSDTAmount
                 ];
             }
 
