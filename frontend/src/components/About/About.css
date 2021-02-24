@@ -1,0 +1,79 @@
+
+.About
+{
+  width:100%;
+  margin-top:5rem;
+  color:#4fdb88;
+  text-align: center;
+}
+
+.Title
+{
+  font-weight: bold;
+  padding:1rem;
+}
+
+.Presentation
+{
+  color:#f1f2f3;
+  font-size:0.9rem;
+  line-height: 1.3rem;
+  padding:0.4rem;
+  margin:auto;
+}
+
+.CardList
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin:auto;
+  margin-top:5rem;
+
+}
+
+.LinkProject
+{
+  height:auto;
+  padding:1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+}
+.GithubIcon
+{
+  width:20px;
+  margin:0.5rem;
+}
+@media only screen and (min-width: 600px)
+{
+  .CardList
+  {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 800px)
+{
+  .Presentation
+  {
+    width:70%;
+  }
+}
+
+@media only screen and (min-width: 1000px)
+{
+  .Presentation
+  {
+    width:50%;
+  }
+}
+
+
+
+

@@ -1,0 +1,63 @@
+
+.Card
+{
+  width:50%;
+  margin:auto;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+  color:#212121;
+  font-size: 0.9rem;
+  margin:2rem;
+  border:1px solid #f1f2f3;
+  box-shadow: 0 0 5px #f1f2f3;
+  background-color: #f1f2f3;
+}
+
+.Image
+{
+  width:100%;
+  display: block;
+  background-color: #FFFFFF;
+}
+
+.Name, .Fonction, .Link
+{
+  padding:0.4rem;
+}
+.Name
+{
+  font-weight: bold;
+}
+
+.Link a
+{
+  color:#4fdb88;
+}
+
+@media only screen and (min-width: 600px)
+{
+  .Card
+  {
+    width:calc(100% / 4);
+  }
+}
+
+
+@media only screen and (min-width: 900px)
+{
+  .Card
+  {
+    width:calc(60% / 4);
+  }
+}
+
+@media only screen and (min-width: 1200px)
+{
+  .Card
+  {
+    width:calc(40% / 4);
+  }
+}
