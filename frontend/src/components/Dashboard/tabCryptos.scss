@@ -15,6 +15,7 @@
     justify-content: center;
     align-items: center;
   }
+
   &__table {
     padding: 0 1rem;
     overflow-y: auto;
@@ -22,6 +23,7 @@
 
   }
 }
+
 .headerTableCryptos {
   border-bottom: none;
   background-color: #181c27;
@@ -52,6 +54,7 @@
   }
 
   &__img {
+    display: none;
     max-height: 70%;
     border-radius: 10px;
   }
@@ -67,14 +70,61 @@
     align-items: center;
     width: 30%;
   }
-
-  &__averagePrice {
+  &__buyingPrice {
+    display: none;
+    justify-content: center;
+    padding: 0.25rem 0.25rem;
+    align-items: center;
+    width: 18%;
+  }
+  &__valuation {
     width: 30%;
     display: flex;
     justify-content: center;
     padding: 0.25rem 0.25rem;
     align-items: center;
   }
+
+  &__percent {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    padding: 0.25rem 0.25rem;
+    align-items: center;
+
+  }
+
+}
+
+.mostValue {
+  color: #4fdb88;
+}
+
+.lessValue {
+  color: #F84960;
+}
+@media screen and (min-width: 600px) {
+.hisCrypto{
+  &__logo{
+    width: 32%;
+  }
+  &__quantity{
+    width: 18%;
+  }
+  &__buyingPrice {
+    display: flex;
+    text-align: center;
+  }
+  &__valuation{
+    width: 18%;
+  }
+  &__percent{
+    width: 18%;
+  }
+  &__img{
+    display:flex;
+  }
+}
 }
 @media screen and (min-width: 1280px) {
   .hisCryptos {
@@ -98,11 +148,13 @@
       align-items: center;
       justify-content: center;
     }
+
     &__table {
       width: 100%;
       height: 80%;
     }
   }
+
   .hisCrypto {
     height: 5rem;
     font-size: 1.2rem;

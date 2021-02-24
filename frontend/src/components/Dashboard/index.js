@@ -30,9 +30,9 @@ class Dashboard extends Component {
     const amountCrypto = []
     const labelCrypto = []
     hisCryptos.forEach(crypto => {
-      const amount = crypto.actualQuantity * crypto.averagePrice
+      const amount = crypto.actualQuantity * crypto.realTimePrice
       amountCrypto.push(amount);
-      labelCrypto.push(crypto.cryptoName);
+      labelCrypto.push(crypto.pairName);
     });
     const graph = {
       chart: {
@@ -68,20 +68,20 @@ class Dashboard extends Component {
         breakpoint: 700,
         options: {
           chart: {
+            width: 480
+          },
+        }
+      },
+      {
+        breakpoint: 1500,
+        options: {
+          chart: {
             width: 500
           },
         }
       },
       {
-        breakpoint: 900,
-        options: {
-          chart: {
-            width: 550
-          },
-        }
-      },
-      {
-        breakpoint: 1400,
+        breakpoint: 1600,
         options: {
           chart: {
             width: 600
@@ -121,12 +121,15 @@ class Dashboard extends Component {
                 <div className="hisCrypto headerTableCryptos">
                   <div className="hisCrypto__logo">Nom</div>
                   <div className="hisCrypto__quantity">Quantité</div>
-                  <div className="hisCrypto__averagePrice">Valorisation</div>
+                  <div className="hisCrypto__buyingPrice">Prix d'achat</div>
+                  <div className="hisCrypto__valuation">Valorisation</div>
+                  <div className="hisCrypto__percent">Pourcentage</div>
+
                 </div>
                 {
                   hisCryptos.map((crypto) => (
                     <Crypto
-                      key={crypto.cryptoName}
+                      key={crypto.pairName}
                       {...crypto}
                     />
                   ))

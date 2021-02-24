@@ -25,6 +25,7 @@ export default (store) => (next) => (action) => {
       axios.get(
         `${url}portfolio/${action.username}`,
       ).then((response) => {
+        console.log(response);
         store.dispatch(saveHisCryptos(response.data));
       }).catch((error) => {
         console.log('erreur requete cryptos');
