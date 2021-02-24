@@ -24,7 +24,7 @@ const Ranking = ({
             <tr>
               <th>Position</th>
               <th>Pseudo</th>
-              <th>Plus-value</th>
+              <th>Valeur du compte</th>
             </tr>
           </thead>
           <tbody>

@@ -27,6 +27,7 @@ class Cryptos extends Component {
         let quote = objectData.p;
         DOMquote.textContent = quote;
       }
+      
     };
   }
   componentWillUnmount() {
