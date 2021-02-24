@@ -5,7 +5,8 @@ const initialState = {
   hisOrders: [],
   loading: true,
   displayCryptos: '__actived',
-  displayOrders: ''
+  displayOrders: '',
+  displayPortfolio: '',
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +27,7 @@ export default (state = initialState, action) => {
         ...state,
         displayCryptos: action.cryptos,
         displayOrders: action.orders,
+        displayPortfolio: action.portfolio,
       }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {

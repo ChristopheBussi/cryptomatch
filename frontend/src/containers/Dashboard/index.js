@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   username: state.user.username,
   displayCryptos: state.dashboard.displayCryptos,
   displayOrders: state.dashboard.displayOrders,
+  displayPortfolio: state.dashboard.displayPortfolio,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import './dashboard.scss';
+import './tabCryptos.scss';
+import './tabOrder.scss';
 import Crypto from './Crypto';
 import Order from './Order';
 
@@ -23,6 +25,7 @@ class Dashboard extends Component {
       handleClickTab,
       displayCryptos,
       displayOrders,
+      displayPortfolio,
     } = this.props;
     const amountCrypto = []
     const labelCrypto = []
@@ -101,6 +104,12 @@ class Dashboard extends Component {
                 Mes Cryptos
               </button>
               <button
+                className={`dashboard__onglet-portfolio buttonOnglet${displayPortfolio}`}
+                onClick={() => handleClickTab('portfolio')}
+              >
+                Mon évolution
+              </button>
+              <button
                 className={`dashboard__onglet-orders buttonOnglet${displayOrders}`}
                 onClick={() => handleClickTab('orders')}
               >
@@ -108,8 +117,8 @@ class Dashboard extends Component {
               </button>
             </div>
             <div className={`hisCryptos${displayCryptos} hisCryptos`}>
-              <div className="dashboard__table">
-                <div className="hisCrypto headerTable">
+              <div className="hisCryptos__table">
+                <div className="hisCrypto headerTableCryptos">
                   <div className="hisCrypto__logo">Nom</div>
                   <div className="hisCrypto__quantity">Quantité</div>
                   <div className="hisCrypto__averagePrice">Valorisation</div>
@@ -136,8 +145,8 @@ class Dashboard extends Component {
 
             </div>
             <div className={`hisOrders${displayOrders}`}>
-              <div className="dashboard__table">
-                <div className="hisOrder headerTable">
+              <div className="hisOrders__table">
+                <div className="hisOrder headerTableOrders">
                   <div className="hisOrder__createdAt">Date</div>
                   <div className="hisOrder__name">Nom</div>
                   <div className="hisOrder__type">Type</div>
