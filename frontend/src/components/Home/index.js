@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
+
 // == Import Scss
 import './home.scss';
 
@@ -14,8 +15,8 @@ const Home = () => {
   const classDot = isVisible ? 'dot-hidden' : 'dot-visible';
   const classChevron = isVisible ? 'iconCheveronTop' : 'iconCheveronDown';
   const classHomeAlign = isVisible ? 'homeAlign' : 'homeNotAlign';
-  return (
 
+  return (
     <div className={`home ${classHomeAlign}`}>
       <h2>Bienvenue sur Crypto Match</h2>
       <div className={classRules}>
