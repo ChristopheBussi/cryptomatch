@@ -9,6 +9,7 @@ const Order = ({
   const date = new Date(createdAt);
   const years = date.toLocaleDateString();
   const hours = date.toLocaleTimeString('fr');
+  const amoutnAround = Math.round(amount*100)/100;
   return (
     <div className="hisOrder">
           <div className="hisOrder__createdAt">{years} {hours}</div>
@@ -16,7 +17,7 @@ const Order = ({
           <div className="hisOrder__type">{orderType}</div>
           <div className="hisOrder__quantity">{quantity}</div>
           <div className="hisOrder__quotation">{quotation}</div>
-          <div className="hisOrder__amount">{amount}</div>
+          <div className="hisOrder__amount">{amoutnAround}</div>
   </div>
   );
 };
