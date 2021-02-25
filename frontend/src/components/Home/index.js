@@ -5,6 +5,8 @@ import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 // == Import Scss
 import './home.scss';
+import './BackgroundImage.css';
+
 
 
 const Home = () => {
@@ -18,7 +20,10 @@ const Home = () => {
   const classHomeAlign = isVisible ? 'homeAlign' : 'homeNotAlign';
   return (
 
+
     <div className={`home ${classHomeAlign}`}>
+      <div className="ImageCover"></div>
+
       <h2>Bienvenue sur Crypto Match</h2>
       <div className={classRules}>
         <div className={classRulesP}>
