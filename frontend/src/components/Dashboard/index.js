@@ -30,6 +30,7 @@ class Dashboard extends Component {
       displayCryptos,
       displayOrders,
       displayPortfolio,
+      toOrder,
     } = this.props;
     let loading = true
     const amountCrypto = []
@@ -283,6 +284,7 @@ class Dashboard extends Component {
                   hisCryptos.map((crypto) => (
                     <Crypto
                       key={crypto.pairName}
+                      toOrder={toOrder}
                       {...crypto}
                     />
                   ))

@@ -3,6 +3,7 @@ import url from './url';
 
 import { PLACE_THE_ORDER, orderPassed, actualQuantityPair } from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
+import { errorOrderPassed } from 'src/actions/errorsApi'
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -21,16 +22,16 @@ export default (store) => (next) => (action) => {
           quotation,
         }),
       ).then((response) => {
-        console.log(response.data);
         store.dispatch(orderPassed(response.data));
       }).catch((error) => {
-        console.log(error);
-        console.log('erreur requete order passed');
+        console.log(error.response.toJSON());
+        store.dispatch(errorOrderPassed(error.data))
       });
 
       next(action);
       break;
     }
+
     case TO_ORDER: {
       const { pairname } = action;
       const instance = axios.create({
@@ -39,7 +40,7 @@ export default (store) => (next) => (action) => {
       });
       console.log(pairname)
       instance.get(
-        `api/v1/portfolio/quantity_crypto/${pairname}`, 
+        `api/v1/portfolio/quantity_crypto/${pairname}`,
       ).then((response) => {
         console.log(response);
         console.log(response.data);
