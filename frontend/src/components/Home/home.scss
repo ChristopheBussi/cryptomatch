@@ -22,11 +22,6 @@
     width: 100%;
     line-height: 2rem;
 
-    &__p {
-      max-height: 40vh;
-      overflow-y: auto;
-    }
-
     & .dot-hidden {
       display: none;
     }
@@ -35,15 +30,15 @@
     }
     
     &__hidden {
-      display: none;
+      visibility: hidden;
       opacity: 0;
-      transition: all 0.2s linear;
+      transition: all 0.3s linear;
     }
     
     &__visible {
-      display: inline;
+      visibility: visible;
       opacity: 1;
-      transition: all 0.2s linear;
+      transition: all 0.3s linear;
     }
 
     & > p {
@@ -71,13 +66,25 @@
     
       & .iconCheveronDown {
         color: #4fdb88;
-        transition: all 0.1s linear;
+        transition: all 0.3s linear;
       }
       & .iconCheveronTop {
         color: #4fdb88;
         transform: rotate(180deg);
-        transition: all 0.1s linear;
+        transition: all 0.3s linear;
       }
+    }
+
+    &__p.hidden {
+      overflow: hidden;
+      max-height: 19vh;
+      transition: all 0.3s linear;
+    }
+
+    &__p.visible {
+      overflow: auto;
+      max-height: 40vh;
+      transition: all 0.3s linear;
     }
   }
 }
@@ -88,8 +95,26 @@
 }
 
 .homeAlign {
-  top: 63%;
+  top: 55%;
   transform: translateY(-50%);
+}
+
+@media screen and (min-width: 350px) {
+  .home__rules__p.hidden {
+    max-height: 15vh;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .home__rules__p.hidden {
+    max-height: 11vh;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .home__rules__p.hidden {
+    max-height: 7vh;
+  }
 }
 
 @media screen and (min-width: 1080px) {
