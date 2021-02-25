@@ -3,14 +3,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &__orderTitle {}
+  height:88vh;
+  &__orderTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 
   &__graph {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 100%;
     padding: 0 1rem;
   }
 
@@ -29,6 +31,11 @@
     align-items: center;
     padding-bottom: 1rem;
 
+    &-logo {
+      width: 2rem;
+      height: auto;
+    }
+
     &-pairname {
       padding-left: 0.5rem;
     }
@@ -37,10 +44,6 @@
       padding-left: 0.5rem;
     }
 
-    &-logo {
-      width: 2rem;
-      height: auto;
-    }
   }
 
   &__price {
@@ -48,30 +51,19 @@
     justify-content: flex-start;
     align-items: center;
     padding-bottom: 1rem;
-    &-name{
-      
-    }
+
+    &-name {}
+
     &-quotation {
       padding-left: 0.5rem;
       font-size: 1.1rem;
     }
+
     &-value {
       padding-left: 0.5rem;
-      
+
     }
   }
-
-
-
-  &__cryptoAmount {
-    padding-bottom: 0.5rem;
-  }
-
-  &__messageNone {
-    display: none;
-  }
-
-
 
   &__messageDisplay {
     padding-bottom: 0.5rem;
@@ -83,15 +75,17 @@
     }
   }
 
-
-
-
-
-  &__orderTitle {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+  &__messageNone {
+    display: none;
   }
 
+  &__cryptoAmount {
+    padding-bottom: 0.5rem;
+  }
+
+  &__convertion {
+    padding: 0.5rem 0rem 2rem 0rem;
+  }
 
   &__button {
     display: flex;
@@ -109,9 +103,6 @@
     }
   }
 
-  &__convertion {
-    padding: 0.5rem 0rem 2rem 0rem;
-  }
 }
 
 .widget {
@@ -123,12 +114,6 @@
 .buttonPassedOrder {
   display: flex;
   justify-content: space-around;
-}
-
-.button {
-  border-radius: 19px;
-  border: none;
-  padding: 0.7rem 3rem;
 
   &__Buy {
     background-color: #4fdb88;
@@ -140,17 +125,36 @@
   }
 }
 
+.button {
+  border-radius: 19px;
+  border: none;
+  padding: 0.7rem 3rem;
+}
+
 article {
   box-shadow: 3px 3px 24px -1px black;
 }
 
-@media screen and (min-width: 820px) {}
-
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 820px) {
   .order {
     color: #fff;
     display: flex;
     align-items: center;
+    height: 91vh;
+    &__graph {
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+      align-items: center;
+      width: 90%;
+      height: 85%;
+      padding-left: 5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .order {
 
     &__orderTitle {
       font-size: 1.2rem;
@@ -158,16 +162,9 @@ article {
       text-align: center;
     }
 
-    &__messageNone {
-      display: none;
-    }
-
     &__graph {
       display: flex;
       flex-direction: row;
-      width: 115rem;
-      height: 58rem;
-      justify-content: space-between;
       box-shadow: 3px 3px 24px -1px #000;
     }
 

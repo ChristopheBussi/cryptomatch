@@ -99,10 +99,10 @@ class Order extends Component {
               />
               <div className="order__convertion">Montant USDT = {this.state.converter} </div>
               <div className="buttonPassedOrder">
-                <button className="button__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
+                <button className="buttonPassedOrder__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
                   Acheter
               </button>
-                <button className="button__Sell button" type="submit" onClick={() => this.state.typeAction = 'Sell'}>
+                <button className="buttonPassedOrder__Sell button" type="submit" onClick={() => this.state.typeAction = 'Sell'}>
                   Vendre
               </button>
               </div>
