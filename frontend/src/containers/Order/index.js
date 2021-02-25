@@ -5,8 +5,8 @@ import Order from 'src/components/Order';
 import {
   placeTheOrder,
   displayMessageOrder,
-  updateFieldAmount,
   updateFieldQuantity,
+  updateFieldAmount,
   removeDataFieldOrder,
 } from '../../actions/order';
 
@@ -27,10 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(placeTheOrder(ordertype, quotation));
   },
   changeFieldAmount: (newAmount, quotation) => {
-    dispatch(updateFieldAmount(newAmount, quotation));
+    dispatch(updateFieldAmount(parseFloat(newAmount), quotation));
   },
   changeFieldQuantity: (newQuantity, quotation) => {
-    dispatch(updateFieldQuantity(newQuantity, quotation));
+    dispatch(updateFieldQuantity(parseFloat(newQuantity), quotation));
   },
   handleDiplayMessage: (message) => {
     dispatch(displayMessageOrder(message));
@@ -39,5 +39,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(removeDataFieldOrder())
   }
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(Order);

@@ -20,6 +20,7 @@ const Crypto = ({
   const percent = ((realTimePrice/buyingPrice)*100)-100
   const percentAround = Math.round(percent*100)/100;
   const realTimeUSDTAmountAround = Math.round(realTimeUSDTAmount*10000)/10000;
+  const actualQuantityAround = Math.round(actualQuantity*10000)/10000;
   let perncentClass = ''
   if (realTimePrice > buyingPrice ) {
     perncentClass = 'mostValue';
@@ -33,7 +34,7 @@ const Crypto = ({
           <img className="hisCrypto__img" src={logoUrl} alt={`logo_${pairName}`} />
           <div className="hisCrypto__name">{name}</div>
         </div>
-        <div className="hisCrypto__quantity">{actualQuantity}</div>
+        <div className="hisCrypto__quantity">{actualQuantityAround}</div>
         <div className="hisCrypto__buyingPrice">{realTimePrice}</div>
         <div className="hisCrypto__valuation">{realTimeUSDTAmountAround}</div>
         <div className={`hisCrypto__percent ${perncentClass}`}>{percentAround}%</div>

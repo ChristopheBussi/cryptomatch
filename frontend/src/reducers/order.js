@@ -7,6 +7,7 @@ import {
   REMOVE_DATA_FIELD_ORDER,
 } from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
+import {ERROR_ORDER_PASSED} from '../actions/errorsApi';
 
 const initialState = {
   quantity: 0,
@@ -70,6 +71,11 @@ export default (state = initialState, action) => {
         logo: '',
         symbol: '',
         message: null,
+      }
+      case ERROR_ORDER_PASSED:
+      return {
+        ...state,
+        message: action.message,
       }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {

@@ -46,7 +46,7 @@ class Order extends Component {
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (quantity < 1) {
+      if (quantity < 0.00000001) {
         handleDiplayMessage('Saisie un nombre')
       } else {
         if (this.state.typeAction === 'Buy') {
@@ -72,6 +72,8 @@ class Order extends Component {
       }
       
     };
+  const actualQuantityPairAround = Math.round(actualQuantityPair*100000)/100000;
+
     const Amount = Math.round(USDAmount * 100) / 100;
     let displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
     if (message === 'Ordre Enregistré') {
