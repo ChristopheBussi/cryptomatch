@@ -30,6 +30,7 @@ class Order extends Component {
   render() {
     const {
       quantity,
+      amount,
       USDAmount,
       pairname,
       name,
@@ -37,7 +38,8 @@ class Order extends Component {
       message,
       handlePlaceTheOrder,
       handleDiplayMessage,
-      changeField,
+      changeFieldQuantity,
+      changeFieldAmount,
       symbol,
       logo,
     } = this.props;
@@ -104,9 +106,17 @@ class Order extends Component {
                 type="number"
                 placeholder={`${symbol} voulu :`}
                 value={quantity}
-                onChange={changeField}
+                quotation={this.state.quotation}
+                onChange={changeFieldQuantity}
               />
-              <div className="order__convertion">Montant USDT = {this.state.converter} </div>
+               <Field
+                name="amount"
+                type="number"
+                placeholder={`USDT :`}
+                value={amount}
+                quotation={this.state.quotation}
+                onChange={changeFieldAmount}
+              />
               <div className="buttonPassedOrder">
                 <button className="buttonPassedOrder__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
                   Acheter

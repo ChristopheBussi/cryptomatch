@@ -1,8 +1,15 @@
-import { UPDATE_QUANTITY_FIELD, ORDER_PASSED, ACTUAL_QUANTITY_PAIR, DISPLAY_MESSAGE_ORDER } from '../actions/order';
+import {
+  ORDER_PASSED,
+  ACTUAL_QUANTITY_PAIR,
+  DISPLAY_MESSAGE_ORDER,
+  UPDATE_FIELD_AMOUNT,
+  UPDATE_FIELD_QUANTITY,
+} from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
 
 const initialState = {
-  quantity: 0.000,
+  quantity: 0,
+  amount: 0,
   pairname: '',
   name:'',
   logo:'',
@@ -13,13 +20,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // Met à jour le state signIn
-    case UPDATE_QUANTITY_FIELD:
+    case UPDATE_FIELD_AMOUNT:
       return {
         ...state,
-        // nom de champ(qui correspond au state): et valeur du champ
-        [action.fieldName]: action.newValue,
+        amount: action.newAmount,
+        quantity: action.quantity,
       };
+      case UPDATE_FIELD_QUANTITY:
+        return {
+          ...state,
+          quantity: action.newQuantity,
+          amount: action.amount,
+        };
     case ORDER_PASSED:
       return {
         ...state,
