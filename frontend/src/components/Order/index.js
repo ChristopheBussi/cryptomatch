@@ -47,7 +47,7 @@ class Order extends Component {
     const handleSubmit = (event) => {
       event.preventDefault();
       if (quantity < 0.00000001) {
-        handleDiplayMessage('Saisie un nombre')
+        handleDiplayMessage('Saisissez un nombre')
       } else {
         if (this.state.typeAction === 'Buy') {
         if (USDAmount < quantity * this.state.quotation) {

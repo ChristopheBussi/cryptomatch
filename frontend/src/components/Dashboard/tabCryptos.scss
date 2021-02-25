@@ -2,7 +2,7 @@
   height: 16rem;
   overflow: scroll;
   display: none;
-
+  z-index: 0;
   &__actived {
     display: flex;
     flex-direction: column;
