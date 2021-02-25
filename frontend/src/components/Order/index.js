@@ -43,22 +43,31 @@ class Order extends Component {
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (this.state.typeAction === 'Buy') {
+      if (quantity < 1) {
+        handleDiplayMessage('Saisie un nombre')
+      } else {
+        if (this.state.typeAction === 'Buy') {
         if (USDAmount < quantity * this.state.quotation) {
           handleDiplayMessage('Tu n\'as pas les fonds necessaires')
         }
-        else {
+        else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
+          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+        } else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+
         }
       }
       if (this.state.typeAction === 'Sell') {
         if (actualQuantityPair < quantity) {
           handleDiplayMessage(`Tu n\'as pas assez de ${name}`)
-        }
-        else {
+        }else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
+          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+        }else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
         }
       }
+      }
+      
     };
     const Amount = Math.round(USDAmount * 100) / 100;
     let displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
@@ -71,7 +80,7 @@ class Order extends Component {
     }
     return (
       <div className="order">
-            <h2 className="order__orderTitle">Passer un ordre</h2>
+        <h2 className="order__orderTitle">Passer un ordre</h2>
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
@@ -81,7 +90,7 @@ class Order extends Component {
               <div className="order__pair-subtitle">{name}</div>
             </div>
             <div className="order__price">
-              <div className="order__price-name">1 {name} = </div>
+              <div className="order__price-name">1 {symbol} = </div>
               <div className="order__price-quotation">Cotation en chargement</div>
               <div className="order__price-value">USDT</div>
             </div>
@@ -93,7 +102,7 @@ class Order extends Component {
               <Field
                 name="quantity"
                 type="number"
-                placeholder="Quantité de l'ordre :"
+                placeholder={`${symbol} voulu :`}
                 value={quantity}
                 onChange={changeField}
               />
@@ -106,7 +115,7 @@ class Order extends Component {
                   Vendre
               </button>
               </div>
-             </form>
+            </form>
           </div>
 
         </div>
