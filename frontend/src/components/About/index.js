@@ -4,32 +4,32 @@ import './About.css';
 import Card from "./Card";
 import GithubIcon from '../../assets/Images/GitHubLight.png';
 
-const Team = {
-  membre1 : {
-    name : 'Jocelyon',
+const Team = [
+  {
+    name : 'Jocelyn',
     fonction : 'Git master',
     link : 'https://portfolio.fr',
     specialisation : "React"
   },
-  membre2: {
+  {
     name : 'Julien',
     fonction : 'Lead dev front',
     link : 'https://portfolio.fr',
     specialisation : "React"
   },
-  membre3: {
+  {
     name : 'Christophe',
     fonction : 'Product Owner et Scrum master',
     link : 'https://portfolio.fr',
     specialisation : "Symfony"
   },
-  membre4: {
+  {
     name : 'Walid',
     fonction : 'Lead dev back',
     link : 'https://portfolio.fr',
     specialisation : "Symfony"
   }
-};
+];
 
 const LinkGitHub = "https://github.com/O-clock-McFly/projet-concours-trading";
 
@@ -48,9 +48,14 @@ const About = () => (
 
     <div className="CardList">
       {
-            Object.entries(Team).map(([key, value]) => {
-              return <Card Key={value.name} Name={value.name} Fonction={value.fonction} Link={value.link} />
-              })
+            Team.map((admin) => (
+              <Card
+              key={admin.name}
+              name={admin.name}
+              fonction={admin.fonction}
+              link={admin.link} 
+              />
+            ))   
       }
     </div>
 

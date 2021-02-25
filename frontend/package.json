@@ -52,6 +52,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "apexcharts": "^3.25.0",
     "axios": "^0.21.1",
+    "global": "^4.4.0",
     "prop-types": "*",
     "qs": "^6.9.6",
     "react": "*",

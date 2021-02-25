@@ -3,24 +3,25 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
-
 // == Import Scss
 import './home.scss';
+
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const classDivRules = isVisible ? 'home__rules__visible' : 'home__rules__hidden';
   const classRules = isVisible ? 'home__rules visible' : 'home__rules hidden';
   const classButton = isVisible ? 'handleRules visible' : 'handleRules hidden';
+  const classRulesP = isVisible ? 'home__rules__p visible' : 'home__rules__p hidden';
   const classDot = isVisible ? 'dot-hidden' : 'dot-visible';
   const classChevron = isVisible ? 'iconCheveronTop' : 'iconCheveronDown';
   const classHomeAlign = isVisible ? 'homeAlign' : 'homeNotAlign';
-
   return (
+
     <div className={`home ${classHomeAlign}`}>
       <h2>Bienvenue sur Crypto Match</h2>
       <div className={classRules}>
-        <div className="home__rules__p">
+        <div className={classRulesP}>
           <p>
             Le site organise un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
           </p>

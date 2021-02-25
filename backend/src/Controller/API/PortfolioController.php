@@ -4,6 +4,7 @@ namespace App\Controller\API;
 
 use App\Entity\Portfolio;
 use App\Entity\User;
+use App\Service\CallApiService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class PortfolioController extends AbstractController
     /**
      * @Route("/portfolio/{username}", name="apiPortfolio")
      */
-    public function getPortfolio($username): Response
+    public function getPortfolio($username, CallApiService $callApi): Response
     {
         $RepUser = $this->Em->getRepository(User::class);
         $User = $RepUser->findOneBy(['username' => $username]);
@@ -45,11 +46,19 @@ class PortfolioController extends AbstractController
             foreach ($Portfolio as $currentPortfolio)
             {
                 $Crypto = $this->Serializer->normalize($currentPortfolio, null, ['groups' => 'normal']); //For circular reference..
+
+                $realTimePrice = floatval($callApi->getBinanceQuotation($Crypto['cryptoname']));
+                $realTimeUSDTAmount = round(($Crypto['actualQuantity'] * $realTimePrice), 2);
+
                 $cryptoslist[] = [
+                    "symbol" => $Crypto['pairName'][0]['symbol'],
+                    "name" => $Crypto['pairName'][0]['name'],
+                    "pairName" => $Crypto['cryptoname'],
+                    "logoUrl" => $Crypto['pairName'][0]['imageUrl'],
                     "actualQuantity" => $Crypto['actualQuantity'],
-                    "averagePrice" => $Crypto['averagePrice'],
-                    "cryptoName" => $Crypto['cryptoname'],
-                    "imageUrl" => $Crypto['pairName'][0]['imageUrl']
+                    "buyingPrice" => $Crypto['averagePrice'],
+                    "realTimePrice" => $realTimePrice,
+                    "realTimeUSDTAmount" => $realTimeUSDTAmount
                 ];
             }
 
