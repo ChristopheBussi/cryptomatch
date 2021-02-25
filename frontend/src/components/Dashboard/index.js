@@ -45,7 +45,7 @@ class Dashboard extends Component {
       hisCryptos.forEach(crypto => {
         const amount = crypto.actualQuantity * crypto.realTimePrice
         amountCrypto.push(amount);
-        labelCrypto.push(crypto.pairName);
+        labelCrypto.push(crypto.symbol);
       });
       hisPortfolio.forEach(value => {
         const amoutAround = Math.round(value.valorisation);
