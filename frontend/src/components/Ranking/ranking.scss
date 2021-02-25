@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   overflow-y: scroll;
-  height: 43rem;
+  height: 85vh;
   margin-top: 2rem;
 
   & table {
@@ -140,5 +140,33 @@
         }
       }
     }
+  }
+}
+
+
+
+// RESPONSIVE HEIGHT
+
+@media screen and (min-height: 400px) {
+  .ranking {
+    height: 73vh;
+  }
+}
+
+@media screen and (min-height: 500px) {
+  .ranking {
+    height: 80vh;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .ranking {
+    height: 83vh;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .ranking {
+    height: 86vh;
   }
 }
