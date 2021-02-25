@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Crypto from './Crypto';
 
+import './cryptos.scss';
+
 let socket;
 
 class Cryptos extends Component {

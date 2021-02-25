@@ -1,21 +1,26 @@
 .ranking {
   display: flex;
   justify-content: center;
-  
+  overflow-y: scroll;
+  height: 85vh;
   margin-top: 2rem;
+
   & table {
     color: white;
-    box-shadow: 3px 3px 20px -1px black;
 
     & thead {
-      background: #4fdb88;
       color: #181c27;
+
       & tr {
         text-align: center;
         font-weight: 600;
         
         & th {
-          padding: .8rem;
+          padding: 1rem .5rem;
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          background: #4fdb88;
         }
         
         & th:nth-of-type(1) {
@@ -33,12 +38,16 @@
         border-bottom: 1px solid #30374b;
 
         & td {
-          padding:  1.5rem .5rem;
+          padding:  1.5rem 0;
           font-size: 1.1rem;
           text-align: center;
         }
       }
       
+      & tr:nth-of-type(odd) {
+        background-color: #1c1f2e;
+      }
+
       & tr:nth-of-type(even) {
         background-color: #11141b;
         color: #4fdb88;
@@ -131,5 +140,33 @@
         }
       }
     }
+  }
+}
+
+
+
+// RESPONSIVE HEIGHT
+
+@media screen and (min-height: 400px) {
+  .ranking {
+    height: 73vh;
+  }
+}
+
+@media screen and (min-height: 500px) {
+  .ranking {
+    height: 80vh;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .ranking {
+    height: 83vh;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .ranking {
+    height: 86vh;
   }
 }

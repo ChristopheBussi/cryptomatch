@@ -7,7 +7,7 @@
   &__searchBar {
     margin-bottom: 1.5rem;
 
-    &__input {
+    & input {
       background: none;
       border: 2px solid #4fdb88;
       border-radius: 5px;
@@ -15,7 +15,6 @@
       font-size: 1.2rem;
       text-align: left;
       color: #fff;
-      width: 60%;
     }
   }
 
@@ -96,6 +95,7 @@
   .cryptos {
     padding: 0rem 14rem 0rem 16rem;
     font-size: 1.2rem;
+
     &__searchBar {
       margin-top: 2rem;
     }
@@ -103,6 +103,7 @@
     &__header {
       padding: 1rem 0rem;
     }
+
     &__crypto{
       height: 6rem;
       :hover{
@@ -114,5 +115,4 @@
   .link {
     width: 100%;
   }
-
 }
