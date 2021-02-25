@@ -22,7 +22,7 @@ const Field = ({
   const inputId = `field-${name}`;
 
   return (
-    <div>
+    <div className="order__field">
       <label
         htmlFor={inputId}
         className="field-label"

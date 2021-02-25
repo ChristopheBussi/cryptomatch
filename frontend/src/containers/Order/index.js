@@ -7,6 +7,7 @@ import {
   displayMessageOrder,
   updateFieldAmount,
   updateFieldQuantity,
+  removeDataFieldOrder,
 } from '../../actions/order';
 
 const mapStateToProps = (state) => ({
@@ -33,6 +34,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleDiplayMessage: (message) => {
     dispatch(displayMessageOrder(message));
+  },
+  removeDataField: ()=>{
+    dispatch(removeDataFieldOrder())
   }
 });
 

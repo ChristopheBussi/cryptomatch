@@ -8,7 +8,7 @@ const Graphic = ({ pairName }) => (
     <TradingViewWidget
       autosize={true}
       symbol={`BINANCE:${pairName}`}
-      interval="D"
+      interval="1H"
       timezone="Europe/Paris"
       theme={Themes.DARK}
       locale="fr"

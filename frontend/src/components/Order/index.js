@@ -11,7 +11,7 @@ let socket;
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = { typeAction: '', quotation: null, converter: null };
+    this.state = { typeAction: '', quotation: null, };
   }
   componentDidMount() {
     const pair = '/' + this.props.pairname.toLowerCase() + '@aggTrade';
@@ -26,6 +26,7 @@ class Order extends Component {
   }
   componentWillUnmount() {
     socket.close();
+    this.props.removeDataField();
   }
   render() {
     const {
@@ -76,10 +77,6 @@ class Order extends Component {
     if (message === 'Ordre Enregistré') {
       displaymMessage = 'order__messageDisplay-green'
     }
-    this.state.converter = Math.round((quantity * this.state.quotation) * 100 / 100);
-    if (isNaN(this.state.converter)) {
-      this.state.converter = 0;
-    }
     return (
       <div className="order">
         <h2 className="order__orderTitle">Passer un ordre</h2>
@@ -104,7 +101,7 @@ class Order extends Component {
               <Field
                 name="quantity"
                 type="number"
-                placeholder={`${symbol} voulu :`}
+                placeholder={`${symbol} :`}
                 value={quantity}
                 quotation={this.state.quotation}
                 onChange={changeFieldQuantity}

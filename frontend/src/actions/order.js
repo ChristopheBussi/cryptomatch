@@ -4,6 +4,7 @@ export const ACTUAL_QUANTITY_PAIR = 'ACTUAL_QUANTITY_PAIR';
 export const DISPLAY_MESSAGE_ORDER = 'DISPLAY_MESSAGE_ORDER';
 export const UPDATE_FIELD_AMOUNT = 'UPDATE_FIELD_AMOUNT';
 export const UPDATE_FIELD_QUANTITY = 'UPDATE_FIELD_QUANTITY';
+export const REMOVE_DATA_FIELD_ORDER = 'REMOVE_DATA_FIELD_ORDER';
 
 // Modifie les champs de la page Connexion
 export const placeTheOrder = (ordertype, quotation) => ({
@@ -39,3 +40,6 @@ export const displayMessageOrder = (message) => ({
   type: DISPLAY_MESSAGE_ORDER,
   message,
 });
+export const removeDataFieldOrder = () =>({
+  type: REMOVE_DATA_FIELD_ORDER,
+})
