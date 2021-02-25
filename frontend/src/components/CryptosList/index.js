@@ -30,7 +30,6 @@ class Cryptos extends Component {
         DOMquote.textContent = quote;
         DOMvar.textContent = var24h + " %";
       }
-
     };
   }
   componentWillUnmount() {
