@@ -1,4 +1,4 @@
-import { SAVE_USER_DATA, LOGOUT } from '../actions/settings';
+import { SAVE_USER_DATA, LOGOUT, GET_USER_DATA_LOCAL } from '../actions/settings';
 import { ORDER_PASSED } from '../actions/order';
 
 const initialState = {
@@ -23,7 +23,6 @@ export default (state = initialState, action) => {
         ...state,
         USDAmount: action.new_amount,
       };
-
     case LOGOUT:
       return {
         ...state,
@@ -32,7 +31,14 @@ export default (state = initialState, action) => {
         logged: false,
         USDAmount: 0,
       };
-
+      case GET_USER_DATA_LOCAL:
+        return{
+          ...state,
+          username: action.username,
+          token: action.token,
+          logged: action.logged,
+          USDAmount: action.USDAmount,
+        }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
         ...state,

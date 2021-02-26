@@ -5,6 +5,7 @@ export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
 export const LOGOUT = 'LOGOUT';
+export const GET_USER_DATA_LOCAL = 'GET_USER_DATA_LOCAL';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -43,3 +44,27 @@ export const userRegistration = (data) => ({
 export const logOut = () => ({
   type: LOGOUT,
 });
+export const getUserDataLocal = () => {
+  let logged = ""
+  let username = ""
+  let USDAmount = 0
+  let token = false
+  if (localStorage.getItem('username') != null) {
+    username = localStorage.getItem('username');
+    token = localStorage.getItem('token');
+    USDAmount = localStorage.getItem('USDAmount');
+    logged = true;
+  } else {
+     logged = ""
+     username = ""
+     USDAmount = 0
+     token = false
+  }
+  return ({
+    type: GET_USER_DATA_LOCAL,
+    username,
+    token,
+    logged,
+    USDAmount,
+  });
+}

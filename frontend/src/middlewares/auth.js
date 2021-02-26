@@ -21,6 +21,9 @@ export default (store) => (next) => (action) => {
         },
       ).then((response) => {
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('username', response.data.data.username);
+        localStorage.setItem('USDAmount', response.data.data.USDAmount);
+        localStorage.setItem('email', response.data.data.email);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log(error);

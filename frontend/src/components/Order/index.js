@@ -13,6 +13,7 @@ class Order extends Component {
     super(props);
     this.state = { typeAction: '', quotation: null, };
   }
+  
   componentDidMount() {
     const pair = '/' + this.props.pairname.toLowerCase() + '@aggTrade';
     socket = new WebSocket(`wss://stream.binance.com:9443/ws${pair}`);
