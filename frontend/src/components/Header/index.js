@@ -96,7 +96,7 @@ const Header = ({ logged, handleLogOut, USDAmount, username }) => {
                 logged
                   ? (
                     <>
-                      <div className="buttonLogin__solde">{username} : {aroundSold} usdt</div>
+                      <div className="buttonLogin__solde">{username} : {aroundSold} USDT</div>
                       <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
                     </>
                   ) :
