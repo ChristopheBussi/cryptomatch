@@ -79,6 +79,15 @@
 .buttonLogin{
   display:flex;
   flex-direction:column;
+  &__solde{
+    border-radius: 10px;
+    border: 1px #4fdb88 solid;
+    padding: 1rem 6rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #fff;
+  }
   & button {
     border: none;
     border-radius: 10px;
@@ -121,8 +130,12 @@
         display: flex;
         
         & li {
+          display: flex;
+          justify-content:center;
+
+      align-items: center;
           margin: 0;
-          font-size: 14px;
+          font-size: 1rem;
           font-weight: 600;
           margin-right: 1rem;
         }
@@ -133,22 +146,37 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      
+      &__solde{
+        border: 2px solid #4fdb88;
+        background: none;
+        border-radius: 5px;
+        padding: 0.3rem 1rem;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 0rem;
+        margin-right: 1rem;
+      }
       & .buttonAuth {
         border: 2px solid #4fdb88;
         background: none;
         border-radius: 5px;
         padding: 0.3rem 1rem;
         color: white;
-        font-size: 15px;
+        font-size: 1rem;
         font-weight: 600;
         margin-top: 0rem;
         
         &.login {
-          border: none;
           background: none;
           color: white;
-          font-size: 14px;
+          font-size: 1rem;
+          margin-right: 0.5rem;
+        }
+        &.signin {
+          background: none;
+          color: white;
+          font-size: 1rem;
         }
 
         &.logout {
@@ -161,14 +189,24 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .header {
-    padding: 1rem 7rem;
-  }
-}
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1500px) {
+ 
   .header {
     padding: 1rem 15rem;
+    & nav{
+      & ul{
+        & li{
+          font-size: 1.1rem;
+        }
+      }
+    }
   }
+}
+.buttonLogin__solde{
+  font-size: 1.1rem;
+}
+.buttonAuth{
+  font-size: 1.1rem;
+
 }
