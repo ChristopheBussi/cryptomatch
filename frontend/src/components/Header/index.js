@@ -7,9 +7,10 @@ import { NavLink } from 'react-router-dom';
 // == Import Scss
 import './header.scss';
 
-const Header = ({ logged, handleLogOut }) => {
+const Header = ({ logged, handleLogOut, USDAmount, username }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
+  const aroundSold = Math.round(USDAmount);
   return (
 
     <header className="header">
@@ -94,7 +95,10 @@ const Header = ({ logged, handleLogOut }) => {
               {
                 logged
                   ? (
-                    <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
+                    <>
+                      <div className="buttonLogin__solde">{username} : {aroundSold} usdt</div>
+                      <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
+                    </>
                   ) :
                   <>
                     <NavLink to="/connexion" exact>
@@ -120,6 +124,7 @@ const Header = ({ logged, handleLogOut }) => {
 Header.propTypes = {
   logged: PropTypes.bool.isRequired,
   handleLogOut: PropTypes.func.isRequired,
+  USDAmount: PropTypes.number,
 };
 
 export default Header;

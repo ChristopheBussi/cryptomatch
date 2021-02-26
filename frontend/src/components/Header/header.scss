@@ -79,6 +79,15 @@
 .buttonLogin{
   display:flex;
   flex-direction:column;
+  &__solde{
+    border-radius: 10px;
+    border: 1px #4fdb88 solid;
+    padding: 1rem 6rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #fff;
+  }
   & button {
     border: none;
     border-radius: 10px;
@@ -133,7 +142,17 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      
+      &__solde{
+        border: 2px solid #4fdb88;
+        background: none;
+        border-radius: 5px;
+        padding: 0.3rem 1rem;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 0rem;
+        margin-right: 1rem;
+      }
       & .buttonAuth {
         border: 2px solid #4fdb88;
         background: none;
@@ -161,11 +180,6 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .header {
-    padding: 1rem 7rem;
-  }
-}
 
 @media screen and (min-width: 1440px) {
   .header {
