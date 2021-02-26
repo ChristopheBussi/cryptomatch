@@ -18,16 +18,21 @@ class CheckOrder
 
     public function __construct($Em, $Quantity, $OrderType, $Quotation, $User, $PairName)
     {
-        $this->Em = $Em;
-        $this->PairName = $PairName;
-        $this->OrderType = $OrderType;
-        $this->Quantity = $Quantity;
-        $this->Quotation = $Quotation;
-        $this->User = $User;
 
-        //Total de l'opération, le prix de la crypto multiplié par la quantité qu'il a acheté..
-        $this->TotalPrice = $this->Quotation * $this->Quantity;
+        if(isset($Quantity) && isset($OrderType) && isset($Quotation) && isset($PairName) )
+        {
+            $this->Em = $Em;
+            $this->PairName = $PairName;
+            $this->OrderType = $OrderType;
+            $this->Quantity = $Quantity;
+            $this->Quotation = $Quotation;
+            $this->User = $User;
 
+            //Total de l'opération, le prix de la crypto multiplié par la quantité qu'il a acheté..
+            $this->TotalPrice = $this->Quotation * $this->Quantity;
+        }
+        else
+            dd('..');
     }
 
     public function incoherentQuote(CallApiService $callApi)

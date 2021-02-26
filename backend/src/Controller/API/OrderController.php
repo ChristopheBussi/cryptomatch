@@ -40,9 +40,18 @@ class OrderController extends AbstractController
     public function postOrder(Request $Request,CallApiService $callApiService): Response
     {
 
+
        //check the conformity of the request sent by the Front
         $RepCrypto = $this->Em->getRepository(Crypto::class);
         $Data = $Request->toArray();
+
+        if(empty($Data['pair_name']) || empty($Data['quantity']) || empty($Data['quotation']) ||
+        empty($Data['ordertype']) )
+        {
+            $this->ResponseFormate("Désolé l'ordre n'est pas valide..", '400');
+            return $this->Response;
+            exit;
+        }
 
         //We check if the crypto exists
         $CryptoByPairName = $RepCrypto->findOneBy(['pairName' => $Data['pair_name']]);
