@@ -93,23 +93,23 @@ const Header = ({ logged, handleLogOut }) => {
             <div className="buttonLogin">
               {
                 logged
-                  ?(
-                      <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
-                  ): 
-                      <>
-                        <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
-                          <NavLink to="/connexion" exact>
-                            Connexion
-                          </NavLink>
+                  ? (
+                    <button className="buttonAuth logout" type="button" onClick={handleLogOut}>Déconnexion</button>
+                  ) :
+                  <>
+                    <NavLink to="/connexion" exact>
+                      <button className="buttonAuth login" type="button" onClick={() => setIsOpen(false)}>
+                        Connexion
                         </button>
-                        <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
-                          <NavLink to="/inscription" exact>
-                            Inscription
-                          </NavLink>
-                        </button>
-                      </>
+                    </NavLink>
+                    <NavLink to="/inscription" exact>
+                      <button className="buttonAuth signin" type="button" onClick={() => setIsOpen(false)}>
+                        Inscription
+                    </button>
+                    </NavLink>
+                  </>
               }
-            </div>    
+            </div>
           </nav>
         </div>
       </div>
