@@ -22,7 +22,7 @@ const Home = () => {
 
 
     <div className={`home ${classHomeAlign}`}>
-      <div className="ImageCover"></div>
+      <div className="ImageCover" ></div>
 
       <h2>Bienvenue sur Crypto Match</h2>
       <div className={classRules}>
