@@ -50,7 +50,7 @@
     padding: 10rem 0 3rem 0;
     z-index: 2;
 
-    
+
     & ul {
       text-align: center;
 
@@ -104,10 +104,10 @@
   .buttonMenuBurger {
     display: none;
   }
-  
+
   .header {
     padding: 1rem 4rem;
-    
+
     &__container__title {
       align-items: center;
       & h1 {
@@ -115,7 +115,7 @@
         white-space: nowrap;
       }
     }
-    
+
     & nav {
       transform: translateX(0%);
       transition: initial;
@@ -125,10 +125,10 @@
       width: auto;
       height: auto;
       position: initial;
-      
+
       & ul {
         display: flex;
-        
+
         & li {
           display: flex;
           justify-content:center;
@@ -141,7 +141,7 @@
         }
       }
     }
-    
+
     & .buttonLogin {
       display: flex;
       flex-direction: row;
@@ -166,7 +166,7 @@
         font-size: 1rem;
         font-weight: 600;
         margin-top: 0rem;
-        
+
         &.login {
           background: none;
           color: white;
@@ -191,7 +191,7 @@
 
 
 @media screen and (min-width: 1500px) {
- 
+
   .header {
     padding: 1rem 15rem;
     & nav{
