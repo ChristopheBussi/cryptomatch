@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
   message: state.order.message,
   symbol: state.order.symbol,
   logo: state.order.logo,
+  theme: state.user.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

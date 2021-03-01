@@ -87,3 +87,30 @@
     }
   }
 
+.light {
+  & .connexion {
+      & h2{
+      color: #181c27;
+    }
+
+    & .signIn,
+    & .signUp {
+      color: #181c27;
+
+      &__form>div {
+        & input {
+          color: #181c27;
+
+          &::placeholder {
+            color: #181c27c5;
+          }
+        }
+      }
+    }
+
+    .signInRedirection,
+    .signUpRedirection {
+      color: #181c27;
+    }
+  }
+}

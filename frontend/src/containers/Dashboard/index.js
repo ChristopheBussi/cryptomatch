@@ -24,6 +24,7 @@ const mapStateToProps = (state) => ({
   displayCryptos: state.dashboard.displayCryptos,
   displayOrders: state.dashboard.displayOrders,
   displayPortfolio: state.dashboard.displayPortfolio,
+  theme: state.user.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({

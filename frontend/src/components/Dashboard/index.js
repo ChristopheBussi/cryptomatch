@@ -31,7 +31,9 @@ class Dashboard extends Component {
       displayOrders,
       displayPortfolio,
       toOrder,
+      theme,
     } = this.props;
+    const colorGraph = theme ? '#fff' : '#181c27';
     let loading = true
     const amountCrypto = []
     const labelCrypto = []
@@ -195,7 +197,7 @@ class Dashboard extends Component {
           align: 'center',
           style: {
             fontSize: "1.2rem",
-            color: '#fff'
+            color: colorGraph
           }
         },
         responsive: [{

@@ -23,13 +23,10 @@ const Card = ({name, fonction, link, image, speciality}) => {
 
   return (
     <div className="Card">
-
       <img className="Image" src={Img}/>
       <div className="Name">{name}</div>
       <div className="Fonction">{fonction}</div>
       <div><img className="Speciality" src={IconSpeciality} /></div>
-      <div className="Link"><a href={link}>{link}</a></div>
-
     </div>
   )
 }
