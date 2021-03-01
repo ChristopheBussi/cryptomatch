@@ -13,20 +13,22 @@ import About from 'src/components/About';
 import Dashboard from 'src/containers/Dashboard';
 import Ranking from 'src/containers/Ranking';
 
-
 // == Import
 import './app.scss';
 import NotFound from '../NotFound';
 
 // == Composant
-const App = ({ logged, getUserDataLocal }) => {
+
+const App = ({ logged, getUserDataLocal, theme }) => {
   useEffect(
     getUserDataLocal,
     []
   )
+  
+  const classTheme = theme ? 'dark' : 'light';
 
   return (
-    <div className="app">
+    <div className={`app ${classTheme}`} >
       <Header />
       <Switch>
         <Route path="/" exact>
@@ -83,8 +85,11 @@ const App = ({ logged, getUserDataLocal }) => {
     </div>
   );
 }
+
 App.propTypes = {
   logged: PropTypes.bool.isRequired,
+  theme: PropTypes.bool.isRequired,
 };
+
 // == Export
 export default App;

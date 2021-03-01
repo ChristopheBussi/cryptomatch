@@ -116,3 +116,17 @@
     width: 100%;
   }
 }
+
+.light {
+  & .cryptos {
+    color: #181c27;
+
+    &__header {
+      background-color: white;
+    }
+
+    &__searchBar input {
+      color: #181c27;
+    }
+  }
+}

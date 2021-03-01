@@ -1,14 +1,15 @@
 import React, {Fragment} from 'react';
 
 import './About.css';
+import './theme.scss';
 import Card from "./Card";
-import GithubIcon from '../../assets/Images/GitHubLight.png';
+import { FaGithub } from 'react-icons/fa';
 
 const Team = [
   {
     name : 'Jocelyn',
     fonction : 'Git master',
-    link : 'https://portfolio.fr',
+    link : 'https://www.linkedin.com/in/jocelyn-lebaad/',
     speciality : "React",
     image : 'WalidAvatar.png'
   },
@@ -17,19 +18,19 @@ const Team = [
     fonction : 'Lead dev front',
     link : 'https://portfolio.fr',
     speciality : "React",
-    image : 'WalidAvatar.png'
+    image : 'JulienAvatar.png'
   },
   {
     name : 'Christophe',
     fonction : 'Product Owner et Scrum master',
-    link : 'https://portfolio.fr',
+    link : 'https://www.linkedin.com/in/christophebussi',
     speciality : "Symfony",
-    image : 'WalidAvatar.png'
+    image : 'ChristopheAvatar.png'
   },
   {
     name : 'Walid',
     fonction : 'Lead dev back',
-    link : 'https://portfolio.fr',
+    link : 'https://walidm.xyz',
     speciality: "Symfony",
     image : 'WalidAvatar.png'
   }
@@ -66,7 +67,7 @@ const About = () => (
       }
     </div>
     <div className="LinkProject">
-      <img className="GithubIcon" src={GithubIcon} />
+      <FaGithub size="x2" className="GithubIcon" />
       <a className="LinkGitHub" href={LinkGitHub}>Lien github du projet</a>
     </div>
 
