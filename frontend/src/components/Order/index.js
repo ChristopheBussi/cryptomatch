@@ -71,7 +71,6 @@ class Order extends Component {
         }
       }
       } 
-      handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
       
     };
   const actualQuantityPairAround = Math.round(actualQuantityPair*100000)/100000;
