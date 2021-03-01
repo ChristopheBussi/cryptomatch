@@ -25,7 +25,6 @@ const App = ({ logged, getUserDataLocal }) => {
     []
   )
 
-
   return (
     <div className="app">
       <Header />
@@ -59,6 +58,7 @@ const App = ({ logged, getUserDataLocal }) => {
         </Route>
         <Route path="/dashboard" exact>
           {
+            
             logged
               ? <Dashboard />
               : <Redirect to="/connexion" />
