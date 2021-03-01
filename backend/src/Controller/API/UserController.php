@@ -92,10 +92,16 @@ class UserController extends AbstractController
                 $response->setContent($jsonHistoList);
                 $response->setStatusCode("200");
             } else {
+
+                $jsonHistoList = json_encode('[]');
+    
+                $response->setContent($jsonHistoList);
+
                 $response->setContent(json_encode(array(
                     "Message" => "Cet utilisateur n'est pas encore classé"
                 )));
-                $response->setStatusCode("404");
+
+                $response->setStatusCode("200");
             }
 
         } else {
