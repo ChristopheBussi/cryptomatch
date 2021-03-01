@@ -57,7 +57,6 @@ class Dashboard extends Component {
         portfolioAmount.push(amoutAround);
       })
       }
-      
     }
     const graphCryptos = {
       chart: {
@@ -317,7 +316,7 @@ class Dashboard extends Component {
                   <div className="hisOrder__amount">Montant</div>
                 </div>
                 {
-                  hisOrders.lenght < 0  ?
+                  hisOrders.length > 0  ?
                   hisOrders.map((order) => (
                     <Order
                       key={order.createdAt}
@@ -325,7 +324,7 @@ class Dashboard extends Component {
                     />
                   ))
                   : 
-                   <div>Vous n'avez pas passez d'ordre</div>
+                   <div>Vous n'avez pas passé d'ordre</div>
                 }
               </div>
 

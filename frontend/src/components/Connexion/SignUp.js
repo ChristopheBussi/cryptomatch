@@ -11,10 +11,20 @@ const SignUp = ({
   changeField,
   handleSignUp,
   message,
+  passwordVerify,
+  handleDiplayMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleSignUp();
+    if (passwordVerify != password) {
+      handleDiplayMessage("Vos mots de passe ne sont pas identique",username,email);
+    }
+    else if(email == ''){
+      handleDiplayMessage("L'email doit étre valide",username,email);
+    }else{
+      handleSignUp();
+
+    }
   };
   let displayMessage = "message"
     if (message == 'Inscription réussie') {
@@ -47,6 +57,13 @@ const SignUp = ({
             value={password}
             onChange={changeField}
           />
+          <Field
+            name="passwordVerify"
+            type="password"
+            placeholder="Confirmer votre mot de passe"
+            value={passwordVerify}
+            onChange={changeField}
+          />
         </div>
 
         <div>
@@ -66,6 +83,7 @@ SignUp.propTypes = {
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  passwordVerify: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   message: PropTypes.string,
