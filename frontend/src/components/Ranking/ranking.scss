@@ -170,3 +170,24 @@
     height: 86vh;
   }
 }
+
+.light {
+  & .ranking table{
+    color: #181c27;
+  }
+
+  & .ranking tbody {
+    & tr {
+      border-bottom: 1px solid #9da0aa;
+    }
+    
+    & tr:nth-of-type(odd) {
+      background-color: #f5f4f4;
+    }
+
+    & tr:nth-of-type(even) {
+      background-color: #181c27;
+      color: #4fdb88;
+    }
+  }
+}

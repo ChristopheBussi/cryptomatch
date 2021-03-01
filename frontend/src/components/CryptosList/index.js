@@ -43,8 +43,13 @@ class Cryptos extends Component {
     const loweredSearch = search.toLowerCase();
     const filteredCryptoList = cryptos.filter((crypto) => {
       const loweredCryptoName = crypto.name.toLowerCase();
-      return loweredCryptoName.includes(loweredSearch);
+      const loweredCryptoSymbol = crypto.symbol.toLowerCase();
+      // on teste si la devise étudiée (en minuscule) contient
+      // notre chaine de recherche (en mlinuscule elle aussi).
+      // Et on renvoit le résultat...
+      return (loweredCryptoName.includes(loweredSearch) || loweredCryptoSymbol.includes(loweredSearch));
     });
+    
     return filteredCryptoList;
   }
   

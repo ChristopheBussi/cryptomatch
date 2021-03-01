@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
 
 import './About.css';
+import './theme.scss';
 import Card from "./Card";
-import GithubIcon from '../../assets/Images/GitHubLight.png';
+import { FaGithub } from 'react-icons/fa';
 
 const Team = [
   {
@@ -66,7 +67,7 @@ const About = () => (
       }
     </div>
     <div className="LinkProject">
-      <img className="GithubIcon" src={GithubIcon} />
+      <FaGithub size="x2" className="GithubIcon" />
       <a className="LinkGitHub" href={LinkGitHub}>Lien github du projet</a>
     </div>
 

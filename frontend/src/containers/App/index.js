@@ -12,8 +12,10 @@ import {
 const mapStateToProps = (state) => ({
   // composant de connexion
   logged: state.user.logged,
+  theme: state.user.theme,
   username: state.user.username,
 });
+
 const mapDispatchToProps = (dispatch) => ({
   getUserDataLocal: () => {
     dispatch(getUserDataLocal());

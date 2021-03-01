@@ -203,10 +203,23 @@
     }
   }
 }
+
+.light {
+  & .header{
+    & nav{
+      & ul {
+        color: #181c27;
+      }
+
+      & .buttonAuth a {
+        color: #181c27;
+      }
+    }
+  }
+
 .buttonLogin__solde{
   font-size: 1.1rem;
 }
 .buttonAuth{
   font-size: 1.1rem;
-
 }
