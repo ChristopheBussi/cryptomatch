@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import './dashboard.scss';
 import './tabCryptos.scss';
 import './tabPortfolio.scss';
@@ -251,7 +253,14 @@ class Dashboard extends Component {
     return (
       <div className="dashboard" >
         <h2 className="dashboard__title">Bienvenue {username}</h2>
-        { loading && <div>Dashboard en chargement</div>}
+        { loading && <div className="cryptos__waitLoadding">
+          <FontAwesomeIcon
+            size="5x"
+            color="#4fdb88"
+            icon={faSpinner}
+            spin
+          />
+        </div>}
         {!loading && (
           <>
             <div className="dashboard__onglet" >
