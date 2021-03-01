@@ -8,7 +8,7 @@ const ResetPassword = ({
   username,
   changeField,
   handleResetPass,
-  message,
+  messageResetPass,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -17,12 +17,12 @@ const ResetPassword = ({
   return (
     <div className="resetPassword">
       <h2>Entrez votre pseudo pour reinitialiser pour votre mot de passe</h2>
-      <div className="message">{message}</div>
+      <div className="message">{messageResetPass}</div>
       <form onSubmit={handleSubmit} className="resetPassword__form">
         <div className="resetPassword__form__field">
           <Field
             name="username"
-            placeholder="username"
+            placeholder="Pseudo"
             value={username}
             onChange={changeField}
           />
@@ -41,6 +41,6 @@ ResetPassword.propTypes = {
   username: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleResetPass: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
+  messageResetPass: PropTypes.string.isRequired,
 };
 export default ResetPassword;
