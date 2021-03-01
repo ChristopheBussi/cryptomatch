@@ -2,31 +2,32 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 10%;
   margin: 0 auto;
-
+  height: 85%;
+  align-items: center;
   & h2 {
     color: white;
     font-weight: 600;
     font-size: 1.3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
   }
 
+  .signUp {
+    
+  }
 
 
-  & .signIn,
-  & .signUp {
-
-
+  .resetPassword,
+  .newPass,
+   .signIn,
+   .signUp {
 
     &__form {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      height: 36vh;
 
       &__field {
 
@@ -47,7 +48,7 @@
         border: none;
         border-radius: 10px;
         background: #4fdb88;
-        padding: 1rem 6rem;
+        padding: 1rem 2.5rem;
         font-size: 1.2rem;
         margin-top: 1rem;
       }

@@ -22,7 +22,7 @@ const ResetPassword = ({
         <div className="resetPassword__form__field">
           <Field
             name="username"
-            placeholder="username"
+            placeholder="Pseudo"
             value={username}
             onChange={changeField}
           />
