@@ -15,7 +15,7 @@ const Team = [
   {
     name : 'Julien',
     fonction : 'Lead dev front',
-    link : 'https://portfolio.fr',
+    link : 'https://www.linkedin.com/in/julien-marteau/',
     speciality : "React",
     image : 'JulienAvatar.png'
   },
