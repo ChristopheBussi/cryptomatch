@@ -1,5 +1,4 @@
-import { SAVE_USER_DATA, LOGOUT, CHANGE_THEME } from '../actions/settings';
-import { SAVE_USER_DATA, LOGOUT, GET_USER_DATA_LOCAL } from '../actions/settings';
+import { SAVE_USER_DATA, LOGOUT, GET_USER_DATA_LOCAL, CHANGE_THEME } from '../actions/settings';
 import { ORDER_PASSED } from '../actions/order';
 
 const initialState = {

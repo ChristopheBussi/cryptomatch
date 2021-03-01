@@ -7,11 +7,7 @@ import { NavLink } from 'react-router-dom';
 // == Import Scss
 import './header.scss';
 
-const Header = ({ logged, handleLogOut, theme, handleChangeTheme }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
-
-const Header = ({ logged, handleLogOut, USDAmount, username }) => {
+const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChangeTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
   const aroundSold = Math.round(USDAmount);
