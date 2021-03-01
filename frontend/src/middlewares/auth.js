@@ -6,8 +6,12 @@ import {
   saveUserData,
   SIGNUP,
   userRegistration,
+  RESET_PASS,
+  displayMessageReset,
+  NEW_PASS,
+  displayMessageNewPass,
 } from '../actions/settings';
-import {errorAuthSignUp} from 'src/actions/errorsApi';
+import { errorAuthSignUp, errorSignIn } from 'src/actions/errorsApi';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -27,7 +31,8 @@ export default (store) => (next) => (action) => {
         localStorage.setItem('email', response.data.data.email);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log(error);
+        console.log(error.response);
+        store.dispatch(errorSignIn(error.response.data.message))
       });
       next(action);
       break;
@@ -44,13 +49,47 @@ export default (store) => (next) => (action) => {
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
         console.log(error.response);
-        store.dispatch(errorAuthSignUp(error.response.data.Message,username,email))
+        store.dispatch(errorAuthSignUp(error.response.data.Message, username, email))
       });
 
       next(action);
       break;
     }
-
+    case RESET_PASS: {
+      const { username } = store.getState().auth.reset;
+      axios.get(
+        `${url}password-reset/${username}`
+      ).then((response) => {
+        console.log(response);
+        store.dispatch(displayMessageReset(response.data.message));
+      }).catch((error) => {
+        console.log(error.response);
+        store.dispatch(displayMessageReset("erreur RESET_PASS"))
+      });
+      next(action);
+      break;
+    }
+    case NEW_PASS: {
+      const instance = axios.create({
+        baseURL: url,
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      const { newPassword, newPasswordVerify } = store.getState().auth.newPass
+      instance.post(
+        'password-reset', JSON.stringify({
+          password_first: newPassword,
+          password_second: newPasswordVerify,
+        }),
+      ).then((response) => {
+        console.log(response);
+        store.dispatch(displayMessageNewPass(response.data.message));
+      }).catch((error) => {
+        console.log(error.response);
+        store.dispatch(displayMessageNewPass(error.response.data.message))
+      });
+      next(action);
+      break;
+    }
     default:
       // si cette action ne nous interesse pas, on la laisse passer
       next(action);

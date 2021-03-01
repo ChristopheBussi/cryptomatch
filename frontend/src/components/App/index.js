@@ -41,6 +41,12 @@ const App = ({ logged, getUserDataLocal, theme }) => {
               : <Redirect to="/cryptomonnaies" />
           }
         </Route>
+        <Route path="/recuperationMdp" exact>
+          <Connexion page="resetPass" />
+        </Route>
+        <Route path="/nouveauMdp" exact>
+          <Connexion page="newPass" />
+        </Route>
         <Route path="/inscription" exact>
           {
             !logged

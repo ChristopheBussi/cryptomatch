@@ -42,7 +42,7 @@ class PasswordResetController extends AbstractController
 
         if($User && !empty($username))
         {
-            $RouteUpdatePassword = "http://cryptomatch.surge.sh/reset-password"; //Par exemple.. le front devra la créer..
+            $RouteUpdatePassword = "http://cryptomatch.surge.sh/reset-password/"; //Par exemple.. le front devra la créer..
 
             //On génère un Token et on l'insert dans la table ResetPassword..
             $Token = uniqid();
@@ -52,6 +52,7 @@ class PasswordResetController extends AbstractController
             $ResetPassword->setCreatedAt(new \DateTime());
 
 
+            $RouteUpdatePassword = $RouteUpdatePassword.$Token;
             //On crée le message et on envoie le mail..
             $Content = "Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :<br/><br/>";
             $UrlResetPassword = "<a href=$RouteUpdatePassword >Cliquez ici pour réinitialiser votre mot de passe</a>";

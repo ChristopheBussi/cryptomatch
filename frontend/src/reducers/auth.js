@@ -1,17 +1,38 @@
-import { USER_REGISTRATION, UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD, SAVE_USER_DATA } from '../actions/settings';
-import { ERROR_AUTH_SIGNUP } from 'src/actions/errorsApi';
+import {
+  USER_REGISTRATION,
+  UPDATE_SIGNIN_FIELD,
+  UPDATE_SIGNUP_FIELD,
+  SAVE_USER_DATA,
+  DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP,
+  DISPLAY_MESSAGE_RESET,
+  UPDATE_RESET_PASS_FIELD,
+  DISPLAY_MESSAGE_NEW_PASS,
+  UPDATE_NEW_PASS_FIELD,
+} from '../actions/settings';
+import { ERROR_AUTH_SIGNUP, ERROR_SIGNIN } from 'src/actions/errorsApi';
 
 const initialState = {
   signIn: {
     username: '',
     password: '',
+    message: '',
   },
   signUp: {
     username: '',
     password: '',
     email: '',
     message: '',
+    passwordVerify: '',
   },
+  reset: {
+    username: '',
+    message: '',
+  },
+  newPass: {
+    newPassword: '',
+    newPasswordVerify: '',
+    message: '',
+  }
 };
 
 export default (state = initialState, action) => {
@@ -65,8 +86,62 @@ export default (state = initialState, action) => {
           username: action.username,
           email: action.email,
           password: '',
+          passwordVerify: '',
         }
       };
+    case DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP:
+      return {
+        ...state,
+        signUp: {
+          message: action.message,
+          username: action.username,
+          password: '',
+          email: action.email,
+          passwordVerify: '',
+        }
+      };
+    case ERROR_SIGNIN:
+      return {
+        ...state,
+        signIn: {
+          message: action.message,
+          username: '',
+          password: '',
+        }
+      };
+    case DISPLAY_MESSAGE_RESET:
+      return {
+        ...state,
+        reset: {
+          ...state.reset,
+          message: action.message,
+          username: '',
+        }
+      };
+    case UPDATE_RESET_PASS_FIELD:
+      return {
+        ...state,
+        reset: {
+          ...state.reset,
+          [action.fieldName]: action.newValue,
+        }
+      }
+      case DISPLAY_MESSAGE_NEW_PASS:
+      return {
+        ...state,
+        newPass: {
+          ...state.newPass,
+          message: action.newValue,
+        }
+      }
+      case UPDATE_NEW_PASS_FIELD:
+        return{
+          ...state,
+          newPass: {
+          ...state.newPass,
+            [action.fieldName]: action.newValue,
+          }
+        }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
         ...state,
