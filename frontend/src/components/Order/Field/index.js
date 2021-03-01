@@ -12,16 +12,17 @@ const Field = ({
   name,
   placeholder,
   onChange,
+  quotation,
 }) => {
   const handleChange = (evt) => {
     // On récupére la valeur de l'input et son nom
-    onChange(evt.target.value, name);
+    onChange(evt.target.value,quotation );
   };
 
   const inputId = `field-${name}`;
 
   return (
-    <div>
+    <div className="order__field">
       <label
         htmlFor={inputId}
         className="field-label"
@@ -43,6 +44,7 @@ const Field = ({
 
 Field.propTypes = {
   value: PropTypes.number,
+  quotation: PropTypes.number,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,

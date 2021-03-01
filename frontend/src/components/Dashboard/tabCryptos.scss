@@ -2,11 +2,11 @@
   height: 16rem;
   overflow: scroll;
   display: none;
-
+  z-index: 0;
   &__actived {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 90vh;
   }
 
   &__graph {
@@ -136,7 +136,7 @@
       align-self: center;
       align-items: center;
       width: 90%;
-      height: 80%;
+      height: 85%;
       padding-left: 5rem;
       box-shadow: 3px 3px 24px -1px #000;
     }

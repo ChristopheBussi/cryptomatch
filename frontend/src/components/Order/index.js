@@ -11,8 +11,9 @@ let socket;
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = { typeAction: '', quotation: null, converter: null };
+    this.state = { typeAction: '', quotation: null, };
   }
+  
   componentDidMount() {
     const pair = '/' + this.props.pairname.toLowerCase() + '@aggTrade';
     socket = new WebSocket(`wss://stream.binance.com:9443/ws${pair}`);
@@ -26,10 +27,12 @@ class Order extends Component {
   }
   componentWillUnmount() {
     socket.close();
+    this.props.removeDataField();
   }
   render() {
     const {
       quantity,
+      amount,
       USDAmount,
       pairname,
       name,
@@ -37,41 +40,49 @@ class Order extends Component {
       message,
       handlePlaceTheOrder,
       handleDiplayMessage,
-      changeField,
+      changeFieldQuantity,
+      changeFieldAmount,
       symbol,
       logo,
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (this.state.typeAction === 'Buy') {
+       if (quantity < 0.00000001) {
+        handleDiplayMessage('Saisissez un nombre')
+      } else {
+        if (this.state.typeAction === 'Buy') {
         if (USDAmount < quantity * this.state.quotation) {
           handleDiplayMessage('Tu n\'as pas les fonds necessaires')
         }
-        else {
+        else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
+          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+        } else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
+
         }
       }
       if (this.state.typeAction === 'Sell') {
         if (actualQuantityPair < quantity) {
           handleDiplayMessage(`Tu n\'as pas assez de ${name}`)
-        }
-        else {
+        }else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
+          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+        }else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
         }
       }
+      } 
+      
     };
+  const actualQuantityPairAround = Math.round(actualQuantityPair*100000)/100000;
+
     const Amount = Math.round(USDAmount * 100) / 100;
     let displaymMessage = message != null ? 'order__messageDisplay' : 'order__messageNone';
     if (message === 'Ordre Enregistré') {
       displaymMessage = 'order__messageDisplay-green'
     }
-    this.state.converter = Math.round((quantity * this.state.quotation) * 100 / 100);
-    if (isNaN(this.state.converter)) {
-      this.state.converter = 0;
-    }
     return (
       <div className="order">
-            <h2 className="order__orderTitle">Passer un ordre</h2>
+        <h2 className="order__orderTitle">Passer un ordre</h2>
         <div className="order__graph">
           <Graphic pairName={pairname} />
           <div className="order__passed">
@@ -81,7 +92,7 @@ class Order extends Component {
               <div className="order__pair-subtitle">{name}</div>
             </div>
             <div className="order__price">
-              <div className="order__price-name">1 {name} = </div>
+              <div className="order__price-name">1 {symbol} = </div>
               <div className="order__price-quotation">Cotation en chargement</div>
               <div className="order__price-value">USDT</div>
             </div>
@@ -93,20 +104,28 @@ class Order extends Component {
               <Field
                 name="quantity"
                 type="number"
-                placeholder="Quantité de l'ordre :"
+                placeholder={`${symbol} :`}
                 value={quantity}
-                onChange={changeField}
+                quotation={this.state.quotation}
+                onChange={changeFieldQuantity}
               />
-              <div className="order__convertion">Montant USDT = {this.state.converter} </div>
+               <Field
+                name="amount"
+                type="number"
+                placeholder={`USDT :`}
+                value={amount}
+                quotation={this.state.quotation}
+                onChange={changeFieldAmount}
+              />
               <div className="buttonPassedOrder">
-                <button className="button__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
+                <button className="buttonPassedOrder__Buy button" type="submit" onClick={() => this.state.typeAction = 'Buy'}>
                   Acheter
               </button>
-                <button className="button__Sell button" type="submit" onClick={() => this.state.typeAction = 'Sell'}>
+                <button className="buttonPassedOrder__Sell button" type="submit" onClick={() => this.state.typeAction = 'Sell'}>
                   Vendre
               </button>
               </div>
-             </form>
+            </form>
           </div>
 
         </div>

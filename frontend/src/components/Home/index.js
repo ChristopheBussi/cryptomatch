@@ -19,6 +19,9 @@ const Home = () => {
   return (
 
     <div className={`home ${classHomeAlign}`}>
+
+      <div className="ImageCover" ></div>
+
       <h2>Bienvenue sur Crypto Match</h2>
       <div className={classRules}>
         <div className={classRulesP}>

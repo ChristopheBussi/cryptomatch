@@ -22,7 +22,7 @@ const Crypto = ({
           <div className="cryptos__name">{symbol} {name}</div>
         </div>
         <div className={`quote${pairName} cryptos__price`}>{lastPrice}</div>
-        <div className="cryptos__price24">{percentAround} %</div>
+        <div className={`var${pairName} cryptos__price24`}>{percentAround}</div>
       </NavLink>
     </div>
   );

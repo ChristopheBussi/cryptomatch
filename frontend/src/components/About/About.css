@@ -1,10 +1,14 @@
 
+
+
 .About
 {
   width:100%;
+  height:90vh;
   margin-top:5rem;
   color:#4fdb88;
   text-align: center;
+  overflow-y: auto;
 }
 
 .Title
@@ -30,19 +34,18 @@
   align-items: center;
   align-content: center;
   margin:auto;
-  margin-top:5rem;
-
+  padding-bottom:10rem;
 }
 
 .LinkProject
 {
-  height:auto;
   padding:1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin:auto;
+  margin-top:-10rem;
 }
 .GithubIcon
 {

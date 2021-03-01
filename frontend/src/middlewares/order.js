@@ -1,8 +1,11 @@
 import axios from 'axios';
 import url from './url';
 
+
 import { PLACE_THE_ORDER, orderPassed, actualQuantityPair } from '../actions/order';
 import { TO_ORDER } from '../actions/crypto';
+import { errorOrderPassed } from 'src/actions/errorsApi'
+import {logOut} from 'src/actions/settings'
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -21,31 +24,29 @@ export default (store) => (next) => (action) => {
           quotation,
         }),
       ).then((response) => {
-        console.log(response.data);
         store.dispatch(orderPassed(response.data));
       }).catch((error) => {
-        console.log(error);
-        console.log('erreur requete order passed');
+        store.dispatch(errorOrderPassed(error.response.data.message))
       });
 
       next(action);
       break;
     }
+
     case TO_ORDER: {
       const { pairname } = action;
       const instance = axios.create({
         baseURL: url,
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
-      console.log(pairname)
       instance.get(
-        `api/v1/portfolio/quantity_crypto/${pairname}`, 
+        `api/v1/portfolio/quantity_crypto/${pairname}`,
       ).then((response) => {
-        console.log(response);
-        console.log(response.data);
         store.dispatch(actualQuantityPair(response.data));
       }).catch((error) => {
-        console.log('erreur requete order quntity');
+        if (error.response.status === 401) {
+        store.dispatch(logOut());
+        }
       });
 
       next(action);

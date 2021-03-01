@@ -1,4 +1,5 @@
 import { USER_REGISTRATION, UPDATE_SIGNIN_FIELD, UPDATE_SIGNUP_FIELD, SAVE_USER_DATA } from '../actions/settings';
+import { ERROR_AUTH_SIGNUP } from 'src/actions/errorsApi';
 
 const initialState = {
   signIn: {
@@ -41,19 +42,31 @@ export default (state = initialState, action) => {
         ...state,
         signUp: {
           ...state.signUp,
-          // nom de champ(qui correspond au state): et valeur du champ
+          username: '',
+          password: '',
+          email: '',
           message: action.message,
         },
       };
-      case SAVE_USER_DATA:
-        return {
-          ...state,
-          signIn: {
-            ...state.signUp,
-            username: '',
-            password: '',
-          },
-        };
+    case SAVE_USER_DATA:
+      return {
+        ...state,
+        signIn: {
+          ...state.signUp,
+          username: '',
+          password: '',
+        },
+      };
+    case ERROR_AUTH_SIGNUP:
+      return {
+        ...state,
+        signUp: {
+          message: action.message,
+          username: action.username,
+          email: action.email,
+          password: '',
+        }
+      };
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
         ...state,

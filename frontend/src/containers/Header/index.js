@@ -6,6 +6,8 @@ import { changeTheme, logOut } from '../../actions/settings';
 const mapStateToProps = (state) => ({
   logged: state.user.logged,
   theme: state.user.theme,
+  USDAmount: state.user.USDAmount,
+  username: state.user.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({

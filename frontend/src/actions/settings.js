@@ -6,7 +6,7 @@ export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
 export const LOGOUT = 'LOGOUT';
 export const CHANGE_THEME = 'CHANGE_THEME';
-
+export const GET_USER_DATA_LOCAL = 'GET_USER_DATA_LOCAL';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -50,3 +50,28 @@ export const changeTheme = (theme) => ({
   type: CHANGE_THEME,
   theme,
 });
+
+export const getUserDataLocal = () => {
+  let logged = ""
+  let username = ""
+  let USDAmount = 0
+  let token = false
+  if (localStorage.getItem('username') != null) {
+    username = localStorage.getItem('username');
+    token = localStorage.getItem('token');
+    USDAmount = parseInt(localStorage.getItem('USDAmount'));
+    logged = true;
+  } else {
+     logged = ""
+     username = ""
+     USDAmount = 0
+     token = false
+  }
+  return ({
+    type: GET_USER_DATA_LOCAL,
+    username,
+    token,
+    logged,
+    USDAmount,
+  });
+}

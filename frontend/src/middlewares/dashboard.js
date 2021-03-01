@@ -40,7 +40,8 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(saveHisPortfolio(response.data));
       }).catch((error) => {
-        console.log('erreur requete hisPortfolio');
+        console.log(error.response);
+        store.dispatch(saveHisPortfolio(error.response.data.message));
       });
       next(action);
       break;

@@ -30,6 +30,7 @@ class Dashboard extends Component {
       displayCryptos,
       displayOrders,
       displayPortfolio,
+      toOrder,
     } = this.props;
     let loading = true
     const amountCrypto = []
@@ -42,16 +43,21 @@ class Dashboard extends Component {
       && loadingHisOrders === false
     ) {
       loading = false;
-      hisCryptos.forEach(crypto => {
+      if (hisCryptos != null) {
+        hisCryptos.forEach(crypto => {
         const amount = crypto.actualQuantity * crypto.realTimePrice
         amountCrypto.push(amount);
         labelCrypto.push(crypto.symbol);
       });
-      hisPortfolio.forEach(value => {
+      }
+      if (hisPortfolio != null) {
+        hisPortfolio.forEach(value => {
         const amoutAround = Math.round(value.valorisation);
         portfolioDate.push(value.date);
         portfolioAmount.push(amoutAround);
       })
+      }
+      
     }
     const graphCryptos = {
       chart: {
@@ -280,12 +286,15 @@ class Dashboard extends Component {
 
                 </div>
                 {
+                  hisCryptos != null ?
                   hisCryptos.map((crypto) => (
                     <Crypto
                       key={crypto.pairName}
+                      toOrder={toOrder}
                       {...crypto}
                     />
                   ))
+                  : <div>Vous n'avez pas de crypto</div>
                 }
               </div>
               <div className="hisCryptos__graph">
@@ -308,12 +317,15 @@ class Dashboard extends Component {
                   <div className="hisOrder__amount">Montant</div>
                 </div>
                 {
+                  hisOrders.lenght < 0  ?
                   hisOrders.map((order) => (
                     <Order
                       key={order.createdAt}
                       {...order}
                     />
                   ))
+                  : 
+                   <div>Vous n'avez pas passez d'ordre</div>
                 }
               </div>
 

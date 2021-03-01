@@ -3,15 +3,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 88vh;
 
-  &__orderTitle {}
+  &__orderTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 
   &__graph {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 100%;
     padding: 0 1rem;
+    width: 97%;
+    height: 93%;
   }
 
   &__passed {
@@ -19,6 +24,7 @@
     height: 50vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-shadow: 3px 3px 24px -1px #000;
     padding: 1rem;
   }
@@ -29,6 +35,11 @@
     align-items: center;
     padding-bottom: 1rem;
 
+    &-logo {
+      width: 2rem;
+      height: auto;
+    }
+
     &-pairname {
       padding-left: 0.5rem;
     }
@@ -37,10 +48,6 @@
       padding-left: 0.5rem;
     }
 
-    &-logo {
-      width: 2rem;
-      height: auto;
-    }
   }
 
   &__price {
@@ -48,50 +55,41 @@
     justify-content: flex-start;
     align-items: center;
     padding-bottom: 1rem;
-    &-name{
-      
-    }
+    font-size: 1.1rem;
+
+    &-name {}
+
     &-quotation {
       padding-left: 0.5rem;
-      font-size: 1.1rem;
     }
+
     &-value {
       padding-left: 0.5rem;
-      
+
     }
   }
-
-
-
-  &__cryptoAmount {
-    padding-bottom: 0.5rem;
-  }
-
-  &__messageNone {
-    display: none;
-  }
-
-
 
   &__messageDisplay {
     padding-bottom: 0.5rem;
     color: #F84960;
-
+    text-align: center;
     &-green {
       padding-bottom: 0.5rem;
       color: #4fdb88;
     }
   }
 
-
-
-
-
-  &__orderTitle {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+  &__messageNone {
+    display: none;
   }
 
+  &__cryptoAmount {
+    padding-bottom: 0.5rem;
+  }
+
+  &__field {
+    padding: 0.5rem;
+  }
 
   &__button {
     display: flex;
@@ -109,26 +107,18 @@
     }
   }
 
-  &__convertion {
-    padding: 0.5rem 0rem 2rem 0rem;
-  }
 }
 
 .widget {
-  height: 16rem;
+  height: 51%;
   width: 100%;
   padding-bottom: 1rem;
 }
 
 .buttonPassedOrder {
+  padding-top: 1rem;
   display: flex;
   justify-content: space-around;
-}
-
-.button {
-  border-radius: 19px;
-  border: none;
-  padding: 0.7rem 3rem;
 
   &__Buy {
     background-color: #4fdb88;
@@ -140,55 +130,81 @@
   }
 }
 
+.button {
+  border-radius: 19px;
+  border: none;
+  padding: 0.7rem 2rem;
+}
+
 article {
   box-shadow: 3px 3px 24px -1px black;
 }
 
-@media screen and (min-width: 820px) {}
-
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 980px) {
   .order {
-    color: #fff;
     display: flex;
     align-items: center;
-
-    &__orderTitle {
-      font-size: 1.2rem;
-      padding: 2rem 1rem 1rem 1rem;
-      text-align: center;
+    height: 91vh;
+    &__passed{
+      width: 47%;
+      height: 70%;
+      justify-content: center;
+      & div{
+        padding-bottom: 1rem;
+      }
     }
-
-    &__messageNone {
-      display: none;
-    }
-
     &__graph {
+      box-shadow: 3px 3px 24px -1px #000;
       display: flex;
       flex-direction: row;
-      width: 115rem;
-      height: 58rem;
-      justify-content: space-between;
-      box-shadow: 3px 3px 24px -1px #000;
+      align-self: center;
+      align-items: center;
+      width: 90%;
+      height: 85%;
+      padding: 0 2rem;   
+     justify-content: space-between;
     }
-
-    .widget {
-      height: 45rem;
-    }
-
-    &__passed {
-      display: flex;
-      width: 42rem;
-      height: 45rem;
-      display: flex;
-      flex-direction: column;
-      padding-left: 5rem;
+    .buttonPassedOrder{
+      
     }
   }
 
   .widget {
-    padding: 1rem;
-    height: 56rem;
-    width: 73rem;
+    height: 70%;
+    width: 47%;
+    padding: 0rem 0rem 0 0;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .order {
+    font-size: 1.4rem;
+    height: 91vh;
+    &__passed{
+      width: 35%;
+      height: 80%;
+      & div{
+        padding-bottom: 1rem;
+      }
+    }
+    &__graph {
+     
+      width: 90%;
+      height: 85%;
+      padding: 0 2rem;   
+    }
+    .button {
+      border-radius: 19px;
+      border: none;
+      padding: 0.7rem 2rem;
+    font-size: 1.2rem;
+    }
+  }
+
+  .widget {
+    height: 80%;
+    width: 60%;
+    padding: 0rem 0rem 0 0;
   }
 
 }

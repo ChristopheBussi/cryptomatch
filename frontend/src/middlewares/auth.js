@@ -7,6 +7,7 @@ import {
   SIGNUP,
   userRegistration,
 } from '../actions/settings';
+import {errorAuthSignUp} from 'src/actions/errorsApi';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -21,6 +22,9 @@ export default (store) => (next) => (action) => {
         },
       ).then((response) => {
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('username', response.data.data.username);
+        localStorage.setItem('USDAmount', response.data.data.USDAmount);
+        localStorage.setItem('email', response.data.data.email);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
         console.log(error);
@@ -39,7 +43,8 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
-        console.log(error);
+        console.log(error.response);
+        store.dispatch(errorAuthSignUp(error.response.data.Message,username,email))
       });
 
       next(action);

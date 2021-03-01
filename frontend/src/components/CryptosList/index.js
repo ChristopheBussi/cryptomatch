@@ -19,17 +19,19 @@ class Cryptos extends Component {
     const cryptosList = this.getFilteredCrypto();
     let streams = '';
     cryptosList.forEach((crypto) => {
-      streams += '/' + crypto.pairName.toLowerCase() + '@aggTrade';
+      streams += '/' + crypto.pairName.toLowerCase() + '@ticker';
     });
     socket = new WebSocket(`wss://stream.binance.com:9443/ws${streams}`);
     socket.onmessage = (event) => {
       const objectData = JSON.parse(event.data);
       const DOMquote = document.querySelector('.quote' + objectData.s);
+      const DOMvar = document.querySelector('.var' + objectData.s);
+      const var24h = Number.parseFloat(objectData.P).toFixed(1);
       if (DOMquote != null) {
-        let quote = objectData.p;
+        let quote = objectData.c;
         DOMquote.textContent = quote;
+        DOMvar.textContent = var24h + " %";
       }
-      
     };
   }
   componentWillUnmount() {
@@ -37,16 +39,9 @@ class Cryptos extends Component {
   }
   
   getFilteredCrypto() {
-    // plan d'attaque :
-    // - récupérer la propriété search du state
     const { search, cryptos } = this.props;
-
-    // on passe notre chaine de caractère search en minuscule
     const loweredSearch = search.toLowerCase();
-
-    // - filtrer notre tableau de devises grâce à cette information
     const filteredCryptoList = cryptos.filter((crypto) => {
-      // on passe le nom de la devise que l'on étudie en minuscule
       const loweredCryptoName = crypto.name.toLowerCase();
       const loweredCryptoSymbol = crypto.symbol.toLowerCase();
       // on teste si la devise étudiée (en minuscule) contient
@@ -54,8 +49,7 @@ class Cryptos extends Component {
       // Et on renvoit le résultat...
       return (loweredCryptoName.includes(loweredSearch) || loweredCryptoSymbol.includes(loweredSearch));
     });
-
-    // - retourner le tableau filtré
+    
     return filteredCryptoList;
   }
   

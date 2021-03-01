@@ -27,7 +27,7 @@ class SignUpController extends AbstractController
             //Get request data and convert in array
             $Data = (array) json_decode($Request->getContent());
         
-            if(isset($Data['email']) && isset($Data['password']) && isset($Data['username']) )
+            if(isset($Data['email']) && (($Data['email']) != '') && isset($Data['password']) && isset($Data['username']) )
             {
                 $Date = new DateTime();
                 $User = new User();

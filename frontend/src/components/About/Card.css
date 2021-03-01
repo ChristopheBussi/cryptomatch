@@ -14,6 +14,7 @@
   border:1px solid #f1f2f3;
   box-shadow: 0 0 5px #f1f2f3;
   background-color: #f1f2f3;
+
 }
 
 .Image
@@ -35,6 +36,12 @@
 .Link a
 {
   color:#4fdb88;
+}
+
+.Speciality
+{
+  padding:0.4rem;
+  width:20%;
 }
 
 @media only screen and (min-width: 600px)

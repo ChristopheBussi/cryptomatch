@@ -9,6 +9,10 @@ import {
   fecthHisPortfolio
 } from 'src/actions/dashboard';
 
+import {
+  toOrder,
+} from 'src/actions/crypto';
+
 const mapStateToProps = (state) => ({
   hisCryptos: state.dashboard.hisCryptos,
   hisOrders: state.dashboard.hisOrders,
@@ -27,6 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fecthHisPortfolio(username));
     dispatch(fetchHisOrders(username));
     dispatch(fecthHisCryptos(username));
+  },
+  toOrder: (pairname,name, symbol, logo) => {
+    dispatch(toOrder(pairname,name, symbol, logo));
   },
   handleClickTab: (type) => {
     dispatch(displayTab(type));
