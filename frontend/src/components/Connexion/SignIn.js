@@ -9,7 +9,7 @@ const SignIn = ({
   password,
   changeField,
   handleSignIn,
-  message,
+  messageSignIn,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -18,7 +18,7 @@ const SignIn = ({
   return (
     <div className="signIn">
       <h2>Ravi de vous revoir !</h2>
-      <div className="message">{message}</div>
+      <div className="message">{messageSignIn}</div>
       <form onSubmit={handleSubmit} className="signIn__form">
         <div className="signIn__form__field">
           <Field
@@ -56,6 +56,6 @@ SignIn.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
+  messageSignIn: PropTypes.string.isRequired,
 };
 export default SignIn;
