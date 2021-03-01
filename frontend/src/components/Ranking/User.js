@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const User = ({
   rank,
@@ -7,10 +8,20 @@ const User = ({
   accountValorization,
 }) => (
   <tr>
-    <td>{rank}</td>
-    <td>{username}</td>
-    <td>{accountValorization}</td>
+    <td>
+      {rank}
+    </td>
+    <td className="user">
+      <NavLink className='link' to={`/dashboard/${username}`} >
+        {username}
+      </NavLink>
+    </td>
+    <td>
+      {accountValorization}
+    </td>
+
   </tr>
+
 );
 
 User.proptypes = {
