@@ -47,7 +47,7 @@ class Order extends Component {
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (quantity < 0.00000001) {
+       if (quantity < 0.00000001) {
         handleDiplayMessage('Saisissez un nombre')
       } else {
         if (this.state.typeAction === 'Buy') {
@@ -70,7 +70,8 @@ class Order extends Component {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
         }
       }
-      }
+      } 
+      handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
       
     };
   const actualQuantityPairAround = Math.round(actualQuantityPair*100000)/100000;

@@ -52,7 +52,7 @@ export const getUserDataLocal = () => {
   if (localStorage.getItem('username') != null) {
     username = localStorage.getItem('username');
     token = localStorage.getItem('token');
-    USDAmount = localStorage.getItem('USDAmount');
+    USDAmount = parseInt(localStorage.getItem('USDAmount'));
     logged = true;
   } else {
      logged = ""
