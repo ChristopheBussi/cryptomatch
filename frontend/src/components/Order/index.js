@@ -44,6 +44,7 @@ class Order extends Component {
       changeFieldAmount,
       symbol,
       logo,
+      theme,
     } = this.props;
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -84,7 +85,7 @@ class Order extends Component {
       <div className="order">
         <h2 className="order__orderTitle">Passer un ordre</h2>
         <div className="order__graph">
-          <Graphic pairName={pairname} />
+          <Graphic pairName={pairname} theme={theme} />
           <div className="order__passed">
             <div className="order__pair">
               <img className="order__pair-logo" src={logo} alt={pairname}></img>

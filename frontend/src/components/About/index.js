@@ -67,7 +67,7 @@ const About = () => (
       }
     </div>
     <div className="LinkProject">
-      <FaGithub size="x2" className="GithubIcon" />
+      <FaGithub className="GithubIcon" />
       <a className="LinkGitHub" href={LinkGitHub}>Lien github du projet</a>
     </div>
 
