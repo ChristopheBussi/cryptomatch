@@ -28,7 +28,7 @@ class Dashboard extends Component {
     }
   }
   componentWillUnmount() {
-    this.props.handleClickTab('cryptos')
+    this.props.resetLoading();
   }
   render() {
     const {

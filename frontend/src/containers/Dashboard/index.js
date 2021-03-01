@@ -6,7 +6,8 @@ import {
   fetchHisOrders,
   fecthHisCryptos,
   displayTab,
-  fecthHisPortfolio
+  fecthHisPortfolio,
+  resetLoading,
 } from 'src/actions/dashboard';
 
 import {
@@ -38,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleClickTab: (type) => {
     dispatch(displayTab(type));
+  },
+  resetLoading: () => {
+    dispatch(resetLoading())
   }
 });
 
