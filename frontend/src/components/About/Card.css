@@ -23,6 +23,7 @@
   height:190px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .Joss
 {
@@ -35,6 +36,7 @@
 .Julien
 {
   background-image: url('../../assets/Images/JulienAvatar.jpg');
+
 }
 .Walid
 {
@@ -86,11 +88,11 @@
 {
   .Card
   {
-    width:calc(60% / 4);
+    width:calc(60% / 3);
   }
 }
 
-@media only screen and (min-width: 1200px)
+@media only screen and (min-width: 1300px)
 {
   .Card
   {

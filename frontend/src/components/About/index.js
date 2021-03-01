@@ -16,7 +16,7 @@ const Team = [
   {
     name : 'Julien',
     fonction : 'Lead dev front',
-    link : 'https://portfolio.fr',
+    link : 'https://www.linkedin.com/in/julien-marteau/',
     speciality : "React",
     image : 'JulienAvatar.png'
   },
@@ -67,7 +67,7 @@ const About = () => (
       }
     </div>
     <div className="LinkProject">
-      <FaGithub size="x2" className="GithubIcon" />
+      <FaGithub className="GithubIcon" />
       <a className="LinkGitHub" href={LinkGitHub}>Lien github du projet</a>
     </div>
 
