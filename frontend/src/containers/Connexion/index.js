@@ -7,7 +7,7 @@ import {
   updateSingnUpField,
   signIn,
   signUp,
-  displayErrorMessageAuth,
+  displayErrorMessageAuthSignUp,
 } from '../../actions/settings';
 
 const mapStateToProps = (state) => ({
@@ -16,12 +16,13 @@ const mapStateToProps = (state) => ({
   // composant de connexion
   usernameSignIn: state.auth.signIn.username,
   passwordSignIn: state.auth.signIn.password,
+  messageSignIn: state.auth.signIn.message,
   // composant d'inscription
   usernameSignUp: state.auth.signUp.username,
   passwordSignUp: state.auth.signUp.password,
   passwordVerifySignUp: state.auth.signUp.passwordVerify,
   email: state.auth.signUp.email,
-  message: state.auth.signUp.message,
+  messageSignUp: state.auth.signUp.message,
 
 });
 
@@ -44,7 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(signUp());
   },
   handleDiplayMessage: (message,username,email) => {
-    dispatch(displayErrorMessageAuth(message,username,email))
+    dispatch(displayErrorMessageAuthSignUp(message,username,email))
   }
 });
 

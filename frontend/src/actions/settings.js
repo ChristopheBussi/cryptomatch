@@ -6,7 +6,7 @@ export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
 export const LOGOUT = 'LOGOUT';
 export const GET_USER_DATA_LOCAL = 'GET_USER_DATA_LOCAL';
-export const DISPLAY_ERROR_MESSAGE_AUTH ='DISPLAY_ERROR_MESSAGE_AUTH';
+export const DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP ='DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -64,8 +64,8 @@ export const getUserDataLocal = () => {
     USDAmount,
   });
 }
-export const displayErrorMessageAuth = (message,username,email) => ({
-  type : DISPLAY_ERROR_MESSAGE_AUTH,
+export const displayErrorMessageAuthSignUp = (message,username,email) => ({
+  type : DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP,
   message,
   username,
   email

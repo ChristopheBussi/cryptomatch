@@ -18,8 +18,12 @@ const SignUp = ({
     evt.preventDefault();
     if (passwordVerify != password) {
       handleDiplayMessage("Vos mots de passe ne sont pas identique",username,email);
+    }
+    else if(email == ''){
+      handleDiplayMessage("L'email doit étre valide",username,email);
     }else{
       handleSignUp();
+
     }
   };
   let displayMessage = "message"

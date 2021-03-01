@@ -14,8 +14,9 @@ const Connexion = ({
   passwordSignIn,
   changeFieldSignIn,
   handleSignIn,
+  messageSignIn,
   // page inscription
-  message,
+  messageSignUp,
   handleSignUp,
   usernameSignUp,
   passwordSignUp,
@@ -31,6 +32,7 @@ const Connexion = ({
         password={passwordSignIn}
         changeField={changeFieldSignIn}
         handleSignIn={handleSignIn}
+        message={messageSignIn}
       />
     )
     : (
@@ -41,7 +43,7 @@ const Connexion = ({
         passwordVerify = {passwordVerifySignUp}
         changeField={changeFieldSignUp}
         handleSignUp={handleSignUp}
-        message={message}
+        message={messageSignUp}
         handleDiplayMessage={handleDiplayMessage}
       />
     );
@@ -61,7 +63,8 @@ Connexion.propTypes = {
   passwordSignIn: PropTypes.string.isRequired,
   changeFieldSignIn: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-
+  messageSignIn: PropTypes.string.isRequired,
+  
   usernameSignUp: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   passwordSignUp: PropTypes.string.isRequired,
@@ -69,7 +72,7 @@ Connexion.propTypes = {
   changeFieldSignUp: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   handleDiplayMessage: PropTypes.func.isRequired,
+  messageSignUp: PropTypes.string,
 
-  message: PropTypes.string,
 };
 export default Connexion;

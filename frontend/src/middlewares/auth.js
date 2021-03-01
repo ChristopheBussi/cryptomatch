@@ -7,7 +7,7 @@ import {
   SIGNUP,
   userRegistration,
 } from '../actions/settings';
-import {errorAuthSignUp} from 'src/actions/errorsApi';
+import {errorAuthSignUp, errorSignIn} from 'src/actions/errorsApi';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -27,7 +27,8 @@ export default (store) => (next) => (action) => {
         localStorage.setItem('email', response.data.data.email);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log(error);
+        console.log(error.response);
+        store.dispatch(errorSignIn(error.response.data.message))
       });
       next(action);
       break;
