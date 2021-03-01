@@ -42,6 +42,9 @@ const SignIn = ({
           <button type="submit">
             Connexion
           </button>
+          <NavLink to="/recuperationMdp" exact>
+            <div className="signInRedirection">Mot de passe perdu ?</div>
+          </NavLink>
         </div>
       </form>
     </div>
