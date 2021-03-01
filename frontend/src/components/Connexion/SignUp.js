@@ -16,43 +16,48 @@ const SignUp = ({
     evt.preventDefault();
     handleSignUp();
   };
+  let displayMessage = "message"
+    if (message == 'Inscription réussie') {
+      displayMessage = 'message__green'
+    } 
+  
 
   return (
     <div className="signUp">
       <h2>Créer votre compte !</h2>
-      <div className="message">{message}</div>
-        <form onSubmit={handleSubmit} className="signUp__form">
-          <div className="signUp__form__field">
-            <Field
-              name="username"
-              placeholder="Pseudo"
-              value={username}
-              onChange={changeField}
-            />
-            <Field
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={changeField}
-            />
-            <Field
-              name="password"
-              type="password"
-              placeholder="Mot de passe"
-              value={password}
-              onChange={changeField}
-            />
-          </div>
+      <div className={displayMessage}>{message}</div>
+      <form onSubmit={handleSubmit} className="signUp__form">
+        <div className="signUp__form__field">
+          <Field
+            name="username"
+            placeholder="Pseudo"
+            value={username}
+            onChange={changeField}
+          />
+          <Field
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={changeField}
+          />
+          <Field
+            name="password"
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={changeField}
+          />
+        </div>
 
-          <div>
-            <NavLink to="/connexion" exact>
-              <div className="signUpRedirection">déjà inscrit ?</div>
-            </NavLink>
-            <button type="submit">
-              Inscription
+        <div>
+          <NavLink to="/connexion" exact>
+            <div className="signUpRedirection">déjà inscrit ?</div>
+          </NavLink>
+          <button type="submit">
+            Inscription
             </button>
-          </div>
-        </form>
+        </div>
+      </form>
     </div>
   );
 };

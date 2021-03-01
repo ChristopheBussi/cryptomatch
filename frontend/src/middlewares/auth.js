@@ -7,6 +7,7 @@ import {
   SIGNUP,
   userRegistration,
 } from '../actions/settings';
+import {errorAuthSignUp} from 'src/actions/errorsApi';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -42,7 +43,8 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
-        console.log(error);
+        console.log(error.response);
+        store.dispatch(errorAuthSignUp(error.response.data.Message,username,email))
       });
 
       next(action);
