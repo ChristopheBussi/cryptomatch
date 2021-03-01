@@ -68,7 +68,7 @@ const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChange
                   ? (
                     <li>
                       <NavLink
-                        to="/dashboard"
+                        to={`/dashboard/${username}`}
                         exact
                         onClick={() => setIsOpen(false)}
                         activeClassName="header__selected"
