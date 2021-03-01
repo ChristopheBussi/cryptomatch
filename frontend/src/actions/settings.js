@@ -6,6 +6,7 @@ export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
 export const LOGOUT = 'LOGOUT';
 export const GET_USER_DATA_LOCAL = 'GET_USER_DATA_LOCAL';
+export const DISPLAY_ERROR_MESSAGE_AUTH ='DISPLAY_ERROR_MESSAGE_AUTH';
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -45,21 +46,16 @@ export const logOut = () => ({
   type: LOGOUT,
 });
 export const getUserDataLocal = () => {
-  let logged = ""
+  let logged = false
   let username = ""
   let USDAmount = 0
-  let token = false
+  let token = ""
   if (localStorage.getItem('username') != null) {
     username = localStorage.getItem('username');
     token = localStorage.getItem('token');
     USDAmount = parseInt(localStorage.getItem('USDAmount'));
     logged = true;
-  } else {
-     logged = ""
-     username = ""
-     USDAmount = 0
-     token = false
-  }
+  } 
   return ({
     type: GET_USER_DATA_LOCAL,
     username,
@@ -68,3 +64,9 @@ export const getUserDataLocal = () => {
     USDAmount,
   });
 }
+export const displayErrorMessageAuth = (message,username,email) => ({
+  type : DISPLAY_ERROR_MESSAGE_AUTH,
+  message,
+  username,
+  email
+});

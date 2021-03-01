@@ -19,8 +19,10 @@ const Connexion = ({
   handleSignUp,
   usernameSignUp,
   passwordSignUp,
+  passwordVerifySignUp,
   email,
   changeFieldSignUp,
+  handleDiplayMessage,
 }) => {
   const componentToDisplayed = page === 'signIn'
     ? (
@@ -36,9 +38,11 @@ const Connexion = ({
         username={usernameSignUp}
         email={email}
         password={passwordSignUp}
+        passwordVerify = {passwordVerifySignUp}
         changeField={changeFieldSignUp}
         handleSignUp={handleSignUp}
         message={message}
+        handleDiplayMessage={handleDiplayMessage}
       />
     );
 
@@ -52,15 +56,20 @@ const Connexion = ({
 
 Connexion.propTypes = {
   page: PropTypes.string.isRequired,
+
   usernameSignIn: PropTypes.string.isRequired,
   passwordSignIn: PropTypes.string.isRequired,
   changeFieldSignIn: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
+
   usernameSignUp: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   passwordSignUp: PropTypes.string.isRequired,
+  passwordVerifySignUp: PropTypes.string.isRequired,
   changeFieldSignUp: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
+  handleDiplayMessage: PropTypes.func.isRequired,
+
   message: PropTypes.string,
 };
 export default Connexion;
