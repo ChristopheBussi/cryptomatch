@@ -172,3 +172,17 @@
     padding: 1rem 15rem;
   }
 }
+
+.light {
+  & .header{
+    & nav{
+      & ul {
+        color: #181c27;
+      }
+
+      & .buttonAuth a {
+        color: #181c27;
+      }
+    }
+  }
+}

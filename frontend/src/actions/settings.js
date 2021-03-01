@@ -5,6 +5,8 @@ export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
 export const LOGOUT = 'LOGOUT';
+export const CHANGE_THEME = 'CHANGE_THEME';
+
 
 // Modifie les champs de la page Connexion
 export const updateSingnInField = (newValue, fieldName) => ({
@@ -42,4 +44,9 @@ export const userRegistration = (data) => ({
 
 export const logOut = () => ({
   type: LOGOUT,
+});
+
+export const changeTheme = (theme) => ({
+  type: CHANGE_THEME,
+  theme,
 });

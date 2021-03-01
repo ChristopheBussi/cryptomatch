@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import Header from 'src/components/Header';
-import { logOut } from '../../actions/settings';
+import { changeTheme, logOut } from '../../actions/settings';
 
 const mapStateToProps = (state) => ({
   logged: state.user.logged,
+  theme: state.user.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,6 +13,10 @@ const mapDispatchToProps = (dispatch) => ({
     localStorage.clear();
     dispatch(logOut());
   },
+
+  handleChangeTheme: (theme) => {
+    dispatch(changeTheme(theme));
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

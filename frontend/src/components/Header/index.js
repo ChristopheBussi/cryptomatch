@@ -7,9 +7,13 @@ import { NavLink } from 'react-router-dom';
 // == Import Scss
 import './header.scss';
 
-const Header = ({ logged, handleLogOut }) => {
+const Header = ({ logged, handleLogOut, theme, handleChangeTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
+  /* const changeTheme = () => {
+    handleChangeTheme()
+  }
+ */
   return (
 
     <header className="header">
@@ -20,6 +24,9 @@ const Header = ({ logged, handleLogOut }) => {
               Crypto Match
             </NavLink>
           </h1>
+
+          <button className="buttonThemeSwitcher" type="button" onClick={() => handleChangeTheme(!theme)}>change theme</button>
+
           <button
             className="buttonMenuBurger"
             type="button"
@@ -120,6 +127,8 @@ const Header = ({ logged, handleLogOut }) => {
 Header.propTypes = {
   logged: PropTypes.bool.isRequired,
   handleLogOut: PropTypes.func.isRequired,
+  handleChangeTheme: PropTypes.func.isRequired,
+  theme: PropTypes.bool.isRequired,
 };
 
 export default Header;

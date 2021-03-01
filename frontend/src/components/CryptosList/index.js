@@ -48,10 +48,11 @@ class Cryptos extends Component {
     const filteredCryptoList = cryptos.filter((crypto) => {
       // on passe le nom de la devise que l'on étudie en minuscule
       const loweredCryptoName = crypto.name.toLowerCase();
+      const loweredCryptoSymbol = crypto.symbol.toLowerCase();
       // on teste si la devise étudiée (en minuscule) contient
       // notre chaine de recherche (en mlinuscule elle aussi).
       // Et on renvoit le résultat...
-      return loweredCryptoName.includes(loweredSearch);
+      return (loweredCryptoName.includes(loweredSearch) || loweredCryptoSymbol.includes(loweredSearch));
     });
 
     // - retourner le tableau filtré

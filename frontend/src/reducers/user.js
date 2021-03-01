@@ -1,4 +1,4 @@
-import { SAVE_USER_DATA, LOGOUT } from '../actions/settings';
+import { SAVE_USER_DATA, LOGOUT, CHANGE_THEME } from '../actions/settings';
 import { ORDER_PASSED } from '../actions/order';
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
   token: '',
   USDAmount: 0,
   logged: false,
+  theme: true,
 };
 
 export default (state = initialState, action) => {
@@ -32,6 +33,12 @@ export default (state = initialState, action) => {
         logged: false,
         USDAmount: 0,
       };
+
+      case CHANGE_THEME:
+        return {
+          ...state,
+          theme: action.theme,
+        }
 
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
