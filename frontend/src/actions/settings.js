@@ -109,8 +109,9 @@ export const updateNewPassField= (newValue,fieldName) => ({
   newValue,
   fieldName,
 });
-export const newPass= () => ({
+export const newPass= (token) => ({
   type: NEW_PASS,
+  token,
 });
 export const displayMessageNewPass= (message) => ({
   type: DISPLAY_MESSAGE_NEW_PASS,
