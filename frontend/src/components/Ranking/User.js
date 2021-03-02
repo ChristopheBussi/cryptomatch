@@ -6,14 +6,17 @@ const User = ({
   rank,
   username,
   accountValorization,
+  myUsername,
 }) => {
   
   const evolution = ((accountValorization / 10000) - 1)*10;
   const evolutionRound = Math.round(evolution*100)/10;
   const signeEvolution = evolution > 0 ? '+' : ''; 
 
+  const myPosition = myUsername === username ? 'myPosition' : '';
+
   return(
-    <tr>
+    <tr className={myPosition}>
       <td>{rank}</td>
        <td className="user">
         <NavLink className='link' to={`/dashboard/${username}`} >
@@ -28,6 +31,7 @@ const User = ({
 
 User.proptypes = {
   rank: PropTypes.string.isRequired,
+  myUsername: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   accountValorization: PropTypes.number.isRequired,
 }

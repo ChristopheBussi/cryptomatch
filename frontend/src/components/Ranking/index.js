@@ -8,6 +8,7 @@ import User from './User'
 import './ranking.scss'
 
 const Ranking = ({
+  username,
   users,
   loading,
   manageLoadRank,
@@ -42,6 +43,7 @@ const Ranking = ({
               users.map((user) => (
                 <User
                   key={user.username}
+                  myUsername={username}
                   {...user}
                 />
               ))

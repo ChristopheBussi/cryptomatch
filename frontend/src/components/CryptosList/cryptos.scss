@@ -3,13 +3,25 @@
   padding: 0rem 1rem;
   overflow-y: scroll;
   height: 88vh;
-&__waitLoadding{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  height: 79vh;
-}
+
+  &__waitLoadding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    height: 79vh;
+  }
+
+  &__list::-webkit-scrollbar {
+    background: #1f6139;
+    width: 2px;
+    border-radius: 10px;
+  }
+
+  &__list::-webkit-scrollbar-thumb {
+    background: #4fdb88;
+  }
+
   &__searchBar {
     margin-bottom: 1.5rem;
 
@@ -79,6 +91,7 @@
     align-items: center;
     padding: 0.25rem 0.25rem;
   }
+
   &__crypto {
     display: flex;
     flex-direction: row;
@@ -97,22 +110,25 @@
 }
 
 @media screen and (min-width: 1080px) {
-  
+
   .cryptos {
     padding: 0rem 14rem 0rem 16rem;
     font-size: 1.2rem;
-
-    &__searchBar {
-      margin-top: 2rem;
+    &__list::-webkit-scrollbar {
+      background: #1f6139;
+      width: 2px;
+      border-radius: 10px;
     }
+  
 
     &__header {
       padding: 1rem 0rem;
     }
 
-    &__crypto{
+    &__crypto {
       height: 6rem;
-      :hover{
+
+      :hover {
         zoom: 120%;
       }
     }

@@ -35,9 +35,11 @@ class Dashboard extends Component {
       loadingHisPortfolio,
       loadingHisCryptos,
       loadingHisOrders,
+      loadingHisRank,
       hisCryptos,
       hisOrders,
       hisPortfolio,
+      hisRank,
       username,
       handleClickTab,
       displayCryptos,
@@ -56,6 +58,7 @@ class Dashboard extends Component {
       loadingHisPortfolio === false
       && loadingHisCryptos === false
       && loadingHisOrders === false
+      && loadingHisRank === false
     ) {
       loading = false;
       if (hisCryptos != null) {
@@ -305,7 +308,7 @@ class Dashboard extends Component {
                 className={`dashboard__onglet-orders buttonOnglet${displayOrders}`}
                 onClick={() => handleClickTab('orders')}
               >
-               {
+                {
                   username === this.props.match.params.slug
                     ? 'Mes ordres'
                     : 'Ses ordres'
@@ -368,6 +371,9 @@ class Dashboard extends Component {
 
             </div>
             <div className={`hisPortfolio${displayPortfolio}`}>
+              <h3 className="hisPortfolio__title">
+                {`Position dans le classement : n°${hisRank}`}
+              </h3>
               <ReactApexChart
                 options={graphPortfolio.options}
                 series={graphPortfolio.series}

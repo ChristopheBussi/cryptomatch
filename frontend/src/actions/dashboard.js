@@ -5,6 +5,8 @@ export const SAVE_HIS_CRYPTOS = 'SAVE_HIS_CRYPTOS';
 export const DISPLAY_TAB = 'DISPLAY_TAB';
 export const FETCH_HIS_PORTFOLIO = 'FETCH_HIS_PORTFOLIO';
 export const SAVE_HIS_PORTFOLIO = 'SAVE_HIS_PORTFOLIO';
+export const FETCH_HIS_RANK = 'FETCH_HIS_RANK';
+export const SAVE_HIS_RANK = 'SAVE_HIS_RANK';
 export const RESET_LOADING = 'RESET_LOADING';
 
 
@@ -31,6 +33,14 @@ export const fecthHisPortfolio = (username) => ({
 export const saveHisPortfolio = (hisPortfolio) => ({
   type: SAVE_HIS_PORTFOLIO,
   hisPortfolio,
+})
+export const fetchHisRank = (username) => ({
+  type: FETCH_HIS_RANK,
+  username,
+})
+export const saveHisRank = (hisRank) => ({
+  type: SAVE_HIS_RANK,
+  hisRank,
 })
 export const displayTab = (type) => {
   const cryptos = type === 'cryptos' ? '__actived' :'';
