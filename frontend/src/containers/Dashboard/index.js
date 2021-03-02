@@ -6,7 +6,8 @@ import {
   fetchHisOrders,
   fecthHisCryptos,
   displayTab,
-  fecthHisPortfolio
+  fecthHisPortfolio,
+  resetLoading,
 } from 'src/actions/dashboard';
 
 import {
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => ({
   displayCryptos: state.dashboard.displayCryptos,
   displayOrders: state.dashboard.displayOrders,
   displayPortfolio: state.dashboard.displayPortfolio,
+  theme: state.user.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -37,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleClickTab: (type) => {
     dispatch(displayTab(type));
+  },
+  resetLoading: () => {
+    dispatch(resetLoading())
   }
 });
 

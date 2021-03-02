@@ -9,7 +9,7 @@ const NewPassword = ({
   newPasswordVerify,
   changeField,
   handleChangePass,
-  message,
+  messageNewPass,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -18,7 +18,7 @@ const NewPassword = ({
   return (
     <div className="newPass">
       <h2>Entrez votre nouveaux mot de passe</h2>
-      <div className="message">{message}</div>
+      <div className="message">{messageNewPass}</div>
       <form onSubmit={handleSubmit} className="newPass__form">
         <div className="newPass__form__field">
           <Field
@@ -49,6 +49,6 @@ NewPassword.propTypes = {
   newPasswordVerify: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleChangePass: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
+  messageNewPass: PropTypes.string.isRequired,
 };
 export default NewPassword;

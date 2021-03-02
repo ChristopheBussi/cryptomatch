@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCalendarTimes, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
 // == Import Scss
 import './header.scss';
+import './toggleTheme.scss';
 
-const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChangeTheme }) => {
+const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChangeTheme, manageLoad, resetLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
   const aroundSold = Math.round(USDAmount);
-
+  const toDashboard = () => {
+    resetLoading();
+    manageLoad(username);
+    setIsOpen(false);
+  }
   return (
-    
+
     <header className="header">
       <div className="header__container">
         <div className="header__container__title">
-          <h1>
-            <NavLink to="/" exact>
-              Crypto Match
-            </NavLink>
-          </h1>
-
-          <button className="buttonThemeSwitcher" type="button" onClick={() => handleChangeTheme(!theme)}>change theme</button>
+          <div className="header__container__title__toggle">
+            <h1>
+              <NavLink to="/" exact>
+                Crypto Match
+              </NavLink>
+            </h1>
+            <div className="tg-list-item">
+              <input id="cbx" type="checkbox" onClick={() => handleChangeTheme(!theme)}></input>
+              <label htmlFor="cbx" className="toggle"><span className="spanToggle"></span></label>
+            </div>
+          </div>
 
           <button
             className="buttonMenuBurger"
@@ -63,9 +72,9 @@ const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChange
                   ? (
                     <li>
                       <NavLink
-                        to="/dashboard"
+                        to={`/dashboard/${username}`}
                         exact
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => toDashboard()}
                         activeClassName="header__selected"
                       >
                         Dashboard
@@ -118,6 +127,18 @@ const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChange
                   </>
               }
             </div>
+
+            <button
+              className="buttonMenuCross"
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <FontAwesomeIcon
+                className="iconCross"
+                size="3x"
+                icon={faTimes}
+              />
+            </button>
           </nav>
         </div>
       </div>

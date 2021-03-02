@@ -64,7 +64,7 @@ const App = ({ logged, getUserDataLocal, theme }) => {
         <Route path="/cryptomonnaies" exact>
           <Cryptos />
         </Route>
-        <Route path="/dashboard" exact>
+        <Route path="/dashboard/:slug" exact>
           {
             
             logged

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter, useLocation } from "react-router";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import './dashboard.scss';
 import './tabCryptos.scss';
 import './tabPortfolio.scss';
@@ -13,9 +16,19 @@ class Dashboard extends Component {
 
     this.state = { displayCryptos: '__actived', displayOrders: '', displayPortfolio: '' };
   }
+
   componentDidMount() {
     const { manageLoad, username } = this.props;
-    manageLoad(username);
+    if (this.props.match.params.slug != username) {
+      this.setState({ slugUser: this.props.match.params.slug })
+      manageLoad(this.props.match.params.slug);
+    } else {
+      manageLoad(username);
+      this.setState({ slugUser: username })
+    }
+  }
+  componentWillUnmount() {
+    this.props.resetLoading();
   }
   render() {
     const {
@@ -31,12 +44,14 @@ class Dashboard extends Component {
       displayOrders,
       displayPortfolio,
       toOrder,
+      theme,
     } = this.props;
-    let loading = true
-    const amountCrypto = []
-    const labelCrypto = []
-    const portfolioDate = []
-    const portfolioAmount = []
+    const colorGraph = theme ? '#fff' : '#181c27';
+    let loading = true;
+    const amountCrypto = [];
+    const labelCrypto = [];
+    const portfolioDate = [];
+    const portfolioAmount = [];
     if (
       loadingHisPortfolio === false
       && loadingHisCryptos === false
@@ -45,17 +60,17 @@ class Dashboard extends Component {
       loading = false;
       if (hisCryptos != null) {
         hisCryptos.forEach(crypto => {
-        const amount = crypto.actualQuantity * crypto.realTimePrice
-        amountCrypto.push(amount);
-        labelCrypto.push(crypto.symbol);
-      });
+          const amount = crypto.actualQuantity * crypto.realTimePrice
+          amountCrypto.push(amount);
+          labelCrypto.push(crypto.symbol);
+        });
       }
       if (hisPortfolio != null) {
         hisPortfolio.forEach(value => {
-        const amoutAround = Math.round(value.valorisation);
-        portfolioDate.push(value.date);
-        portfolioAmount.push(amoutAround);
-      })
+          const amoutAround = Math.round(value.valorisation);
+          portfolioDate.push(value.date);
+          portfolioAmount.push(amoutAround);
+        })
       }
     }
     const graphCryptos = {
@@ -120,7 +135,7 @@ class Dashboard extends Component {
         data: portfolioAmount
       }],
       options: {
-        legende:{
+        legende: {
           show: false
         },
         chart: {
@@ -164,8 +179,8 @@ class Dashboard extends Component {
           labels: {
             style: {
               color: ['#fff'],
-            fontSize: '14px',
-            cssClass: ".dateGraph"
+              fontSize: '14px',
+              cssClass: ".dateGraph"
             },
           },
           tooltip: {
@@ -194,7 +209,7 @@ class Dashboard extends Component {
           align: 'center',
           style: {
             fontSize: "1.2rem",
-            color: '#fff'
+            color: colorGraph
           }
         },
         responsive: [{
@@ -250,8 +265,19 @@ class Dashboard extends Component {
     }
     return (
       <div className="dashboard" >
-        <h2 className="dashboard__title">Bienvenue {username}</h2>
-        { loading && <div>Dashboard en chargement</div>}
+        {
+          username === this.props.match.params.slug
+            ? <h2 className="dashboard__title">Bienvenu sur ton dashboard {username}</h2>
+            : <h2 className="dashboard__title">Dashboard de {this.state.slugUser}</h2>
+        }
+        { loading && <div className="cryptos__waitLoadding">
+          <FontAwesomeIcon
+            size="5x"
+            color="#4fdb88"
+            icon={faSpinner}
+            spin
+          />
+        </div>}
         {!loading && (
           <>
             <div className="dashboard__onglet" >
@@ -259,19 +285,31 @@ class Dashboard extends Component {
                 className={`dashboard__onglet-cryptos buttonOnglet${displayCryptos}`}
                 onClick={() => handleClickTab('cryptos')}
               >
-                Mes Cryptos
+                {
+                  username === this.props.match.params.slug
+                    ? 'Mes Cryptos'
+                    : 'Ses cryptos'
+                }
               </button>
               <button
                 className={`dashboard__onglet-portfolio buttonOnglet${displayPortfolio}`}
                 onClick={() => handleClickTab('portfolio')}
               >
-                Mon évolution
+                {
+                  username === this.props.match.params.slug
+                    ? 'Mon évolution'
+                    : 'Son évolution'
+                }
               </button>
               <button
                 className={`dashboard__onglet-orders buttonOnglet${displayOrders}`}
                 onClick={() => handleClickTab('orders')}
               >
-                Mes Ordres
+               {
+                  username === this.props.match.params.slug
+                    ? 'Mes ordres'
+                    : 'Ses ordres'
+                }
               </button>
             </div>
             <div className={`hisCryptos${displayCryptos} hisCryptos`}>
@@ -286,14 +324,14 @@ class Dashboard extends Component {
                 </div>
                 {
                   hisCryptos != null ?
-                  hisCryptos.map((crypto) => (
-                    <Crypto
-                      key={crypto.pairName}
-                      toOrder={toOrder}
-                      {...crypto}
-                    />
-                  ))
-                  : <div>Vous n'avez pas de crypto</div>
+                    hisCryptos.map((crypto) => (
+                      <Crypto
+                        key={crypto.pairName}
+                        toOrder={toOrder}
+                        {...crypto}
+                      />
+                    ))
+                    : <div>Vous n'avez pas de crypto</div>
                 }
               </div>
               <div className="hisCryptos__graph">
@@ -316,15 +354,15 @@ class Dashboard extends Component {
                   <div className="hisOrder__amount">Montant</div>
                 </div>
                 {
-                  hisOrders.length > 0  ?
-                  hisOrders.map((order) => (
-                    <Order
-                      key={order.createdAt}
-                      {...order}
-                    />
-                  ))
-                  : 
-                   <div>Vous n'avez pas passé d'ordre</div>
+                  hisOrders.length > 0 ?
+                    hisOrders.map((order) => (
+                      <Order
+                        key={order.createdAt}
+                        {...order}
+                      />
+                    ))
+                    :
+                    <div>Vous n'avez pas passé d'ordre</div>
                 }
               </div>
 
@@ -346,4 +384,4 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard
+export default withRouter(Dashboard);

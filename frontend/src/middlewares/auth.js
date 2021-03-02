@@ -82,10 +82,10 @@ export default (store) => (next) => (action) => {
         }),
       ).then((response) => {
         console.log(response);
-        store.dispatch(displayMessageNewPass(response.data.message));
+        store.dispatch(displayMessageNewPass('ok ' + response));
       }).catch((error) => {
         console.log(error.response);
-        store.dispatch(displayMessageNewPass(error.response.data.message))
+        store.dispatch(displayMessageNewPass('erreur NEW_PASS'))
       });
       next(action);
       break;

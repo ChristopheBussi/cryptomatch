@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import User from './User'
 
@@ -17,7 +19,14 @@ const Ranking = ({
 
   return (
     <div className="ranking">
-      {loading && <div>Page de classement en cours de chargement</div>}
+      {loading && <div className="ranking__waitLoadding">
+          <FontAwesomeIcon
+            size="5x"
+            color="#4fdb88"
+            icon={faSpinner}
+            spin
+          />
+        </div>}
       {!loading && (
         <table>
           <thead>

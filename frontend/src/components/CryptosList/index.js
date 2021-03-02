@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Crypto from './Crypto';
 
@@ -14,7 +16,7 @@ class Cryptos extends Component {
     const { manageLoad } = this.props;
     manageLoad();
   }
-  
+
   componentDidUpdate() {
     const cryptosList = this.getFilteredCrypto();
     let streams = '';
@@ -37,7 +39,7 @@ class Cryptos extends Component {
   componentWillUnmount() {
     socket.close();
   }
-  
+
   getFilteredCrypto() {
     const { search, cryptos } = this.props;
     const loweredSearch = search.toLowerCase();
@@ -49,25 +51,32 @@ class Cryptos extends Component {
       // Et on renvoit le résultat...
       return (loweredCryptoName.includes(loweredSearch) || loweredCryptoSymbol.includes(loweredSearch));
     });
-    
+
     return filteredCryptoList;
   }
-  
+
   render() {
     const { loading, cryptos, toOrder, manageChangeSearch, search } = this.props;
     const cryptosList = this.getFilteredCrypto();
     return (
       <div className="cryptos">
-        {loading && <div>Liste des cryptos en cours de chargement</div>}
+        {loading && <div className="cryptos__waitLoadding">
+          <FontAwesomeIcon
+            size="5x"
+            color="#4fdb88"
+            icon={faSpinner}
+            spin
+          />
+        </div>}
         {!loading && (
           <>
             <div className="cryptos__searchBar">
-              <input 
-              className="cryptos_search"
-              onChange={(event) => manageChangeSearch(event.target.value)} 
-              value={search} 
-              type="text" 
-              placeholder="Rechercher"
+              <input
+                className="cryptos_search"
+                onChange={(event) => manageChangeSearch(event.target.value)}
+                value={search}
+                type="text"
+                placeholder="Rechercher"
               />
             </div>
 
