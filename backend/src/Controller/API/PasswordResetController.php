@@ -65,7 +65,7 @@ class PasswordResetController extends AbstractController
             $this->Em->flush();
 
             $this->Response->setStatusCode(200);
-            $this->Response->setContent(json_encode(array('message' => 'Vous receverez bientôt un mail contenant un lien afin de redéfinir votre motde passe'), JSON_UNESCAPED_SLASHES));
+            $this->Response->setContent(json_encode(array('message' => 'Vous receverez bientôt un mail contenant un lien afin de redéfinir votre mot de passe'), JSON_UNESCAPED_SLASHES));
         }
        else
        {
