@@ -372,7 +372,7 @@ class Dashboard extends Component {
             </div>
             <div className={`hisPortfolio${displayPortfolio}`}>
               <h3 className="hisPortfolio__title">
-                {`Position dans la classement : ${hisRank}`}
+                {`Position dans le classement : n°${hisRank}`}
               </h3>
               <ReactApexChart
                 options={graphPortfolio.options}
