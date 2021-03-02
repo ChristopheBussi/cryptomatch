@@ -3,12 +3,15 @@ import {
   SAVE_HIS_CRYPTOS,
   DISPLAY_TAB,
   SAVE_HIS_PORTFOLIO,
-  RESET_LOADING
+  RESET_LOADING,
+  SAVE_HIS_RANK
 } from "../actions/dashboard";
 
 const initialState = {
   hisCryptos: [],
   hisOrders: [],
+  hisRank: 0,
+  loadingHisRank: true,
   loadingHisCryptos: true,
   loadingHisOrders: true,
   loadingHisPortfolio: true,
@@ -36,6 +39,12 @@ export default (state = initialState, action) => {
           ...state,
         hisPortfolio: action.hisPortfolio,
         loadingHisPortfolio: false,
+        }
+        case SAVE_HIS_RANK:
+        return{
+          ...state,
+          hisRank: action.hisRank,
+        loadingHisRank: false,
         }
     case DISPLAY_TAB:
       return {

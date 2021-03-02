@@ -1,7 +1,7 @@
 .hisPortfolio {
   display: none;
   &__title{
-    padding:1rem 0.5rem 0.5rem 0.5rem;
+    padding:1rem ;
     text-align:center;
     font-size: 1.2rem;
   }
@@ -32,6 +32,9 @@
       box-shadow: 3px 3px 24px -1px #000;
       align-items: center;
       justify-content:center;
+    }
+    &__title{
+      font-size: 1.3rem;
     }
   }
 }
