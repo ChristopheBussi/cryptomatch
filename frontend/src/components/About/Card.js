@@ -27,6 +27,11 @@ const Card = ({ name, fonction, link, image, speciality, fonction2 }) => {
   if (speciality === 'Symfony')
     IconSpeciality = SymfoIcon;
 
+  const LinkLinkedinOrPortfolio = name === 'Walid' ?  link  : <FaLinkedin
+    className="LinkedinIcon"
+    color="#0a66c2"
+    size="25px"
+  />
 
   return (
     <div className="Card">
@@ -35,14 +40,7 @@ const Card = ({ name, fonction, link, image, speciality, fonction2 }) => {
         <div className="Name">{name}</div>
         <div className="Fonction">{fonction} <br></br> {fonction2}</div>
         <div><img className="Speciality" src={IconSpeciality} /></div>
-        <div className="Link"><a target="_blank" href={link}>
-          <FaLinkedin
-          className="LinkedinIcon"
-          color="#0a66c2"
-          size="25px"
-          />
-
-        </a></div>
+        <div className="Link"><a target="_blank" href={link}>{LinkLinkedinOrPortfolio}</a></div>
       </div>
     </div>
   )
