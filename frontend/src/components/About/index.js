@@ -22,7 +22,8 @@ const Team = [
   },
   {
     name : 'Christophe',
-    fonction : 'Product Owner et Scrum master',
+    fonction : 'Product Owner',
+    fonction2: 'et Scrum master',
     link : 'https://www.linkedin.com/in/christophebussi',
     speciality : "Symfony",
     image : 'ChristopheAvatar.png'
@@ -58,6 +59,7 @@ const About = () => (
               key={admin.name}
               name={admin.name}
               fonction={admin.fonction}
+              fonction2={admin.fonction2}
               link={admin.link}
               image = {admin.image}
               speciality = {admin.speciality}
@@ -68,7 +70,7 @@ const About = () => (
     </div>
     <div className="LinkProject">
       <FaGithub className="GithubIcon" />
-      <a className="LinkGitHub" href={LinkGitHub}>Lien github du projet</a>
+      <a className="LinkGitHub" target="_blank" href={LinkGitHub}>Lien github du projet</a>
     </div>
 
 

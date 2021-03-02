@@ -71,10 +71,13 @@
 
 .Speciality
 {
-  padding:0.4rem;
-  width:20%;
+  margin:0.4rem;
+  width: 35px;
 }
-
+.LinkedinIcon
+{
+  width:25px;
+}
 @media only screen and (min-width: 600px)
 {
   .Card
@@ -88,6 +91,7 @@
 {
   .Card
   {
+    height: 19rem;
     width:calc(60% / 3);
   }
 }
