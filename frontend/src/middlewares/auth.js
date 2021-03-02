@@ -60,10 +60,6 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(displayMessageReset(response.data.message));
       }).catch((error) => {
-<<<<<<< HEAD
-        console.log(error.response);
-=======
->>>>>>> 15edeedb3d400a9f9f91ad0e33e977c5660e1d40
         store.dispatch(displayMessageReset(error.response.data.message))
       });
       next(action);
@@ -72,10 +68,6 @@ export default (store) => (next) => (action) => {
     case NEW_PASS: {
       const instance = axios.create({
         baseURL: url,
-<<<<<<< HEAD
-        headers: { Authorization: `Bearer ${action.token}` },
-=======
->>>>>>> 15edeedb3d400a9f9f91ad0e33e977c5660e1d40
       });
       const { newPassword, newPasswordVerify } = store.getState().auth.newPass
       instance.post(
@@ -86,10 +78,6 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(displayMessageNewPass(response.data.message));
       }).catch((error) => {
-<<<<<<< HEAD
-        console.log(error.response);
-=======
->>>>>>> 15edeedb3d400a9f9f91ad0e33e977c5660e1d40
         store.dispatch(displayMessageNewPass(error.response.data.message))
       });
       next(action);
