@@ -24,16 +24,17 @@ const Ranking = ({
             <tr>
               <th>Position</th>
               <th>Pseudo</th>
-              <th>Valeur du compte</th>
+              <th>Capital</th>
+              <th>Evolution</th>
             </tr>
           </thead>
           <tbody>
             {
               users.map((user) => (
                 <User
-              key={user.username}
-              {...user}
-            />
+                  key={user.username}
+                  {...user}
+                />
               ))
             }
           </tbody>
