@@ -20,11 +20,11 @@ import NotFound from '../NotFound';
 // == Composant
 
 const App = ({ logged, getUserDataLocal, theme }) => {
+
   useEffect(
     getUserDataLocal,
     []
   )
-  
   const classTheme = theme ? 'dark' : 'light';
 
   return (
@@ -44,8 +44,12 @@ const App = ({ logged, getUserDataLocal, theme }) => {
         <Route path="/recuperationMdp" exact>
           <Connexion page="resetPass" />
         </Route>
-        <Route path="/nouveauMdp" exact>
-          <Connexion page="newPass" />
+        <Route path="/nouveau-mot-de-passe/:slug" >
+          {
+            !logged
+              ? <Connexion page="newPass" />
+              : <Redirect to="/" />
+          }
         </Route>
         <Route path="/inscription" exact>
           {
@@ -66,7 +70,7 @@ const App = ({ logged, getUserDataLocal, theme }) => {
         </Route>
         <Route path="/dashboard/:slug" exact>
           {
-            
+
             logged
               ? <Dashboard />
               : <Redirect to="/connexion" />

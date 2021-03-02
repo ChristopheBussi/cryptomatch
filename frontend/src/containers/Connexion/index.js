@@ -69,8 +69,8 @@ const mapDispatchToProps = (dispatch) => ({
    changeFieldNewPass: (newValue, fieldName) => {
     dispatch(updateNewPassField(newValue, fieldName));
   },
-  handleChangePass: () => {
-    dispatch(newPass());
+  handleChangePass: (token) => {
+    dispatch(newPass(token));
   },
 
 });
