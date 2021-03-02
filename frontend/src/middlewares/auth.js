@@ -64,7 +64,7 @@ export default (store) => (next) => (action) => {
         store.dispatch(displayMessageReset(response.data.message));
       }).catch((error) => {
         console.log(error.response);
-        store.dispatch(displayMessageReset("erreur RESET_PASS"))
+        store.dispatch(displayMessageReset(error.response.data.message))
       });
       next(action);
       break;
@@ -72,11 +72,11 @@ export default (store) => (next) => (action) => {
     case NEW_PASS: {
       const instance = axios.create({
         baseURL: url,
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: { Authorization: `Bearer ${action.token}` },
       });
       const { newPassword, newPasswordVerify } = store.getState().auth.newPass
       instance.post(
-        'password-reset', JSON.stringify({
+       `reset-password/${action.token}`, JSON.stringify({
           password_first: newPassword,
           password_second: newPasswordVerify,
         }),
@@ -85,7 +85,7 @@ export default (store) => (next) => (action) => {
         store.dispatch(displayMessageNewPass('ok ' + response));
       }).catch((error) => {
         console.log(error.response);
-        store.dispatch(displayMessageNewPass('erreur NEW_PASS'))
+        store.dispatch(displayMessageNewPass(error.response.data.message))
       });
       next(action);
       break;
