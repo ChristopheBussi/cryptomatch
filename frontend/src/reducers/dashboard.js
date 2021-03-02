@@ -3,6 +3,7 @@ import {
   SAVE_HIS_CRYPTOS,
   DISPLAY_TAB,
   SAVE_HIS_PORTFOLIO,
+  RESET_LOADING
 } from "../actions/dashboard";
 
 const initialState = {
@@ -42,6 +43,18 @@ export default (state = initialState, action) => {
         displayCryptos: action.cryptos,
         displayOrders: action.orders,
         displayPortfolio: action.portfolio,
+      }
+      case RESET_LOADING:
+      return {
+        ...state,
+        hisCryptos: [],
+        hisOrders: [],
+        loadingHisCryptos: true,
+        loadingHisOrders: true,
+        loadingHisPortfolio: true,
+        displayCryptos: '__actived',
+        displayOrders: '',
+        displayPortfolio: '',
       }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {

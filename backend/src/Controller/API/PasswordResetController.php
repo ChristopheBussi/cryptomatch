@@ -42,7 +42,7 @@ class PasswordResetController extends AbstractController
 
         if($User && !empty($username))
         {
-            $RouteUpdatePassword = "http://cryptomatch.surge.sh/reset-password/"; //Par exemple.. le front devra la créer..
+            $RouteUpdatePassword = "http://cryptomatch.surge.sh/nouveau-mot-de-passe/"; //Par exemple.. le front devra la créer..
 
             //On génère un Token et on l'insert dans la table ResetPassword..
             $Token = uniqid();
@@ -65,7 +65,7 @@ class PasswordResetController extends AbstractController
             $this->Em->flush();
 
             $this->Response->setStatusCode(200);
-            $this->Response->setContent(json_encode(array('message' => 'Vous receverez bientôt un mail contenant un lien afin de redéfinir votre motde passe'), JSON_UNESCAPED_SLASHES));
+            $this->Response->setContent(json_encode(array('message' => 'Vous allez recevor un e-mail contenant un lien afin de redéfinir votre mot de passe'), JSON_UNESCAPED_SLASHES));
         }
        else
        {
@@ -106,24 +106,24 @@ class PasswordResetController extends AbstractController
                         $this->Em->flush();
 
                         $this->Response->setStatusCode(201);
-                        $this->Response->setContent(json_encode(array("message" => 'Votre mot de passe à bien été modifié.') ));
+                        $this->Response->setContent(json_encode(array("message" => 'Votre mot de passe a bien été modifié.') ));
                     }
                     else
                     {
                         $this->Response->setStatusCode(500);
-                        $this->Response->setContent(json_encode(array("message" => 'Les mots de passes ne sont pas identiques')) );
+                        $this->Response->setContent(json_encode(array("message" => 'Les mots de passe ne sont pas identiques')) );
                     }
                 }
                 else
                 {
                     $this->Response->setStatusCode(400);
-                    $this->Response->setContent(json_encode(array("message" => "La requette n'est pas valide.") ));
+                    $this->Response->setContent(json_encode(array("message" => "La requête n'est pas valide.") ));
                 }
             }
             else
             {
                 $this->Response->setStatusCode(400);
-                $this->Response->setContent(json_encode(array("message" => "Le token est incorrect.")) );
+                $this->Response->setContent(json_encode(array("message" => "Désolé le lien n'est pas valide.")) );
             }
 
 

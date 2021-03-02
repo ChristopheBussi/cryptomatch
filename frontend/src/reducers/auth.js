@@ -73,9 +73,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         signIn: {
-          ...state.signUp,
-          username: '',
-          password: '',
+          ...state.signIn,
         },
       };
     case ERROR_AUTH_SIGNUP:

@@ -45,7 +45,7 @@ const Connexion = ({
         password={passwordSignIn}
         changeField={changeFieldSignIn}
         handleSignIn={handleSignIn}
-        message={messageSignIn}
+        messageSignIn={messageSignIn}
       />
   } else if (page === 'signUp') {
     componentToDisplayed =
@@ -56,7 +56,7 @@ const Connexion = ({
         passwordVerify={passwordVerifySignUp}
         changeField={changeFieldSignUp}
         handleSignUp={handleSignUp}
-        message={messageSignUp}
+        messageSignUp={messageSignUp}
         handleDiplayMessage={handleDiplayMessage}
       />
   } else if (page === 'resetPass') {
@@ -65,7 +65,7 @@ const Connexion = ({
         username={usernameRestPass}
         changeField={changeFieldResetPass}
         handleResetPass={handleResetPass}
-        message={messageResetPass}
+        messageResetPass={messageResetPass}
       />
   } else if (page === 'newPass') {
     componentToDisplayed =
@@ -74,7 +74,7 @@ const Connexion = ({
         newPasswordVerify={newPasswordVerify}
         changeField={changeFieldNewPass}
         handleChangePass={handleChangePass}
-        message={messageNewPass}
+        messageNewPass={messageNewPass}
       />
   }
 

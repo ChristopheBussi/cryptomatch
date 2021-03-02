@@ -26,7 +26,7 @@ const Home = () => {
       <div className={classRules}>
         <div className={classRulesP}>
           <p>
-            Le site organise un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
+            Nous organisons un concours de trading sur les cryptomonnaies sans argent réel du 15 février au 15 mars.<span className={classDot}>..</span>
           </p>
           <div className={classDivRules}>
             <p>

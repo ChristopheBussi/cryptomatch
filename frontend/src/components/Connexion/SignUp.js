@@ -10,7 +10,7 @@ const SignUp = ({
   password,
   changeField,
   handleSignUp,
-  message,
+  messageSignUp,
   passwordVerify,
   handleDiplayMessage,
 }) => {
@@ -27,7 +27,7 @@ const SignUp = ({
     }
   };
   let displayMessage = "message"
-    if (message == 'Inscription réussie') {
+    if (messageSignUp == 'Inscription réussie') {
       displayMessage = 'message__green'
     } 
   
@@ -35,7 +35,7 @@ const SignUp = ({
   return (
     <div className="signUp">
       <h2>Créer votre compte !</h2>
-      <div className={displayMessage}>{message}</div>
+      <div className={displayMessage}>{messageSignUp}</div>
       <form onSubmit={handleSubmit} className="signUp__form">
         <div className="signUp__form__field">
           <Field
@@ -86,6 +86,6 @@ SignUp.propTypes = {
   passwordVerify: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
-  message: PropTypes.string,
+  messageSignUp: PropTypes.string,
 };
 export default SignUp;

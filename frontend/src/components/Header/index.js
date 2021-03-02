@@ -8,13 +8,17 @@ import { NavLink } from 'react-router-dom';
 import './header.scss';
 import './toggleTheme.scss';
 
-const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChangeTheme }) => {
+const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChangeTheme, manageLoad, resetLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
   const classNav = isOpen ? 'header__nav-open nav' : 'header__nav-close nav';
   const aroundSold = Math.round(USDAmount);
-
+  const toDashboard = () => {
+    resetLoading();
+    manageLoad(username);
+    setIsOpen(false);
+  }
   return (
-    
+
     <header className="header">
       <div className="header__container">
         <div className="header__container__title">
@@ -68,9 +72,9 @@ const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChange
                   ? (
                     <li>
                       <NavLink
-                        to="/dashboard"
+                        to={`/dashboard/${username}`}
                         exact
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => toDashboard()}
                         activeClassName="header__selected"
                       >
                         Dashboard
@@ -125,15 +129,15 @@ const Header = ({ logged, handleLogOut, USDAmount, username, theme, handleChange
             </div>
 
             <button
-            className="buttonMenuCross"
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
+              className="buttonMenuCross"
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
             >
-            <FontAwesomeIcon
-              className="iconCross"
-              size="3x"
-              icon={faTimes}
-            />
+              <FontAwesomeIcon
+                className="iconCross"
+                size="3x"
+                icon={faTimes}
+              />
             </button>
           </nav>
         </div>

@@ -5,6 +5,7 @@ export const SAVE_HIS_CRYPTOS = 'SAVE_HIS_CRYPTOS';
 export const DISPLAY_TAB = 'DISPLAY_TAB';
 export const FETCH_HIS_PORTFOLIO = 'FETCH_HIS_PORTFOLIO';
 export const SAVE_HIS_PORTFOLIO = 'SAVE_HIS_PORTFOLIO';
+export const RESET_LOADING = 'RESET_LOADING';
 
 
 export const fetchHisOrders = (username) => ({
@@ -41,3 +42,6 @@ export const displayTab = (type) => {
   portfolio: portfolio,
   orders: orders,
 })}
+export const resetLoading = () => ({
+  type: RESET_LOADING,
+})
