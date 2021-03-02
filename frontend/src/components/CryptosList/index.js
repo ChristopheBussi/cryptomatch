@@ -38,6 +38,7 @@ class Cryptos extends Component {
   }
   componentWillUnmount() {
     socket.close();
+    this.props.clearFieldSearch()
   }
 
   getFilteredCrypto() {

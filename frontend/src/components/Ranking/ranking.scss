@@ -20,7 +20,8 @@
       & tr {
         text-align: center;
         font-weight: 600;
-        
+        font-size: .8rem;
+
         & th {
           padding: 1rem .5rem;
           position: sticky;
@@ -32,7 +33,7 @@
         & th:nth-of-type(1) {
           border-radius: 10px 0 0 0;
         }
-        & th:nth-of-type(3) {
+        & th:nth-of-type(4) {
           border-radius:  0 10px 0 0;
         }
       }
@@ -46,7 +47,7 @@
         border-bottom: 1px solid #30374b;
 
         & td {
-          padding:  1.5rem 0;
+          padding:  1.5rem .4rem;
           font-size: 1.1rem;
           text-align: center;
         }
@@ -96,10 +97,14 @@
           }
 
           & td:nth-of-type(2) {
-            padding-right: 15rem;
+            padding-right: 10rem;
           }
 
           & td:nth-of-type(3) {
+            padding-right: 4rem;
+          }
+
+          & td:nth-of-type(4) {
             padding-right: 2rem;
           }
         }
@@ -139,10 +144,14 @@
           }
 
           & td:nth-of-type(2) {
-            padding-right: 30rem;
+            padding-right: 25rem;
           }
 
           & td:nth-of-type(3) {
+            padding-right: 5rem;
+          }
+
+          & td:nth-of-type(4) {
             padding-right: 2rem;
           }
         }

@@ -267,7 +267,7 @@ class Dashboard extends Component {
       <div className="dashboard" >
         {
           username === this.props.match.params.slug
-            ? <h2 className="dashboard__title">Bienvenu sur ton dashboard {username}</h2>
+            ? <h2 className="dashboard__title">Bienvenue sur votre dashboard {username}</h2>
             : <h2 className="dashboard__title">Dashboard de {this.state.slugUser}</h2>
         }
         { loading && <div className="cryptos__waitLoadding">

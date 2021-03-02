@@ -11,7 +11,6 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(saveCryptos(response.data));
       }).catch((error) => {
-        console.log('erreur requete cryptos');
       });
 
       next(action);

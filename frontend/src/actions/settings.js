@@ -7,7 +7,7 @@ export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 
 export const SIGNUP = 'SIGNUP';
 export const USER_REGISTRATION = 'USER_REGISTRATION';
-export const DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP ='DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP';
+export const DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP = 'DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP';
 
 export const LOGOUT = 'LOGOUT';
 
@@ -62,10 +62,13 @@ export const logOut = () => ({
   type: LOGOUT,
 });
 
-export const changeTheme = (theme) => ({
-  type: CHANGE_THEME,
-  theme,
-});
+export const changeTheme = (theme) => {
+  localStorage.setItem('theme', theme);
+  return ({
+    type: CHANGE_THEME,
+    theme,
+  });
+}
 
 export const getUserDataLocal = () => {
   let logged = false
@@ -77,7 +80,7 @@ export const getUserDataLocal = () => {
     token = localStorage.getItem('token');
     USDAmount = parseInt(localStorage.getItem('USDAmount'));
     logged = true;
-  } 
+  }
   return ({
     type: GET_USER_DATA_LOCAL,
     username,
@@ -86,33 +89,34 @@ export const getUserDataLocal = () => {
     USDAmount,
   });
 }
-export const displayErrorMessageAuthSignUp = (message,username,email) => ({
-  type : DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP,
+export const displayErrorMessageAuthSignUp = (message, username, email) => ({
+  type: DISPLAY_ERROR_MESSAGE_AUTH_SIGN_UP,
   message,
   username,
   email
 });
-export const updateResetPassField = (newValue,fieldName) => ({
-  type : UPDATE_RESET_PASS_FIELD,
+export const updateResetPassField = (newValue, fieldName) => ({
+  type: UPDATE_RESET_PASS_FIELD,
   newValue,
   fieldName,
 });
 export const resetPass = () => ({
   type: RESET_PASS,
 });
-export const displayMessageReset= (message) => ({
+export const displayMessageReset = (message) => ({
   type: DISPLAY_MESSAGE_RESET,
   message,
 });
-export const updateNewPassField= (newValue,fieldName) => ({
+export const updateNewPassField = (newValue, fieldName) => ({
   type: UPDATE_NEW_PASS_FIELD,
   newValue,
   fieldName,
 });
-export const newPass= () => ({
+export const newPass = (token) => ({
   type: NEW_PASS,
+  token,
 });
-export const displayMessageNewPass= (message) => ({
+export const displayMessageNewPass = (message) => ({
   type: DISPLAY_MESSAGE_NEW_PASS,
   message,
 });
