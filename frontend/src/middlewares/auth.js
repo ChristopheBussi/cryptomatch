@@ -31,7 +31,6 @@ export default (store) => (next) => (action) => {
         localStorage.setItem('email', response.data.data.email);
         store.dispatch(saveUserData(response.data));
       }).catch((error) => {
-        console.log(error.response);
         store.dispatch(errorSignIn(error.response.data.message))
       });
       next(action);
@@ -48,7 +47,6 @@ export default (store) => (next) => (action) => {
       ).then((response) => {
         store.dispatch(userRegistration(response.data));
       }).catch((error) => {
-        console.log(error.response);
         store.dispatch(errorAuthSignUp(error.response.data.Message, username, email))
       });
 
@@ -60,10 +58,8 @@ export default (store) => (next) => (action) => {
       axios.get(
         `${url}password-reset/${username}`
       ).then((response) => {
-        console.log(response);
         store.dispatch(displayMessageReset(response.data.message));
       }).catch((error) => {
-        console.log(error.response);
         store.dispatch(displayMessageReset(error.response.data.message))
       });
       next(action);

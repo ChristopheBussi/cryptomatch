@@ -6,6 +6,7 @@ import {
   toOrder,
   fetchCrypto,
   changeSearch,
+  clearFieldSearch,
 } from 'src/actions/crypto';
 
 const mapStateToProps = (state) => ({
@@ -25,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   manageChangeSearch: (newSearch) => {
     dispatch(changeSearch(newSearch));
+  },
+  clearFieldSearch: () => {
+    dispatch(clearFieldSearch());
   }
 });
 

@@ -20,11 +20,11 @@ import NotFound from '../NotFound';
 // == Composant
 
 const App = ({ logged, getUserDataLocal, theme }) => {
+
   useEffect(
     getUserDataLocal,
     []
   )
-
   const classTheme = theme ? 'dark' : 'light';
 
   return (

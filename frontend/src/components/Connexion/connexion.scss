@@ -100,6 +100,8 @@
       color: #181c27;
     }
 
+    & .resetPassword,
+    & .newPass,
     & .signIn,
     & .signUp {
       color: #181c27;
@@ -111,6 +113,9 @@
           &::placeholder {
             color: #181c27c5;
           }
+        }
+        & label{
+          color: #181c27;
         }
       }
     }
