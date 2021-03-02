@@ -53,10 +53,10 @@ class Order extends Component {
       } else {
         if (this.state.typeAction === 'Buy') {
         if (USDAmount < quantity * this.state.quotation) {
-          handleDiplayMessage('Tu n\'as pas les fonds necessaires')
+          handleDiplayMessage('Vous n\'avez pas les fonds necessaires')
         }
         else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
-          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+          handleDiplayMessage('Patientez pendant le chargement de la valorisation')
         } else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
 
@@ -64,9 +64,9 @@ class Order extends Component {
       }
       if (this.state.typeAction === 'Sell') {
         if (actualQuantityPair < quantity) {
-          handleDiplayMessage(`Tu n\'as pas assez de ${name}`)
+          handleDiplayMessage(`Vous n\'avez pas assez de ${name}`)
         }else if (document.querySelector('.order__price-quotation').textContent == 'Cotation en chargement') {
-          handleDiplayMessage('Patienter pendant le chargement de la valorisation')
+          handleDiplayMessage('Patientez pendant le chargement de la cotation')
         }else {
           handlePlaceTheOrder(this.state.typeAction, this.state.quotation);
         }

@@ -16,10 +16,11 @@ const NewPassword = ({
     evt.preventDefault();
     handleChangePass(slug);
   };
+  const valideNewMessage = messageNewPass == 'Votre mot de passe a bien été modifié.' ? 'message__green' : 'message';
   return (
     <div className="newPass">
       <h2>Entrez votre nouveaux mot de passe</h2>
-      <div className="message">{messageNewPass}</div>
+      <div className={valideNewMessage}>{messageNewPass}</div>
       <form onSubmit={handleSubmit} className="newPass__form">
         <div className="newPass__form__field">
           <Field

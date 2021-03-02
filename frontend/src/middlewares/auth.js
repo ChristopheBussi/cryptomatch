@@ -75,15 +75,13 @@ export default (store) => (next) => (action) => {
       });
       const { newPassword, newPasswordVerify } = store.getState().auth.newPass
       instance.post(
-       `password-reset/${action.token}`, JSON.stringify({
+       `reset-password/${action.token}`, JSON.stringify({
           password_first: newPassword,
           password_second: newPasswordVerify,
         }),
       ).then((response) => {
-        console.log(response);
-        store.dispatch(displayMessageNewPass('ok ' + response));
+        store.dispatch(displayMessageNewPass(response.data.message));
       }).catch((error) => {
-        console.log(error.response);
         store.dispatch(displayMessageNewPass(error.response.data.message))
       });
       next(action);

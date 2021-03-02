@@ -14,10 +14,13 @@ const ResetPassword = ({
     evt.preventDefault();
     handleResetPass();
   };
+  const valideNewMessage = 
+  messageResetPass === 'Vous allez recevor un e-mail contenant un lien afin de redéfinir votre mot de passe'
+  ? 'message__green' : 'message';
   return (
     <div className="resetPassword">
       <h2>Entrez votre pseudo pour reinitialiser pour votre mot de passe</h2>
-      <div className="message">{messageResetPass}</div>
+      <div className={valideNewMessage}>{messageResetPass}</div>
       <form onSubmit={handleSubmit} className="resetPassword__form">
         <div className="resetPassword__form__field">
           <Field

@@ -44,7 +44,7 @@ const App = ({ logged, getUserDataLocal, theme }) => {
         <Route path="/recuperationMdp" exact>
           <Connexion page="resetPass" />
         </Route>
-        <Route path="/reset-password/:slug" >
+        <Route path="/nouveau-mot-de-passe/:slug" >
           {
             !logged
               ? <Connexion page="newPass" />
