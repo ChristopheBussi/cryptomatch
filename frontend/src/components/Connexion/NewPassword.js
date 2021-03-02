@@ -26,12 +26,14 @@ const NewPassword = ({
           <Field
             name="newPassword"
             placeholder="Mot de passe"
+            type="password"
             value={newPassword}
             onChange={changeField}
           />
           <Field
             name="newPasswordVerify"
             placeholder="Confirmer votre mot de passe"
+            type="password"
             value={newPasswordVerify}
             onChange={changeField}
           />
