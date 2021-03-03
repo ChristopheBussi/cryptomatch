@@ -83,18 +83,19 @@
     transform: translateX(0%);
     transition: transform 0.3s ease-in-out;
   }
-  &__selected{
+
+  &__selected {
     font-weight: bold;
     color: #4fdb88;
   }
 }
 
-.buttonLogin{
-  display:flex;
-  flex-direction:column;
+.buttonLogin {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 5rem;
 
-  &__solde{
+  &__solde {
     border-radius: 10px;
     border: 1px #4fdb88 solid;
     padding: 1rem 6rem;
@@ -103,6 +104,7 @@
     font-weight: 600;
     color: #fff;
   }
+
   & button {
     border: none;
     border-radius: 10px;
@@ -125,6 +127,7 @@
 
     &__container__title {
       align-items: center;
+
       & h1 {
         margin-right: 2rem;
         white-space: nowrap;
@@ -146,7 +149,7 @@
 
         & li {
           display: flex;
-          justify-content:center;
+          justify-content: center;
           align-items: center;
           margin: 0;
           font-size: 1rem;
@@ -165,8 +168,8 @@
       flex-direction: row;
       align-items: center;
       margin: 0;
-      
-      &__solde{
+
+      &__solde {
         border: 2px solid #4fdb88;
         background: none;
         border-radius: 5px;
@@ -177,6 +180,7 @@
         margin-top: 0rem;
         margin-right: 1rem;
       }
+
       & .buttonAuth {
         border: 2px solid #4fdb88;
         background: none;
@@ -193,6 +197,7 @@
           font-size: 1rem;
           margin-right: 0.5rem;
         }
+
         &.signin {
           background: none;
           color: white;
@@ -214,9 +219,10 @@
 
   .header {
     padding: 1rem 15rem;
-    & nav{
-      & ul{
-        & li{
+
+    & nav {
+      & ul {
+        & li {
           font-size: 1.1rem;
         }
       }
@@ -225,9 +231,13 @@
 }
 
 .light {
-  & .header{
-    & nav{
+  & .header {
+    &__nav-open {
       background-color: #fff;
+    }
+
+    & nav {
+
       & ul {
         color: #181c27;
       }
@@ -238,16 +248,16 @@
     }
   }
 
-  
+
   & .buttonLogin__solde {
     color: #181c27;
   }
 }
 
-.buttonLogin__solde{
+.buttonLogin__solde {
   font-size: 1.1rem;
 }
 
-.buttonAuth{
+.buttonAuth {
   font-size: 1.1rem;
 }
