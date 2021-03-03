@@ -123,7 +123,7 @@ class PasswordResetController extends AbstractController
             else
             {
                 $this->Response->setStatusCode(400);
-                $this->Response->setContent(json_encode(array("message" => "Désolé le lien n'est pas valide.")) );
+                $this->Response->setContent(json_encode(array("message" => "Désolé, le lien n'est pas valide.")) );
             }
 
 

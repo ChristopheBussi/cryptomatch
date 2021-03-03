@@ -31,7 +31,7 @@ const Team = [
   {
     name : 'Walid',
     fonction : 'Lead dev back',
-    link : 'https://walidm.xyz',
+    link : 'https://www.linkedin.com/in/walidmoussa/',
     speciality: "Symfony",
     image : 'WalidAvatar.png'
   }

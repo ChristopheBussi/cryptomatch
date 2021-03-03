@@ -27,7 +27,7 @@ const Card = ({ name, fonction, link, image, speciality, fonction2 }) => {
   if (speciality === 'Symfony')
     IconSpeciality = SymfoIcon;
 
-  const LinkLinkedinOrPortfolio = name === 'Walid' ?  link  : <FaLinkedin
+  const LinkLinkedinOrPortfolio =  <FaLinkedin
     className="LinkedinIcon"
     color="#0a66c2"
     size="25px"
