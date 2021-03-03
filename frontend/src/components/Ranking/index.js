@@ -8,6 +8,7 @@ import User from './User'
 import './ranking.scss'
 
 const Ranking = ({
+  username,
   users,
   loading,
   manageLoadRank,
@@ -33,16 +34,18 @@ const Ranking = ({
             <tr>
               <th>Position</th>
               <th>Pseudo</th>
-              <th>Valeur du compte</th>
+              <th>Capital</th>
+              <th>Evolution</th>
             </tr>
           </thead>
           <tbody>
             {
               users.map((user) => (
                 <User
-              key={user.username}
-              {...user}
-            />
+                  key={user.username}
+                  myUsername={username}
+                  {...user}
+                />
               ))
             }
           </tbody>

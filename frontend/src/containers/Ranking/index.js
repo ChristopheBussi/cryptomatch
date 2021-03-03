@@ -5,6 +5,7 @@ import Ranking from 'src/components/Ranking';
 import { fetchUsersRanking } from 'src/actions/ranking';
 
 const mapStateToProps = (state) => ({
+  username: state.user.username,
   loading: state.ranking.loading,
   users: state.ranking.users,
 });

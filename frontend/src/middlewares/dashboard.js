@@ -8,6 +8,8 @@ import {
   saveHisCryptos,
   FETCH_HIS_PORTFOLIO,
   saveHisPortfolio,
+  FETCH_HIS_RANK,
+  saveHisRank,
 }from '../actions/dashboard';
 
 export default (store) => (next) => (action) => {
@@ -42,6 +44,18 @@ export default (store) => (next) => (action) => {
       }).catch((error) => {
         console.log(error.response);
         store.dispatch(saveHisPortfolio(error.response.data.message));
+      });
+      next(action);
+      break;
+    }
+    case FETCH_HIS_RANK: {
+      axios.get(
+        `${url}rank/${action.username}`,
+      ).then((response) => {
+        store.dispatch(saveHisRank(response.data.rank));
+      }).catch((error) => {
+        console.log(error.response);
+        store.dispatch(saveHisRank(error.response.data.message));
       });
       next(action);
       break;

@@ -124,22 +124,24 @@ export default (state = initialState, action) => {
           [action.fieldName]: action.newValue,
         }
       }
-      case DISPLAY_MESSAGE_NEW_PASS:
+    case DISPLAY_MESSAGE_NEW_PASS:
+      return {
+        ...state,
+        newPass: {
+          newPassword: '',
+          newPasswordVerify: '',
+          message: action.message,
+        }
+
+      }
+    case UPDATE_NEW_PASS_FIELD:
       return {
         ...state,
         newPass: {
           ...state.newPass,
-          message: action.newValue,
+          [action.fieldName]: action.newValue,
         }
       }
-      case UPDATE_NEW_PASS_FIELD:
-        return{
-          ...state,
-          newPass: {
-          ...state.newPass,
-            [action.fieldName]: action.newValue,
-          }
-        }
     default: // Si le reducer ne sait pas traiter l'action, il renvoie une copie du state
       return {
         ...state,

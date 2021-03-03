@@ -3,6 +3,7 @@
   overflow: scroll;
   display: none;
   z-index: 0;
+
   &__actived {
     display: flex;
     flex-direction: column;
@@ -21,6 +22,15 @@
     overflow-y: auto;
     height: 50%;
 
+  }
+
+  &__table::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 10px;
+  }
+
+  &__table::-webkit-scrollbar-thumb {
+    background: #4fdb88;
   }
 }
 
@@ -70,6 +80,7 @@
     align-items: center;
     width: 30%;
   }
+
   &__buyingPrice {
     display: none;
     justify-content: center;
@@ -77,6 +88,7 @@
     align-items: center;
     width: 18%;
   }
+
   &__valuation {
     width: 30%;
     display: flex;
@@ -103,33 +115,42 @@
 .lessValue {
   color: #F84960;
 }
+
 @media screen and (min-width: 600px) {
-.hisCrypto{
-  &__logo{
-    width: 32%;
-  }
-  &__quantity{
-    width: 18%;
-  }
-  &__buyingPrice {
-    display: flex;
-    text-align: center;
-  }
-  &__valuation{
-    width: 18%;
-  }
-  &__percent{
-    width: 18%;
-  }
-  &__img{
-    display:flex;
+  .hisCrypto {
+    &__logo {
+      width: 32%;
+    }
+
+    &__quantity {
+      width: 18%;
+    }
+
+    &__buyingPrice {
+      display: flex;
+      text-align: center;
+    }
+
+    &__valuation {
+      width: 18%;
+    }
+
+    &__percent {
+      width: 18%;
+    }
+
+    &__img {
+      display: flex;
+    }
   }
 }
-}
+
 @media screen and (min-width: 1280px) {
   .hisCryptos {
     overflow: hidden;
-
+    &__table::-webkit-scrollbar {
+      width: 3px;
+    }
     &__actived {
       display: flex;
       flex-direction: row;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Field from './Field';
@@ -11,25 +11,29 @@ const NewPassword = ({
   handleChangePass,
   messageNewPass,
 }) => {
+  const { slug } = useParams()
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleChangePass();
+    handleChangePass(slug);
   };
+  const valideNewMessage = messageNewPass == 'Votre mot de passe a bien été modifié.' ? 'message__green' : 'message';
   return (
     <div className="newPass">
-      <h2>Entrez votre nouveaux mot de passe</h2>
-      <div className="message">{messageNewPass}</div>
+      <h2>Entrez votre nouveau mot de passe</h2>
+      <div className={valideNewMessage}>{messageNewPass}</div>
       <form onSubmit={handleSubmit} className="newPass__form">
         <div className="newPass__form__field">
           <Field
             name="newPassword"
             placeholder="Mot de passe"
+            type="password"
             value={newPassword}
             onChange={changeField}
           />
-           <Field
+          <Field
             name="newPasswordVerify"
             placeholder="Confirmer votre mot de passe"
+            type="password"
             value={newPasswordVerify}
             onChange={changeField}
           />
