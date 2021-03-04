@@ -47,8 +47,8 @@ const About = () => (
 
     <div className="Presentation">
 
-          Après une formation intense de 700H où nous avons appris le métier de développeur web, nous avons réalisé,
-          dans le cadre du projet de fin de formation "l'Apothéose" ce site afin de mettre en pratique tout ce que nous avons appris.
+          Après une formation intense de 700H où nous avons appris le métier de développeur web. Nous avons réalisé,
+          dans le cadre du projet de fin de formation "l'Apothéose". Ce site afin de mettre en pratique tout ce que nous avons appris.
     </div>
 
     <div className="CardList">
