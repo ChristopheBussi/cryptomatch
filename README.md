@@ -4,7 +4,7 @@ CryptoMatch est un projet de fin d'études réalisé en équipe dans des conditi
 
 http://cryptomatch.surge.sh/
 
-Il s'agit d'un concours de trading sur les cryptomonnaies sans argent réel. Chaque participant détient un capital de départ de 10 000 dollars fictifs qu’il peut investir sur les cryptomonnaies de son choix. Les participants sont classés quotidiennement en fonction de la plus plus-value engendrée sur leurs comptes.
+Il s'agit d'un concours de trading sur les cryptomonnaies sans argent réel. Chaque participant détient un capital de départ de 10 000 dollars fictifs qu’il peut investir sur les cryptomonnaies de son choix. Les participants sont classés quotidiennement en fonction de la plus-value engendrée sur leurs comptes.
 
 Présentation du projet :
 https://www.youtube.com/watch?v=5GnH2_ws4Bc&t=3633s
